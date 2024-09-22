@@ -2,11 +2,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, Vie
 import { ButtonComponent } from "../../components/button/button.component";
 import { CardComponent } from "../../components/card/card.component";
 import e from 'express';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonComponent, CardComponent],
+  imports: [ButtonComponent, CardComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

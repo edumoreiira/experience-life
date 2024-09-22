@@ -1,9 +1,15 @@
 <nav class="container nav">
     <div class="nav__logo">LOGO</div>
     <ul class="nav__items">
-        <li class="nav__item"><a class="nav__link" href="#">Fórum</a></li>
-        <li class="nav__item"><a class="nav__link" href="#">Discord</a></li>
-        <li class="nav__item"><a class="nav__link" href="#">Minha Conta</a></li>
+        <li class="nav__item">
+            <a class="nav__link" href="https://brasilexperiencelife.forumeiros.com/" target="_blank">Fórum</a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" href="https://www.discord.gg/PFwAEWwpW7" target="_blank">Discord</a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" href="#">Minha Conta</a>
+        </li>
         <li class="nav__item"><a class="nav__link" href="#">
             <button app-button class="nav__button">Comprar Moedas</button>
         </a></li>
@@ -69,10 +75,19 @@
                     <app-card
                         #slider_card
                         class="rank__slider__card"
-                        [title]="'Horas Jogadas'"
-                        [playerName]="'Hudson_Vgs'"
-                        [info]="'17474'"
-                        urlImage="/assets/cards/horas.png"
+                        [title]="'Dinheiro'"
+                        [playerName]="'Mizael_xD'"
+                        [info]="'1708804364'"
+                        urlImage="/assets/cards/dinheiro.png"
+                    >
+                    </app-card>
+                    <app-card
+                        #slider_card
+                        class="rank__slider__card"
+                        [title]="'Crimes Cometidos'"
+                        [playerName]="'Laranjinha_Acerola'"
+                        [info]="'616'"
+                        urlImage="/assets/cards/crimes.png"
                     >
                     </app-card>
                 </div>
@@ -80,3 +95,5 @@
         </div>
     </section>
 </div>
+
+<app-footer></app-footer>

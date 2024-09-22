@@ -23,8 +23,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: 1.5em;
-    font-size: .95em;
+    padding-block: 2em;
+    font-size: .9em;
 
     &__logo{
         font-size: 2.5em;
@@ -50,7 +50,7 @@
         text-decoration: none;
         transition: color 150ms ease-in-out;
         &:hover{
-            color: hsl(var(--highlight));
+            color: hsl(var(--primary-light));
         }
     }
 
@@ -86,15 +86,15 @@ main{
     display: flex;
     gap: 1em;
     flex-direction: column;
-    width: 72%;
+    width: 60%;
 
     &__title{
         text-transform: uppercase;
-        font-size: 3.3em;
+        font-size: 2.5em;
     }
 
     &__description{
-        font-size: 1.74em;
+        font-size: 1.4em;
         font-weight: 200;
         letter-spacing: .03em;
         line-height: 1.2;
@@ -179,7 +179,7 @@ main{
         font-style: italic;
         font-size: 2.4em;
         font-weight: 700;
-        margin-bottom: .5em;
+        margin-bottom: .7em;
     }
     @keyframes slide {
         from {
