@@ -1,0 +1,28 @@
+.card {
+    padding: 1em;
+    background-color: black;
+    border-radius: var(--radius);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__title {
+        font-size: 2em;
+        font-family: Sofia Sans Extra Condensed;
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        letter-spacing: .07em;
+    }
+
+    &__player-name {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+    }
+
+    &__info {
+        font-weight: 100;
+        font-size: 1.2em;
+        letter-spacing: .4em;
+    }
+}
