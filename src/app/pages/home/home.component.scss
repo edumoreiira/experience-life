@@ -23,7 +23,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: 2.5em;
+    padding-block: 1.5em;
+    font-size: .95em;
 
     &__logo{
         font-size: 2.5em;
@@ -56,6 +57,7 @@
     &__button{
         color: hsl(var(--foreground));
         background-image: url('/assets/icons/button-icons/dollar.png');
+        background-color: hsl(var(--highlight));
         background-size: cover;
         transition: filter 150ms ease-in-out;
         &:hover{
@@ -64,17 +66,25 @@
     }
 }
 
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5em;
+    flex: 1;
+}
+
 main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     gap: 1.5em;
-    flex: 1;
 }
 
 .header{
     display: flex;
+    gap: 1em;
     flex-direction: column;
     width: 72%;
 
@@ -126,6 +136,82 @@ main{
                 &:hover {
                     color: hsl(var(--primary-light))
                 }
+            }
+        }
+    }
+}
+
+.rank {
+    font-size: .9em;
+    text-align: center;
+
+    &__slider__wrapper{
+        display: flex;
+        overflow: hidden;
+        padding-block: .5em;
+        position: relative;
+
+        &:hover .rank__slider--animate{
+            animation-play-state: paused;
+        }
+
+        &::after, &::before {
+            content: '';
+            height: 100%;
+            width: 60px;
+            position: absolute;
+        }
+
+        &::after {
+            background: linear-gradient(to right, hsl(var(--background))10%, transparent 100%);
+        }
+        &::before {
+            background: linear-gradient(to left, hsl(var(--background))10%, transparent 100%);
+            right: 0;
+            z-index: 1;
+        }
+    }
+
+    &__title {
+        font-family: Inter;
+        text-transform: uppercase;
+        font-style: italic;
+        font-size: 2.4em;
+        font-weight: 700;
+        margin-bottom: .5em;
+    }
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    &__slider {
+        display: flex;
+        align-items: center;
+        gap: 1.5em;
+
+        &--animate {
+            animation: 15s slide infinite linear;
+        }
+
+        &__card {
+            flex-shrink: 0;
+            width: 320px;
+            font-size: .85em;
+            transition: all 150ms ease-in-out;
+            
+            &:hover {
+                transform: scale(1.05);
+                filter: saturate(1.5);
+                cursor: default;
+            }
+
+            &:last-child {
+                padding-right: 1.5em;
             }
         }
     }
