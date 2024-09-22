@@ -1,3 +1,65 @@
-nav{
-    
+:host{
+    height: 100vh;
+    position: relative;
+    display: block;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/assets/images/los-santos-bkg.png');
+        background-color: hsl(var(--background));
+        background-blend-mode: lighten;
+        background-size: cover;
+        opacity: .05;
+        z-index: -1;
+    }
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2.5em;
+
+    &__logo{
+        font-size: 2.5em;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    &__items{
+        display: flex;
+        align-items: center;
+        gap: 2.5em;
+    }
+
+    &__item, &__button{
+        text-transform: uppercase;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &__link{
+        color: var(--foreground);
+        text-decoration: none;
+        transition: color 150ms ease-in-out;
+        &:hover{
+            color: hsl(var(--highlight));
+        }
+    }
+
+    &__button{
+        color: hsl(var(--foreground));
+        background-image: url('/assets/icons/button-icons/dollar.png');
+        background-size: cover;
+        transition: filter 150ms ease-in-out;
+        &:hover{
+            filter: saturate(1.3);
+        }
+    }
+
 }
