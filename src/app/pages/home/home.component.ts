@@ -11,25 +11,27 @@ import e from 'express';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements AfterViewInit {
-  @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef;
-  @ViewChild('slider', { read: ElementRef }) slider!: ElementRef;
+  @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
+  @ViewChild('slider', { read: ElementRef }) slider!: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     const sliderWrapperElement: HTMLElement = this.sliderWrapper.nativeElement;
     const sliderElement: HTMLElement = this.slider.nativeElement; 
-    //clone all cards
-    const clone = sliderElement!.cloneNode(true) as HTMLElement;
-    //add all cloned cards to wrapper
-    sliderWrapperElement?.append(clone);
 
-    //add slide animation after loading all cloned slides to avoid desync.
-    const e = document.querySelectorAll('.rank__slider');
-    setTimeout(() => {
-      e.forEach((e)=>e.classList.add('rank__slider--animate'));
-    }, 300);
+    if (typeof window !== 'undefined') { // Código de manipulação do DOM só é executado no browser
+      if(sliderElement && sliderWrapperElement) { 
+        const clone = sliderElement!.cloneNode(true) as HTMLElement; //clone all cards
+        sliderWrapperElement?.append(clone); //add all cloned cards to wrapper
     
+        if (typeof document !== 'undefined') { // Código de manipulação do DOM só é executado no browser
+          const e = document.querySelectorAll('.rank__slider');
+          //add slide animation after loading all cloned slides to avoid desync.
+          setTimeout(() => {
+            e.forEach((e)=>e.classList.add('rank__slider--animate'));
+          }, 300);
+        }
+      }
+    }
 
   }
 
