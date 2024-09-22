@@ -1,0 +1,51 @@
+footer {
+    background-color: hsl(var(--primary-dark) / .1);
+    padding-block: .8em;
+    font-size: .85em;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    font-size: .8em;
+    color: hsl(var(--foreground) /.9);
+    mix-blend-mode: soft-light;
+
+    &__credits {
+        font-weight: 300;
+        a {
+            font-weight: 500;
+            color: hsl(var(--foreground) / .9);
+            text-decoration: none;
+            transition: color 150ms ease-in-out;
+            &:hover {
+            color: hsl(var(--foreground));
+            }
+        }
+    }
+
+    
+    &__info, &__socials  {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        &__item
+
+        .fi {
+            display: flex;
+        }
+        a {
+            font-size: 1.2em;
+            color: hsl(var(--foreground) / .65);
+            mix-blend-mode: soft-light;
+            text-decoration: none;
+            transition: color 150ms ease-in-out;
+
+            &:hover {
+                color: hsl(var(--foreground));
+            }
+        }
+    }
+}
