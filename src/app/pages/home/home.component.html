@@ -1,3 +1,4 @@
+
 <nav class="container nav">
     <div class="nav__logo">LOGO</div>
     <div #nav_items_wrapper class="nav__items-wrapper">
@@ -38,7 +39,14 @@
                 </div>
                 <div class="server-card__info__ip-address">
                     <span>ip.brasilexperiencelife.com</span>
-                    <i class="fi fi-rr-copy server-card__info__ip-address__copy"></i>
+                    <i class="fi fi-rr-copy server-card__info__ip-address__copy"
+                    [cdkCopyToClipboard]="'ip.brasilexperiencelife.com'" (click)="handleCopyIp()">
+                    </i>
+                    @if (copied) {
+                        <div class="server-card__info__ip-address__copied-card" @slide>
+                            <span>Copiado!</span>
+                        </div>
+                    }
                 </div>
             </div>
         </section>
@@ -98,5 +106,7 @@
         </div>
     </section>
 </div>
+
+
 
 <app-footer></app-footer>

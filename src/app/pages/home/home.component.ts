@@ -1,17 +1,21 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ButtonComponent } from "../../components/button/button.component";
 import { CardComponent } from "../../components/card/card.component";
-import e from 'express';
+import {  ClipboardModule } from '@angular/cdk/clipboard';
 import { FooterComponent } from "../../components/footer/footer.component";
+import { FormsModule } from '@angular/forms';
+import { slide } from '../../animations/transition-animations';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonComponent, CardComponent, FooterComponent],
+  imports: [ButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  animations: [slide]
 })
 export class HomeComponent implements AfterViewInit {
+  copied = false;
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
   @ViewChild('slider', { read: ElementRef }) slider!: ElementRef<HTMLElement>;
 
@@ -35,9 +39,17 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
+  constructor() { }
+
   //handle navbar
   handleNavBar(element: HTMLElement) {
     element.classList.toggle('nav__items-wrapper--active');
   }
 
+  handleCopyIp() {
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 2000);
+  }
 }
