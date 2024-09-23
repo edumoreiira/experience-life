@@ -3,20 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    &::after{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('/assets/images/palms.jpg');
-        mix-blend-mode:lighten;
-        background-size: cover;
-        filter: saturate(.75);
-        opacity: .05;
-        z-index: -1;
-    }
+
 
     @media (max-width: 1000px){
         font-size: .9em;
@@ -76,7 +63,6 @@
 
     &__button{
         color: hsl(var(--foreground));
-        background-image: url('/assets/icons/button-icons/dollar.png');
         background-color: hsl(var(--highlight));
         background-size: cover;
         transition: all 150ms ease-in-out;

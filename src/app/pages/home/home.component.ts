@@ -9,6 +9,9 @@ import { slide } from '../../animations/transition-animations';
 @Component({
   selector: 'app-home',
   standalone: true,
+  host: {
+    '[class.home_c]': 'true'
+  },
   imports: [ButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
