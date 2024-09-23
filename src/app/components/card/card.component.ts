@@ -13,6 +13,6 @@ export class CardComponent {
   playerName = input('Player Name');
   info = input('Info');
   urlImage = input('', { 
-    transform: (value: string) => `url("${value}")`
+    transform: (value: string) => `url(".${value}")`
   });
 }
