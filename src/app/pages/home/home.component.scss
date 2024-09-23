@@ -188,6 +188,9 @@ main{
     padding: 1.5em;
     border-radius: var(--radius);
     background: linear-gradient(to left, hsla(0, 0%, 0%, 8%) 15%, hsl(var(--primary-light)/.1));
+    &__title {
+        overflow-wrap: break-word;
+    }
     &__info{
         display: flex;
         flex-wrap: wrap;

@@ -32,25 +32,27 @@
                 que proporcionará a você uma experiência inesquecível!
             </p>
         </header>
-        <section class="server-card">
-            <h3 class="server-card__title">Brasil Experience Life (Android/PC)</h3>
-            <div class="server-card__info">
-                <div class="server-card__info__players-counter">
-                    <span>25/100</span>
+        @if(serverInfo$ | async; as server) {
+            <section class="server-card">
+                <h3 class="server-card__title">{{server.name}}</h3>
+                <div class="server-card__info">
+                    <div class="server-card__info__players-counter">
+                        <span>{{server.playersOnline}}/{{server.maxPlayers}}</span>
+                    </div>
+                    <div class="server-card__info__ip-address">
+                        <span>ip.brasilexperiencelife.com</span>
+                        <i class="fi fi-rr-copy server-card__info__ip-address__copy"
+                        [cdkCopyToClipboard]="'ip.brasilexperiencelife.com'" (click)="handleCopyIp()">
+                        </i>
+                        @if (copied) {
+                            <div class="server-card__info__ip-address__copied-card" @slide>
+                                <span>Copiado!</span>
+                            </div>
+                        }
+                    </div>
                 </div>
-                <div class="server-card__info__ip-address">
-                    <span>ip.brasilexperiencelife.com</span>
-                    <i class="fi fi-rr-copy server-card__info__ip-address__copy"
-                    [cdkCopyToClipboard]="'ip.brasilexperiencelife.com'" (click)="handleCopyIp()">
-                    </i>
-                    @if (copied) {
-                        <div class="server-card__info__ip-address__copied-card" @slide>
-                            <span>Copiado!</span>
-                        </div>
-                    }
-                </div>
-            </div>
-        </section>
+            </section>
+        } 
     </main>
     <section class="rank">
         <div class="container">
