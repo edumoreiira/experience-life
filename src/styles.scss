@@ -52,10 +52,14 @@ button {
 
 // Main container
 .container {
-    width: 100%;
+    width: calc(100% - 80px);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+
+    @media (max-width: 620px) {
+        width: calc(100% - 40px);
+    }
 }
 
 ul {

@@ -33,7 +33,11 @@ export class HomeComponent implements AfterViewInit {
         }
       }
     }
+  }
 
+  //handle navbar
+  handleNavBar(element: HTMLElement) {
+    element.classList.toggle('nav__items-wrapper--active');
   }
 
 }

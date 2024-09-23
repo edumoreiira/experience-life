@@ -1,19 +1,22 @@
 <nav class="container nav">
     <div class="nav__logo">LOGO</div>
-    <ul class="nav__items">
-        <li class="nav__item">
-            <a class="nav__link" href="https://brasilexperiencelife.forumeiros.com/" target="_blank">Fórum</a>
-        </li>
-        <li class="nav__item">
-            <a class="nav__link" href="https://www.discord.gg/PFwAEWwpW7" target="_blank">Discord</a>
-        </li>
-        <li class="nav__item">
-            <a class="nav__link" href="#">Minha Conta</a>
-        </li>
-        <li class="nav__item"><a class="nav__link" href="#">
-            <button app-button class="nav__button">Comprar Moedas</button>
-        </a></li>
-    </ul>
+    <div #nav_items_wrapper class="nav__items-wrapper">
+        <i class="fi fi-br-menu-burger nav__burger" (click)="handleNavBar(nav_items_wrapper)"></i>
+        <ul class="nav__items">
+            <li class="nav__item">
+                <a class="nav__link" href="https://brasilexperiencelife.forumeiros.com/" target="_blank">Fórum</a>
+            </li>
+            <li class="nav__item nav__item__discord">
+                <a class="nav__link" href="https://www.discord.gg/PFwAEWwpW7" target="_blank">Discord</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="#">Minha Conta</a>
+            </li>
+            <li class="nav__item"><a class="nav__link" href="#">
+                <button app-button class="nav__button">Comprar Moedas</button>
+            </a></li>
+        </ul>
+    </div>
 </nav>
 
 <div class="page">

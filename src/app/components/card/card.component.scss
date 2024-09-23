@@ -5,6 +5,10 @@
     background-repeat: no-repeat;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 150ms ease-in-out;
+    &:hover {
+        background-color: black;
+    }
 
     &__title {
         font-size: 2em;
