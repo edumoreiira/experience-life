@@ -10,7 +10,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://sam.markski.ar/api/GetServerByIP?ip_addr=66.70.194.206:7777'
+  private apiUrl = `https://sam.markski.ar/api/GetServerByIP?ip_addr=66.70.194.206:7777&timestamp=${new Date().getTime()}`
 
   getServerData(): Observable<SampServer> {
     return this.http.get<SampServer>(this.apiUrl)

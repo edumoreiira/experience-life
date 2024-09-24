@@ -50,10 +50,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private serverService: ServerService) { }
 
   ngOnInit(): void {
+    this.getServerData();
+  }
+
+  //show/hide navbar
+  handleNavBar(element: HTMLElement) {
+    element.classList.toggle('nav__items-wrapper--active');
+  }
+
+  // show/hide copied alert
+  handleCopyIp() {
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 2000);
+  }
+
+  getServerData() {
     this.serverInfo$ = this.serverService.getServerData().pipe(
       take(1),
       catchError(err => {
-        console.error("Erro capturado no catchError:", err);
+        console.error("Erro ao obter dados do servidor:", err);
         const manipulatedServer: SampServer = {
           id: 0,
           success: false,
@@ -79,24 +96,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         // Retorna o Observable com os valores manipulados
         return of(manipulatedServer);
       }),
-      tap(data => {
-        if (data) {
-          console.log("tapped", data);
-        }
-      })
     );
-  }
-
-  //handle navbar
-  handleNavBar(element: HTMLElement) {
-    element.classList.toggle('nav__items-wrapper--active');
-  }
-
-  handleCopyIp() {
-    this.copied = true;
-    setTimeout(() => {
-      this.copied = false;
-    }, 2000);
   }
 
   
