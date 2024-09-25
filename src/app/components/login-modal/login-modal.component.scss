@@ -88,7 +88,7 @@
         }
         &:disabled {
             background: transparent;
-            border-color: hsl(var(--primary-dark));
+            border-color: hsl(var(--primary-dark) / .5);
             color: hsl(var(--foreground) / .25);
             cursor: default;
         }

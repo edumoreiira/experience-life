@@ -10,6 +10,7 @@ import { catchError, Observable, of, take, tap } from 'rxjs';
 import { SampServer } from '../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
 import { LoginModalComponent } from "../../components/login-modal/login-modal.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -49,7 +50,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private serverService: ServerService) { }
+  constructor(
+    private serverService: ServerService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
     this.getServerData();

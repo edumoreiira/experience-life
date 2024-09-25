@@ -3,6 +3,7 @@ import { InputComponent } from '../input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginForm } from '../../models/login-form.interface';
 import { fadeInOut, popUp } from '../../animations/transition-animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
@@ -17,7 +18,9 @@ export class LoginModalComponent {
   loginForm!: FormGroup<LoginForm>;
   @Output() closeModal = new EventEmitter<void>();
 
-  constructor() { 
+  constructor(
+    private route: Router
+  ) { 
     this.loginForm = new FormGroup<LoginForm>({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
@@ -27,6 +30,9 @@ export class LoginModalComponent {
   login() {
     if(this.loginForm.valid) {
       console.log(this.loginForm.value);
+      setTimeout(() => {
+        this.route.navigate(['ucp']);
+      }, 1000);
     }
   }
 }
