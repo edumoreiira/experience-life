@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    width: 100%;
+}
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+}

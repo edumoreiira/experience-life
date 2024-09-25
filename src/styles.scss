@@ -15,7 +15,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: hsl(var(--foreground));
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--background-dark));
 
 }
 
@@ -82,6 +82,7 @@ button {
         width: calc(100% - 40px);
     }
 }
+
 
 ul {
     list-style-type: none;

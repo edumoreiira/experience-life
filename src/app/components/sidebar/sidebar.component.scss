@@ -1,0 +1,18 @@
+:host {
+    width: 250px;
+    z-index: 1000;
+    flex-shrink: 0;
+}
+.sidebar {
+    position: sticky;
+    top: var(--grid-page-padding);
+    height: calc(100svh - calc(2 * var(--grid-page-padding)));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    background-color: hsl(var(--background));
+    gap: 1.5em;
+    z-index: 1;
+    transition: all 150ms ease-in-out;
+}
