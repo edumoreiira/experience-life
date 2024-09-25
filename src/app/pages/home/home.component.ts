@@ -4,11 +4,12 @@ import { CardComponent } from "../../components/card/card.component";
 import {  ClipboardModule } from '@angular/cdk/clipboard';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { FormsModule } from '@angular/forms';
-import { slide } from '../../animations/transition-animations';
+import { parentAnimations, slide } from '../../animations/transition-animations';
 import { ServerService } from '../../services/server.service';
 import { catchError, Observable, of, take, tap } from 'rxjs';
 import { SampServer } from '../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
+import { LoginModalComponent } from "../../components/login-modal/login-modal.component";
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,13 @@ import { CommonModule } from '@angular/common';
   host: {
     '[class.home_c]': 'true'
   },
-  imports: [ButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule],
+  imports: [ButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule, LoginModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  animations: [slide]
+  animations: [slide, parentAnimations]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  isLoginModalOpen: boolean = false;
   copied = false;
   serverInfo$: Observable<SampServer> = new Observable<SampServer>();
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
@@ -64,6 +66,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.copied = false;
     }, 2000);
+  }
+
+  // handle login modal
+  openLoginModal() {
+    this.isLoginModalOpen = true;
+  }
+
+  closeLoginModal() {
+    this.isLoginModalOpen = false;
   }
 
   getServerData() {

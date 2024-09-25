@@ -1,0 +1,27 @@
+<div class="login-modal">
+    <div class="login-modal__content" @popUp>
+        <i class="fi fi-br-cross-small login-modal__content__close-btn" (click)="closeModal.emit()"></i>
+        <h1>UCP</h1>
+        <form class="login-modal__form"  [formGroup]="loginForm">
+            <app-input class="login-modal__input"
+                [placeholder]="'Usuário'"
+                [type]="'text'"
+                formControlName="username"
+            ></app-input>
+            <app-input class="login-modal__input"
+                [placeholder]="'Senha'"
+                [type]="'password'"
+                formControlName="password"
+            ></app-input>
+
+            <div class="login-modal__control">
+                <button type="submit" class="login-modal__submit-btn"
+                [disabled]="!loginForm.valid" (click)="login()"
+                >Entrar</button>
+                <a href="#" class="login-modal__forgot-password-btn">Esqueci minha senha</a>
+            </div>
+
+        </form>
+    </div>
+    <div class="login-modal__background" @fadeInOut (click)="closeModal.emit()"></div>
+</div>

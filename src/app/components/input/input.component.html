@@ -1,0 +1,35 @@
+<div class="input-wrapper">
+    <input
+    #input
+    [value]="value"
+    (input)="onInput($event)"
+    (input)="inputElement.emit({
+        sourceElement: input,
+        formControlName: formControlName
+    })"
+    [type]="showPassword ? 'text' : type"
+    [ngClass]="{'error': isInvalid}"
+     />
+     <span [ngClass]="{'filled':input.value.length > 0}"
+      class="placeholder-title"
+      >
+     {{placeholder}}
+     </span>
+
+     <!-- show password icon -->
+     @if(!hideShowPassword() && type === "password"){
+         <button type="button" class="show-password-btn" (click)="showPassword = !showPassword">
+            @if(showPassword){
+                <i class="fi fi-br-eye-crossed"></i>
+            }@else{
+                <i class="fi fi-br-eye"></i>
+            }
+        </button>
+     }
+     <!-- text description on error  -->
+     @if(input.classList.contains("error")){
+         <div @fadeInOut class="invalid">
+            <ng-content></ng-content>
+         </div>
+     }
+</div>

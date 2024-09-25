@@ -66,18 +66,18 @@
           },
           "defaultConfiguration": "production"
         },
-        // "serve": {
-        //   "builder": "@angular-devkit/build-angular:dev-server",
-        //   "configurations": {
-        //     "production": {
-        //       "buildTarget": "ExperienceLife:build:production"
-        //     },
-        //     "development": {
-        //       "buildTarget": "ExperienceLife:build:development"
-        //     }
-        //   },
-        //   "defaultConfiguration": "development"
-        // },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ExperienceLife:build:production"
+            },
+            "development": {
+              "buildTarget": "ExperienceLife:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },

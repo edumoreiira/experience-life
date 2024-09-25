@@ -1,0 +1,107 @@
+.login-modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(85, 85, 85, 0.11);
+        backdrop-filter: blur(3px);
+        cursor: pointer;
+    }
+
+    
+    &,
+    &__form, 
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    &__content {
+        width: min(400px, calc(100% - 80px));
+        background-color: hsl(var(--background-dark));
+        border-radius: var(--radius);
+        padding: 2em;
+        flex-direction: column;
+        gap: 1.5em;
+        position: relative;
+        cursor: default;
+        z-index: 1;
+
+        &__close-btn {
+            position: absolute;
+            top: 1em;
+            right: 1.1em;
+            padding: .2em;
+            display: flex;
+            color: hsl(var(--foreground));
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: color 150ms ease-in-out;
+            &:hover {
+                color: hsl(var(--primary));
+            }
+        }
+    }
+
+
+    &__form {
+        width: 100%;
+        align-items: stretch;
+        gap: 1.5em;
+        flex-direction: column;
+    }
+
+    &__input {
+        font-size: 1.2em;
+    }
+
+    &__control {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: .5em;
+    }
+
+    &__submit-btn {
+        background-color: transparent;
+        width: min(200px, 100%);
+        color: hsl(var(--foreground));
+        border-radius: 1em;
+        font-size: 1em;
+        font-weight: 600;
+        padding: .75em 1.25em;
+        border: 1px solid hsl(var(--primary));
+        transition: all 150ms ease-in-out;
+        cursor: pointer;
+        background: linear-gradient(to left, hsl(var(--background-dark)), hsl(var(--primary)/.2) 100%);
+        &:hover:not(:disabled) {
+            backdrop-filter: saturate(500%);
+        }
+        &:disabled {
+            background: transparent;
+            border-color: hsl(var(--primary-dark));
+            color: hsl(var(--foreground) / .25);
+            cursor: default;
+        }
+    }
+
+    &__forgot-password-btn {
+        color: hsl(var(--primary));
+        font-size: .75em;
+        cursor: pointer;
+        transition: color 150ms ease-in-out;
+        &:hover {
+            color: hsl(var(--primary-light));
+        }
+    }
+
+}
