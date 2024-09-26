@@ -2,8 +2,167 @@
     display: block;
     width: 100%;
 }
-.profile-grid {
+.profile{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(35em, 1fr));
     gap: 2em;
+    
+    &__player {
+        overflow: auto;
+        padding: 2em;
+        gap: 1em;
+        background-color: hsl(var(--background));
+        border-radius: var(--radius);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+
+        &__premium {
+            order: 2;
+        }
+
+        &__others {
+            grid-row: span 2;
+        }
+
+        &__header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            grid-column: span 2;
+        }
+        &__picture {
+            display: flex;
+            flex-shrink: 0;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(var(--primary-dark));
+            border-radius: 50%;
+            height: 9.5em;
+            width: 9.5em;
+            overflow: hidden;
+            &__img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            padding-block: 1em;
+            align-items: stretch;
+            &__name {
+                h2 {
+                    text-wrap: nowrap;
+                    font-size: 1.3em;
+                    font-weight: 600;
+                }
+            }
+            &__progress {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                height: 100%;
+                gap: 1em;
+                &__level, &__box {
+                    height: 4.3em;
+                    width: 4.3em;
+                    border-radius: 50%;
+                    background-color: hsl(var(--primary));
+                }
+            }
+        }
+
+        &__stats {
+            display: grid;
+            grid-column: span 2;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1em;
+            
+            &__item {
+                display: flex;
+                position: relative;
+                overflow: hidden;
+                gap: .2em;
+                align-items: center;
+                justify-content: space-between;
+                padding: .8em 2em;
+                height: 7em;
+                background-color: hsl(var(--primary-dark));
+                border-radius: var(--radius);
+
+                &--reduced { //reduced modifier
+                    height: 3.5em;
+                    h2 {
+                        font-size: 1em;
+                        font-weight: 300;
+                    }
+
+                    p {
+                        font-size: 1.2em;
+                        font-weight: 700;
+                    }
+                }
+
+                &__value {
+                    font-size: 1.3em;
+                    font-size: 1.6em;
+                    font-weight: 900;
+                }
+
+                &__icon {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    height: 100%;
+                    aspect-ratio: 1;
+                    
+                    label {
+                        --size: calc(100% - .4em); // reduce size of icon
+                        height: var(--size);
+                        width: var(--size);
+                        mask-size: contain;
+                        mask-repeat: no-repeat;
+                        mask-position: center;
+                        
+                        background-color: hsl(var(--primary));
+                        z-index: 1;
+                    }
+
+                    &__bkg {
+                        background-size: contain;
+                        position: absolute;
+                        left: -3em;
+                        // top: -2em;
+                        height: 14em;
+                        filter: invert(1);
+                        opacity: .02;
+                        aspect-ratio: 1;
+                    }
+                }
+                
+                &__money {
+                    height: 5em;
+                    grid-column: span 2;
+                    border: 2px solid hsl(var(--primary));
+
+                    &__value {
+                        font-style: italic;
+                        letter-spacing: .1em;
+                    }
+
+                    label { // set default size to money icon
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                
+                &__vip {
+                    grid-column: span 2;
+                }
+            }
+        }
+    }
+
 }

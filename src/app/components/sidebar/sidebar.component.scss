@@ -1,7 +1,10 @@
 :host {
-    width: 250px;
+    width: clamp(250px, 15.6em, 400px);
     z-index: 1000;
     flex-shrink: 0;
+    @media (max-width: 740px) {
+        width: 46px;
+    }
 }
 .sidebar {
     position: sticky;
