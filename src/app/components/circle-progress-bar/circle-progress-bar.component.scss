@@ -1,0 +1,60 @@
+
+.circle {
+    // width: min(300px, 100%);
+    // height: min(300px, 100%);
+    &__outline {
+        width: 100%;
+        height: 100%;
+
+        position: relative;
+    }
+    &__svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+        &__bar {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            fill: none;
+            stroke-width: 7;
+            stroke-linecap: round;
+            stroke: #000;
+            stroke-dashoffset: 128;
+            stroke-dasharray: 128;
+            &__bg {
+                stroke-dashoffset: 0;
+                --bkg: hsla(0, 0%, 100%, 0.024);
+                stroke: var(--bkg);
+            }
+            &__progress {
+                filter: drop-shadow(0 0 5px hsl(var(--primary-light) / .5));
+                // stroke: hsl(var(--primary));
+                stroke: url(#meuGradient);
+            }
+        }
+    }
+
+    &__number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h4 {
+            text-shadow: 0 0 10px hsl(var(--foreground)/.5);
+            font-size: .9em;
+            line-height: 1;
+            font-weight: 1000;
+        }
+
+    }
+    &__title {
+        margin-top: .7em;
+        font-size: .8em;
+        opacity: .5;
+        text-align: center;
+        h3 {
+            font-weight: 400;
+        }
+    }
+}

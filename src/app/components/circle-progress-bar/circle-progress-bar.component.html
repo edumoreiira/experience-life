@@ -1,0 +1,22 @@
+<div class="circle">
+    <div class="circle__outline">
+        <svg class="circle__svg" viewBox="0 0 52 52">
+            <defs>
+                <linearGradient id="meuGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:hsl(183 100% 21%);; stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:hsl(183 100% 35%); stop-opacity:1" />
+                </linearGradient>
+              </defs>
+
+            <circle class="circle__svg__bar circle__svg__bar__bg" cx="26" cy="26" r="21"></circle>
+            <circle class="circle__svg__bar circle__svg__bar__progress" cx="26" cy="26" r="21"
+            [ngStyle]="{'stroke-dashoffset': strokeDashOffset}"></circle>
+        </svg>
+        <div class="circle__number">
+            <h4>{{insideText()}}</h4>
+        </div>
+    </div>
+    <div class="circle__title">
+        <h3>{{title()}}</h3>
+    </div>
+</div>

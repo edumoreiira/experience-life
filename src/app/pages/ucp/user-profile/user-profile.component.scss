@@ -82,10 +82,10 @@
                 align-items: center;
                 gap: 1em;
                 &__level, &__box {
-                    height: 4.3em;
+
                     width: 4.3em;
                     border-radius: 50%;
-                    background-color: hsl(var(--primary));
+                    // background-color: hsl(var(--primary));
                 }
             }
         }

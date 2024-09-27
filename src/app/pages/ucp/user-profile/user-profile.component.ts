@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { CircleProgressBarComponent } from '../../../components/circle-progress-bar/circle-progress-bar.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [],
+  imports: [CircleProgressBarComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
