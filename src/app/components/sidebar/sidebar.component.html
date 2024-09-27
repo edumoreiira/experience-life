@@ -1,5 +1,53 @@
 <div class="sidebar">
-    <div class="sidebar__content">
-        <h3>sidebar</h3>
+    <div class="sidebar__wrapper">
+        <div class="sidebar__header">
+            <div class="sidebar__header__version">
+                <span>1.0.0</span>
+            </div>
+            <div class="sidebar__header__logo">
+                <h2>UCP</h2>
+            </div>
+        </div>
+        
+        <ul class="sidebar__itens">
+            <li class="sidebar__itens__item sidebar__itens__item--selected" (click)="handleSelectedItem($event)">
+                <a class="sidebar__itens__item__link-wrapper">
+                    <i class="fi fi-rr-dashboard-panel sidebar__itens__item__icon"></i>
+                    <span class="sidebar__itens__item__title">Início</span>
+                </a>
+            </li>
+            <!-- <li class="sidebar__itens__item" (click)="handleSelectedItem($event)">
+                <a class="sidebar__itens__item__link-wrapper">
+                    <i class="fi fi-rr-basket-shopping-minus sidebar__itens__item__icon"></i>
+                    <span class="sidebar__itens__item__title">Loja</span>
+                </a>
+            </li>
+            <li class="sidebar__itens__item" (click)="handleSelectedItem($event)">
+                <a class="sidebar__itens__item__link-wrapper">
+                    <i class="fi fi-rr-building sidebar__itens__item__icon"></i>
+                    <span class="sidebar__itens__item__title">Empresas</span>
+                </a>
+            </li>
+            <li class="sidebar__itens__item sidebar__itens__item--disabled" (click)="handleSelectedItem($event)">
+                <a class="sidebar__itens__item__link-wrapper">
+                    <i class="fi fi-rr-auction sidebar__itens__item__icon"></i>
+                    <span class="sidebar__itens__item__title">Denúncias</span>
+                </a>
+            </li> -->
+        </ul>
     </div>
+
+
+    <ul class="sidebar__itens sidebar__itens--config">
+        <li class="sidebar__itens__item sidebar__itens__item--expand">
+            <div class="sidebar__itens__item__wrapper">
+                <!-- main option -->
+                <a class="sidebar__itens__item__link-wrapper">
+                    <i class="fi fi-rr-settings sidebar__itens__item__icon"></i>
+                    <span class="sidebar__itens__item__title">Configurações</span>
+                </a>
+                <!-- main option -->
+            </div>
+        </li>
+    </ul>
 </div>

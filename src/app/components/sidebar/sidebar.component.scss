@@ -2,20 +2,109 @@
     width: clamp(250px, 15.6em, 400px);
     z-index: 1000;
     flex-shrink: 0;
+    font-size: .9rem;
     @media (max-width: 740px) {
         width: 46px;
     }
 }
+$padding: 1em;
+
+.sidebar > * {
+    padding: $padding;
+}
+
 .sidebar {
     position: sticky;
+    padding: .7em; //global padding
     top: var(--grid-page-padding);
     height: calc(100svh - calc(2 * var(--grid-page-padding)));
     width: 100%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     border-radius: var(--radius);
     background-color: hsl(var(--background));
     gap: 1.5em;
     z-index: 1;
     transition: all 150ms ease-in-out;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
+        flex-grow: 1;
+    }
+
+    &__header {
+        
+        &__version {
+            font-weight: 300;
+        }
+        &__logo {
+            h2 {
+                font-weight: 700;
+            }
+        }
+    }
+    
+    &__itens, 
+    &__itens__item {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+
+        &__item {
+            flex-direction: row;
+            align-items: center;
+            border-radius: var(--radius);
+            transition: all 150ms ease-in-out;
+            color: hsl(var(--foreground-dark));
+            cursor: pointer;
+            margin-inline: -.7em;
+            
+            &__link-wrapper {
+                padding-block: .7em;
+                padding-inline: $padding;
+                display: flex;
+                flex-grow: 1;
+                gap: 1em;
+                color: inherit;
+                text-decoration: none;
+                pointer-events: none;
+            }
+
+            &:hover {
+                background-color: hsl(var(--background-light));
+                color: hsl(var(--foreground));
+            }
+
+            &:active {
+                background-color: hsl(var(--primary-dark));
+                transition: all 50ms ease-in-out;
+
+            }
+
+            &--selected {
+                color: hsl(var(--foreground));
+            }
+
+            &--disabled {
+                pointer-events: none;
+                opacity: .3;
+            }
+
+            &__icon, &__title {
+                pointer-events: none;
+            }
+            &__icon {
+                font-size: 1.5em;
+                display: flex;
+                width: 1.2em;
+            }
+        }
+
+        &--config {
+
+        }
+    }
 }

@@ -1,6 +1,6 @@
 @if (isUcpRoute()) {
     <div class="ucp-container">
-        <app-sidebar />
+        <app-sidebar [version]="version" />
         <router-outlet/>
     </div>
 }@else {

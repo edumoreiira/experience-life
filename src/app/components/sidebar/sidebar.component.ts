@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  version = input.required<string>();
+  handleSelectedItem(event: Event) {
+    const items = document.querySelectorAll('.sidebar__itens__item');
+    const element = event.target as HTMLElement;
 
+    items.forEach((item) => {
+      item.classList.remove('sidebar__itens__item--selected');
+    });
+    element.classList.add('sidebar__itens__item--selected');
+  }
 }
