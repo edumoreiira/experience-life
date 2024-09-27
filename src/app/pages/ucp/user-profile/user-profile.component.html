@@ -6,7 +6,7 @@
             </div>
             <div class="profile__player__info">
                 <div class="profile__player__info__name">
-                    <h2>John Doe</h2>
+                    <h2>Jeckwilke_Moreira</h2>
                 </div>
                 <div class="profile__player__info__progress">
                     <div class="profile__player__info__progress__level">
@@ -27,7 +27,7 @@
                         style="background-image: url('/assets/icons/stats-icons/piggy-bank.png');"></span>
                 </div>
                 <div class="profile__player__stats__item__value profile__player__stats__item__money__value">
-                    <span>1257367</span>
+                    <span>$1257367</span>
                 </div>
             </div>
             <div class="profile__player__stats__item profile__player__stats__item__kills">
@@ -59,31 +59,33 @@
     <article class="profile__player profile__player__premium">
         <div class="profile__player__stats">
             <div class="profile__player__stats__item profile__player__stats__item--reduced
-             profile__player__stats__item__vip">
-                <h2>vip</h2>
-                <p>Expira em: 18 DEZ 2024</p>
+             profile__player__stats__item__account-status">
+                <h2 class="profile__player__stats__item__account-status__title
+                profile__player__stats__item__account-status__title--super-vip">Super-Vip</h2>
+                <p class="profile__player__stats__item__account-status__description">Expira em: <b>18 DEZ 2024</b></p>
             </div>
             <div class="profile__player__stats__item profile__player__stats__item--reduced 
             profile__player__stats__item__golden-bars">
-                <h2>Golden Bars</h2>
-                <p>24</p>
+                <h2 class="profile__player__stats__item__golden-bars__title">Golden Bars</h2>
+                <p class="profile__player__stats__item__golden-bars__description">24</p>
             </div>
             <div class="profile__player__stats__item profile__player__stats__item--reduced 
             profile__player__stats__item__moedas-verdes">
-                <h2>Moedas Verde</h2>
-                <p>105600</p>
+                <h2 class="profile__player__stats__item__moedas-verdes__title">Moedas Verde</h2>
+                <p class="profile__player__stats__item__moedas-verdes__description">105600</p>
             </div>
         </div>
     </article>
 
 
     <article class="profile__player profile__player__others">
-        <div class="profile__player__stats">
-            <div class="profile__player__stats__item profile__player__stats__item--reduced
-             profile__player__stats__item__vip">
-                <h2>vip</h2>
-                <p>Expira em: 18 DEZ 2024</p>
-            </div>
+        <div class="profile__player__stats profile__player__others__stats">
+            @for(item of test; track item) {
+                <div class="profile__player__stats__item profile__player__stats__item--extra-reduced">
+                    <h2>Horas Jogando</h2>
+                    <p>1254</p>
+                </div>               
+            }
         </div>
     </article>
 </div>
