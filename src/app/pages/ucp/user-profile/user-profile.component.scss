@@ -23,6 +23,20 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1em;
 
+        @media (max-width: 1264px) {  // break line on 1264px
+            &__main {
+                order: 1;
+            }
+    
+            &__premium {
+                order: 2;
+            }
+    
+            &__others {
+                order: 3;
+            }
+        }
+
         &__main {
             grid-row: span 2;
         }

@@ -32,12 +32,6 @@
         }
         &.expanded { //mobile expanded
             width: clamp(250px, 15.6em, 400px);
-
-            .sidebar__header__handle {
-                &__button {
-                    // transform: rotate(180deg);
-                }
-            }
         }
     }
 }
@@ -69,6 +63,9 @@ $option-padding: .7em;
         margin-bottom: 2em;
         &__handle { //disable handlle button on desktop < 740px
             display: none;
+        }
+        &__version {
+            font-size: .8em;
         }
     }
 

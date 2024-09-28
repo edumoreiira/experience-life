@@ -73,7 +73,6 @@ export class SidebarComponent {
   }
   handleNavbarIcon() {
     const navbarIcon = document.querySelector('#sidebarHandleIcon') as HTMLElement;
-    console.log(navbarIcon);
     if(navbarIcon.classList.contains('fi-br-arrows-from-line')) {
       navbarIcon.classList.remove('fi-br-arrows-from-line');
       navbarIcon.classList.add('fi-br-arrows-to-line');
