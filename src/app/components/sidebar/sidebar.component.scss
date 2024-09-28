@@ -8,14 +8,16 @@
     }
 }
 $padding: 1em;
+$option-padding: .7em;
 
-.sidebar > * {
-    padding: $padding;
+.sidebar__wrapper > :not(.sidebar__nav) {
+    padding-left: $padding;
+    padding-right: $padding;
 }
 
 .sidebar {
     position: sticky;
-    padding: .7em; //global padding
+    padding: 1em; //global padding
     top: var(--grid-page-padding);
     height: calc(100svh - calc(2 * var(--grid-page-padding)));
     width: 100%;
@@ -28,83 +30,96 @@ $padding: 1em;
     z-index: 1;
     transition: all 150ms ease-in-out;
 
-    &__wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 3em;
-        flex-grow: 1;
-    }
-
     &__header {
-        
-        &__version {
-            font-weight: 300;
-        }
-        &__logo {
-            h2 {
-                font-weight: 700;
-            }
-        }
+        margin-bottom: 2em;
     }
-    
-    &__itens, 
-    &__itens__item {
-        display: flex;
-        flex-direction: column;
-        gap: .5em;
 
+    &__nav {
+        display: block;
+        
         &__item {
-            flex-direction: row;
-            align-items: center;
-            border-radius: var(--radius);
-            transition: all 150ms ease-in-out;
-            color: hsl(var(--foreground-dark));
-            cursor: pointer;
-            margin-inline: -.7em;
-            
-            &__link-wrapper {
-                padding-block: .7em;
-                padding-inline: $padding;
+            display: block;
+            position: relative;
+            padding: $padding;
+            padding-bottom: $option-padding;
+            padding-top: 0;
+            &:not(:nth-last-child(1)) {
+                margin-bottom: .5em;
+            }
+
+            &__option { // anchor
                 display: flex;
-                flex-grow: 1;
-                gap: 1em;
-                color: inherit;
+                align-items: center;
+                gap: .5em;
+                border-radius: var(--radius);
+                transition: all 150ms ease-in-out;
+                cursor: pointer;
+                color: hsl(var(--foreground-dark));
                 text-decoration: none;
-                pointer-events: none;
-            }
+                padding-block: $option-padding;
+                margin-inline: -$padding;
+                padding-inline: $padding;
+                
+                &:hover {
+                    background-color: hsl(var(--background-light));
+                    color: hsl(var(--text));
+                }
+                &:active {
+                    background-color: hsl(var(--primary-dark));
+                }
+                
+                &__icon {
+                    font-size: 1.3em;
+                    display: flex;
+                }
+                &__title {
+                    font-weight: 500;
+                    font-size: 1em;
+                }
+                &--selected {
+                    color: hsl(var(--foreground));
+                }
 
-            &:hover {
-                background-color: hsl(var(--background-light));
-                color: hsl(var(--foreground));
-            }
+                &--expanded {
+                    :after {
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        background-color: hsl(var(--background-light));
+                        pointer-events: none;
+                        border-radius: var(--radius);
+                        z-index: -1;
+                    }
+                }
 
-            &:active {
-                background-color: hsl(var(--primary-dark));
-                transition: all 50ms ease-in-out;
-
+                &--expanded + .sidebar__nav__content {
+                    visibility: visible;
+                    //animations
+                    opacity: 1;
+                    transition: all 150ms ease-in-out;
+                }
             }
-
-            &--selected {
-                color: hsl(var(--foreground));
-            }
-
-            &--disabled {
-                pointer-events: none;
-                opacity: .3;
-            }
-
-            &__icon, &__title {
-                pointer-events: none;
-            }
-            &__icon {
-                font-size: 1.5em;
-                display: flex;
-                width: 1.2em;
+            &__sub-option {
+                color: hsl(var(--foreground-dark));
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 150ms ease-in-out;
+                &:hover {
+                    color: hsl(var(--foreground));
+                }
             }
         }
-
-        &--config {
-
+        &__content {
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            //animations
+            opacity: 0;
+            transition: all 150ms ease-in-out;
         }
     }
 }
