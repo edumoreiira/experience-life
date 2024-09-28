@@ -47,7 +47,7 @@ $option-padding: .7em;
     overflow: auto;
     position: sticky;
     padding: 1em; //global padding
-    top: calc(var(--grid-page-padding) - 5px);
+    top: calc(var(--grid-page-padding));
     height: calc(100svh - calc(2 * var(--grid-page-padding)));
     width: 100%;
     display: flex;
