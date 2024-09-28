@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar sidebar--collapsed">
     <div class="sidebar__wrapper">
         <div class="sidebar__header">
             <div class="sidebar__header__version">
@@ -7,29 +7,38 @@
             <div class="sidebar__header__logo">
                 <h2>UCP</h2>
             </div>
+            <div class="sidebar__header__handle" (click)="handleNav()">
+                <i id="sidebarHandleIcon" class="fi fi-br-arrows-from-line sidebar__header__handle__button"></i>
+            </div>
         </div>
 
         <ul class="sidebar__nav">
-            <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option sidebar__nav__item__option--expanded">
-                    <i class="fi fi-rr-home sidebar__nav__item__option__icon"></i>
-                    <span class="sidebar__nav__item__option__title">Início</span>
-                </a>
 
-                <div class="sidebar__nav__content">
-                    <a class="sidebar__nav__item__sub-option">
-                        <span class="sidebar__nav__item__sub-option__title">Configurações</span>
-                    </a>
-                    <a class="sidebar__nav__item__sub-option">
-                        <span class="sidebar__nav__item__sub-option__title">Lalala</span>
-                    </a>
-                </div>
+            <li class="sidebar__nav__item">
+                <a class="sidebar__nav__item__option" (click)="handleSelectedItem($event)">
+                    <i class="fi fi-rr-dashboard-panel sidebar__nav__item__option__icon"></i>
+                    <span class="sidebar__nav__item__option__title">Home</span>
+                </a>
             </li>
 
             <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option sidebar__nav__item__option">
+                <a class="sidebar__nav__item__option" (click)="handleSelectedItem($event)">
                     <i class="fi fi-rr-basket-shopping-minus sidebar__nav__item__option__icon"></i>
                     <span class="sidebar__nav__item__option__title">Loja</span>
+                </a>
+            </li>
+
+            <li class="sidebar__nav__item">
+                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled" (click)="handleSelectedItem($event)">
+                    <i class="fi fi-rr-building sidebar__nav__item__option__icon"></i>
+                    <span class="sidebar__nav__item__option__title">Empresas</span>
+                </a>
+            </li>
+
+            <li class="sidebar__nav__item">
+                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled" (click)="handleSelectedItem($event)">
+                    <i class="fi fi-rr-auction sidebar__nav__item__option__icon"></i>
+                    <span class="sidebar__nav__item__option__title">Denúncias</span>
                 </a>
             </li>
         </ul>
@@ -65,11 +74,23 @@
 
 
     <ul class="sidebar__nav">
-        <li class="sidebar__nav__item">
-            <a class="sidebar__nav__item__option sidebar__nav__item__option">
-                <i class="fi fi-rr-basket-shopping-minus sidebar__nav__item__option__icon"></i>
-                <span class="sidebar__nav__item__option__title">Loja</span>
-            </a>
-        </li>
+            <li  class="sidebar__nav__item">
+                <a #configAnchor class="sidebar__nav__item__option sidebar__nav__item__option--collapsed" 
+                (click)="handleExpandOption($event)">
+                    <i class="fi fi-rr-settings sidebar__nav__item__option__icon"></i>
+                    <span class="sidebar__nav__item__option__title">Configurações</span>
+                </a>
+                @if(configAnchor.classList.contains('sidebar__nav__item__option--expanded')) {
+                    <div class="sidebar__nav__content" @slideUpDown>
+                        <a class="sidebar__nav__item__sub-option">
+                            <span class="sidebar__nav__item__sub-option__title">Alterar Senha</span>
+                        </a>
+                        <a class="sidebar__nav__item__sub-option">
+                            <span class="sidebar__nav__item__sub-option__title">Sair</span>
+                        </a>
+                    </div>
+                }
+
+            </li>
     </ul>
 </div>

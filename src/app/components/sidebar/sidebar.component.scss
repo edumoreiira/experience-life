@@ -2,9 +2,43 @@
     width: clamp(250px, 15.6em, 400px);
     z-index: 1000;
     flex-shrink: 0;
-    font-size: .9rem;
-    @media (max-width: 740px) {
-        width: 46px;
+    font-size: clamp(.9rem, 1.05vw, 1.4rem);
+    transition: width 150ms ease-in-out;
+    position: relative;
+
+    @media (max-width: 740px) { //mobile collapsed
+        width: 60px;
+        font-size: .9rem;
+        .sidebar__header__handle {
+            display: block;
+            background-color: hsl(var(--background-light));
+            color: hsl(var(--foreground)/.8);
+            font-size: 1em;
+            border-radius: .7em;
+            margin-top: 1em;
+            transition: all 150ms ease-in-out;
+            &:hover {
+                cursor: pointer;
+                background-color: hsl(var(--primary-dark));
+                color: hsl(var(--foreground));
+            }
+            &__button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-block: .5em;
+                transform: rotate(90deg);
+            }
+        }
+        &.expanded { //mobile expanded
+            width: clamp(250px, 15.6em, 400px);
+
+            .sidebar__header__handle {
+                &__button {
+                    // transform: rotate(180deg);
+                }
+            }
+        }
     }
 }
 $padding: 1em;
@@ -16,9 +50,10 @@ $option-padding: .7em;
 }
 
 .sidebar {
+    overflow: auto;
     position: sticky;
     padding: 1em; //global padding
-    top: var(--grid-page-padding);
+    top: calc(var(--grid-page-padding) - 5px);
     height: calc(100svh - calc(2 * var(--grid-page-padding)));
     width: 100%;
     display: flex;
@@ -32,20 +67,25 @@ $option-padding: .7em;
 
     &__header {
         margin-bottom: 2em;
+        &__handle { //disable handlle button on desktop < 740px
+            display: none;
+        }
     }
 
     &__nav {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: .2em;
+        border-top: 1px solid hsl(var(--foreground-dark) /.1 );
+        padding-top: .5em;
         
         &__item {
             display: block;
             position: relative;
             padding: $padding;
-            padding-bottom: $option-padding;
+            padding-bottom: 0;
+            // padding-bottom: $option-padding;
             padding-top: 0;
-            &:not(:nth-last-child(1)) {
-                margin-bottom: .5em;
-            }
 
             &__option { // anchor
                 display: flex;
@@ -66,22 +106,46 @@ $option-padding: .7em;
                 }
                 &:active {
                     background-color: hsl(var(--primary-dark));
+                    transition: all 50ms ease-in-out;
+                }
+                &--disabled {
+                    pointer-events: none;
+                    opacity: .5;
                 }
                 
                 &__icon {
                     font-size: 1.3em;
                     display: flex;
+                    flex-shrink: 0;
+                    pointer-events: none;
                 }
                 &__title {
                     font-weight: 500;
                     font-size: 1em;
+                    pointer-events: none;
                 }
                 &--selected {
                     color: hsl(var(--foreground));
                 }
 
+                &--collapsed::after { // menu arrow icon
+                    content: '';
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-left: 0.4em solid transparent;
+                    border-right: 0.4em solid transparent;
+                    border-radius: 0.3em;
+                    border-top: 0.4em solid hsl(var(--foreground-dark));
+                    margin-left: auto;
+                    transition: transform 150ms ease-in-out;
+                }
+                
                 &--expanded {
-                    :after {
+                    &::after { // rotate arrow
+                        transform: rotate(180deg);
+                    }
+                    &::before { // background
                         content: '';
                         position: absolute;
                         height: 100%;
@@ -95,14 +159,9 @@ $option-padding: .7em;
                     }
                 }
 
-                &--expanded + .sidebar__nav__content {
-                    visibility: visible;
-                    //animations
-                    opacity: 1;
-                    transition: all 150ms ease-in-out;
-                }
             }
             &__sub-option {
+                font-size: .9em;
                 color: hsl(var(--foreground-dark));
                 text-decoration: none;
                 cursor: pointer;
@@ -110,16 +169,55 @@ $option-padding: .7em;
                 &:hover {
                     color: hsl(var(--foreground));
                 }
+                &:last-child {
+                    margin-bottom: $option-padding;
+                }
             }
         }
         &__content {
-            visibility: hidden;
             display: flex;
             flex-direction: column;
             gap: .5em;
+            overflow: hidden;
             //animations
-            opacity: 0;
+            // opacity: 0;
             transition: all 150ms ease-in-out;
+        }
+    }
+}
+
+@media (max-width: 740px) {
+    .sidebar--collapsed .sidebar__wrapper > :not(.sidebar__nav) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .sidebar--collapsed {
+        text-align: center;
+        .sidebar__header {
+            &__logo {
+                font-size: .65em;
+            }
+            &__version {
+                display: none;
+            }
+        }
+
+        .sidebar__nav {
+            &__item {
+                padding-inline: .4em;
+                &__option {
+                    align-items: center;
+                    justify-content: center;
+                    &__title {
+                        display: none;
+                    }
+
+                    &--collapsed::after {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 }
