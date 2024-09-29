@@ -1,19 +1,14 @@
 :host {
-    display: block;
-    width: 100%;
-}
-.profile{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(35em, 1fr));
+    grid-template-rows: 12.45em;
     // grid-auto-rows: auto; 
     // grid-template-rows: minmax(27.48em, 1em);
-    grid-template-rows: minmax(180px, 12.45em);
-    grid-auto-rows: min-content;
-
-    // grid-auto-flow: dense; 
+    // grid-auto-rows: min-content;
     gap: 2em;
-    
-    &__player {
+}
+  
+    .player {
         overflow: auto;
         padding: 2em;
         gap: 1em;
@@ -264,4 +259,3 @@
         }
     }
 
-}

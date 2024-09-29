@@ -1,22 +1,22 @@
-<div class="profile">
-    <article class="profile__player profile__player__main">
-        <div class="profile__player__header">
-            <div class="profile__player__picture">
-                <img class="profile__player__picture__img" [src]="'https://assets.open.mp/assets/images/skins/' + skin + '.png'" alt="Foto do personagem">
+
+    <article class="player player__main">
+        <div class="player__header">
+            <div class="player__picture">
+                <img class="player__picture__img" [src]="'https://assets.open.mp/assets/images/skins/' + skin + '.png'" alt="Foto do personagem">
             </div>
-            <div class="profile__player__info">
-                <div class="profile__player__info__name">
+            <div class="player__info">
+                <div class="player__info__name">
                     <h2>Jeckwilke_Moreira</h2>
                 </div>
-                <div class="profile__player__info__progress">
-                    <div class="profile__player__info__progress__level">
+                <div class="player__info__progress">
+                    <div class="player__info__progress__level">
                         <app-circle-progress-bar
                         title="Nível"
                         insideText="37"
                         [values]="[27, 100]"
                         />
                     </div>
-                    <div class="profile__player__info__progress__box">
+                    <div class="player__info__progress__box">
                         <app-circle-progress-bar
                         title="BEL"
                         insideText="144"
@@ -26,37 +26,37 @@
                 </div>
             </div>
         </div>
-        <div class="profile__player__stats">
-            <div class="profile__player__stats__item profile__player__stats__item__money">
-                <div class="profile__player__stats__item__icon profile__player__stats__item__money__icon">
+        <div class="player__stats">
+            <div class="player__stats__item player__stats__item__money">
+                <div class="player__stats__item__icon player__stats__item__money__icon">
                     <label style="mask-image: url('./assets/icons/stats-icons/piggy-bank.png');
                 -webkit-mask-image: url('./assets/icons/stats-icons/piggy-bank.png');"></label>
-                    <span class="profile__player__stats__item__icon__bkg"
+                    <span class="player__stats__item__icon__bkg"
                         style="background-image: url('./assets/icons/stats-icons/piggy-bank.png');"></span>
                 </div>
-                <div class="profile__player__stats__item__value profile__player__stats__item__money__value">
+                <div class="player__stats__item__value player__stats__item__money__value">
                     <span>$1257367</span>
                 </div>
             </div>
-            <div class="profile__player__stats__item profile__player__stats__item__kills">
-                <div class="profile__player__stats__item__icon profile__player__stats__item__kills__icon">
+            <div class="player__stats__item player__stats__item__kills">
+                <div class="player__stats__item__icon player__stats__item__kills__icon">
                     <label style="mask-image: url('./assets/icons/stats-icons/crosshair.png');
                 -webkit-mask-image: url('./assets/icons/stats-icons/crosshair.png');"></label>
-                    <span class="profile__player__stats__item__icon__bkg"
+                    <span class="player__stats__item__icon__bkg"
                         style="background-image: url('./assets/icons/stats-icons/crosshair.png');"></span>
                 </div>
-                <div class="profile__player__stats__item__value profile__player__stats__item__kills__value">
+                <div class="player__stats__item__value player__stats__item__kills__value">
                     <span>1241056</span>
                 </div>
             </div>
-            <div class="profile__player__stats__item profile__player__stats__item__deaths">
-                <div class="profile__player__stats__item__icon profile__player__stats__item__deaths__icon">
+            <div class="player__stats__item player__stats__item__deaths">
+                <div class="player__stats__item__icon player__stats__item__deaths__icon">
                     <label style="mask-image: url('./assets/icons/stats-icons/skull.png');
                 -webkit-mask-image: url('./assets/icons/stats-icons/skull.png');"></label>
-                    <span class="profile__player__stats__item__icon__bkg"
+                    <span class="player__stats__item__icon__bkg"
                         style="background-image: url('./assets/icons/stats-icons/skull.png');"></span>
                 </div>
-                <div class="profile__player__stats__item__value profile__player__stats__item__deaths__value">
+                <div class="player__stats__item__value player__stats__item__deaths__value">
                     <span>541</span>
                 </div>
             </div>
@@ -64,36 +64,36 @@
     </article>
 
 
-    <article class="profile__player profile__player__premium">
-        <div class="profile__player__stats">
-            <div class="profile__player__stats__item profile__player__stats__item--reduced
-             profile__player__stats__item__account-status">
-                <h2 class="profile__player__stats__item__account-status__title
-                profile__player__stats__item__account-status__title--super-vip">Super-Vip</h2>
-                <p class="profile__player__stats__item__account-status__description">Expira em: <b>18 DEZ 2024</b></p>
+    <article class="player player__premium">
+        <div class="player__stats">
+            <div class="player__stats__item player__stats__item--reduced
+             player__stats__item__account-status">
+                <h2 class="player__stats__item__account-status__title
+                player__stats__item__account-status__title--super-vip">Super-Vip</h2>
+                <p class="player__stats__item__account-status__description">Expira em: <b>18 DEZ 2024</b></p>
             </div>
-            <div class="profile__player__stats__item profile__player__stats__item--reduced 
-            profile__player__stats__item__golden-bars">
-                <h2 class="profile__player__stats__item__golden-bars__title">Golden Bars</h2>
-                <p class="profile__player__stats__item__golden-bars__description">24</p>
+            <div class="player__stats__item player__stats__item--reduced 
+            player__stats__item__golden-bars">
+                <h2 class="player__stats__item__golden-bars__title">Golden Bars</h2>
+                <p class="player__stats__item__golden-bars__description">24</p>
             </div>
-            <div class="profile__player__stats__item profile__player__stats__item--reduced 
-            profile__player__stats__item__moedas-verdes">
-                <h2 class="profile__player__stats__item__moedas-verdes__title">Moedas Verde</h2>
-                <p class="profile__player__stats__item__moedas-verdes__description">105600</p>
+            <div class="player__stats__item player__stats__item--reduced 
+            player__stats__item__moedas-verdes">
+                <h2 class="player__stats__item__moedas-verdes__title">Moedas Verde</h2>
+                <p class="player__stats__item__moedas-verdes__description">105600</p>
             </div>
         </div>
     </article>
 
 
-    <article class="profile__player profile__player__others">
-        <div class="profile__player__stats profile__player__others__stats">
+    <article class="player player__others">
+        <div class="player__stats player__others__stats">
             @for(item of test; track item) {
-                <div class="profile__player__stats__item profile__player__stats__item--extra-reduced">
+                <div class="player__stats__item player__stats__item--extra-reduced">
                     <h2>Horas Jogando</h2>
                     <p>1254</p>
                 </div>               
             }
         </div>
     </article>
-</div>
+

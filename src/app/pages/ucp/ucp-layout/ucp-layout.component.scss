@@ -4,13 +4,18 @@
         align-items: stretch;
         padding: var(--grid-page-padding);
         font-size: clamp(.7em, .95vw, 1.8em);
-        gap: 1em;
+        gap: 2em;
     
     
     
         @media (max-width: 580px) {
             font-size: clamp(.4em, 2.1vw, 1em);
         }
+    }
+
+    &__content {
+        display: inline-block;
+        width: 100%;
     }
 
 } 
