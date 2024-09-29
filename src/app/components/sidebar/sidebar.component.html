@@ -15,82 +15,58 @@
         <ul class="sidebar__nav">
 
             <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option sidebar__nav__item__option--selected" (click)="handleSelectedItem($event)">
+                <a class="sidebar__nav__item__option" routerLink="/ucp/profile"
+                    [ngClass]="{'sidebar__nav__item__option--selected': checkRoute('profile')}">
                     <i class="fi fi-rr-dashboard-panel sidebar__nav__item__option__icon"></i>
-                    <span class="sidebar__nav__item__option__title">Home</span>
+                    <span class="sidebar__nav__item__option__title">Perfil</span>
                 </a>
             </li>
 
             <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option" (click)="handleSelectedItem($event)">
+                <a class="sidebar__nav__item__option" routerLink="store"
+                    [ngClass]="{'sidebar__nav__item__option--selected': checkRoute('store')}">
                     <i class="fi fi-rr-basket-shopping-minus sidebar__nav__item__option__icon"></i>
                     <span class="sidebar__nav__item__option__title">Loja</span>
                 </a>
             </li>
 
             <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled" (click)="handleSelectedItem($event)">
+                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled">
                     <i class="fi fi-rr-building sidebar__nav__item__option__icon"></i>
                     <span class="sidebar__nav__item__option__title">Empresas</span>
                 </a>
             </li>
 
             <li class="sidebar__nav__item">
-                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled" (click)="handleSelectedItem($event)">
+                <a class="sidebar__nav__item__option sidebar__nav__item__option--disabled">
                     <i class="fi fi-rr-auction sidebar__nav__item__option__icon"></i>
                     <span class="sidebar__nav__item__option__title">Denúncias</span>
                 </a>
             </li>
         </ul>
+
     </div>
-<!--         
-        <ul class="sidebar__itens">
-            <li class="sidebar__itens__item sidebar__itens__item--selected" (click)="handleSelectedItem($event)">
-                <a class="sidebar__itens__item__link-wrapper">
-                    <i class="fi fi-rr-dashboard-panel sidebar__itens__item__icon"></i>
-                    <span class="sidebar__itens__item__title">Início</span>
-                </a>
-            </li>
-            <li class="sidebar__itens__item" (click)="handleSelectedItem($event)">
-                <a class="sidebar__itens__item__link-wrapper">
-                    <i class="fi fi-rr-basket-shopping-minus sidebar__itens__item__icon"></i>
-                    <span class="sidebar__itens__item__title">Loja</span>
-                </a>
-            </li>
-            <li class="sidebar__itens__item" (click)="handleSelectedItem($event)">
-                <a class="sidebar__itens__item__link-wrapper">
-                    <i class="fi fi-rr-building sidebar__itens__item__icon"></i>
-                    <span class="sidebar__itens__item__title">Empresas</span>
-                </a>
-            </li>
-            <li class="sidebar__itens__item sidebar__itens__item--disabled" (click)="handleSelectedItem($event)">
-                <a class="sidebar__itens__item__link-wrapper">
-                    <i class="fi fi-rr-auction sidebar__itens__item__icon"></i>
-                    <span class="sidebar__itens__item__title">Denúncias</span>
-                </a>
-            </li>
-        </ul>
-    </div> -->
+
 
 
     <ul class="sidebar__nav">
-            <li  class="sidebar__nav__item">
-                <a #configAnchor class="sidebar__nav__item__option sidebar__nav__item__option--collapsed" 
+        <li class="sidebar__nav__item">
+            <a #configAnchor class="sidebar__nav__item__option sidebar__nav__item__option--collapsed"
                 (click)="handleExpandOption($event)">
-                    <i class="fi fi-rr-settings sidebar__nav__item__option__icon"></i>
-                    <span class="sidebar__nav__item__option__title">Configurações</span>
+                <i class="fi fi-rr-settings sidebar__nav__item__option__icon"></i>
+                <span class="sidebar__nav__item__option__title">Configurações</span>
+            </a>
+            @if(configAnchor.classList.contains('sidebar__nav__item__option--expanded')) {
+            <div class="sidebar__nav__content" @slideUpDown>
+                <a class="sidebar__nav__item__sub-option">
+                    <span class="sidebar__nav__item__sub-option__title">Alterar Senha</span>
                 </a>
-                @if(configAnchor.classList.contains('sidebar__nav__item__option--expanded')) {
-                    <div class="sidebar__nav__content" @slideUpDown>
-                        <a class="sidebar__nav__item__sub-option">
-                            <span class="sidebar__nav__item__sub-option__title">Alterar Senha</span>
-                        </a>
-                        <a class="sidebar__nav__item__sub-option">
-                            <span class="sidebar__nav__item__sub-option__title">Sair</span>
-                        </a>
-                    </div>
-                }
+                <a class="sidebar__nav__item__sub-option">
+                    <span class="sidebar__nav__item__sub-option__title">Sair</span>
+                </a>
+            </div>
+            }
 
-            </li>
+        </li>
     </ul>
 </div>

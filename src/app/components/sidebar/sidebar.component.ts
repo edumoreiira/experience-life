@@ -1,11 +1,12 @@
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, HostBinding, input, OnInit } from '@angular/core';
 import { slideUpDown } from '../../animations/transition-animations';
-import e from 'express';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   animations: [slideUpDown]
@@ -13,6 +14,9 @@ import e from 'express';
 export class SidebarComponent {
   version = input.required<string>();
   isExpanded = false; // handle expanded state for mobile view
+
+  constructor(private route: Router) { }
+  
   
   @HostBinding('class.expanded') get applyExpandedClass() { //apply expanded on host
     return this.isExpanded;
@@ -22,17 +26,11 @@ export class SidebarComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  
-  handleSelectedItem(event: Event) {
-    const items = document.querySelectorAll('.sidebar__nav__item__option');
-    const element = event.target as HTMLElement;
-
-
-    items.forEach((item) => {
-      item.classList.remove('sidebar__nav__item__option--selected');
-    });
-    element.classList.add('sidebar__nav__item__option--selected');
+  checkRoute(route: string) {
+    return this.route.url.includes(route);
   }
+
+
 
   handleExpandOption(event: Event) {
     const targetElement = event.target as HTMLElement;
