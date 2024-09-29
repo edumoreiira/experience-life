@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'ExperienceLife';
-  version= '1.0.0';
 
   constructor(private router: Router) {
 
