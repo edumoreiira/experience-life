@@ -22,7 +22,7 @@
 }
 
 @media screen and (max-width: 740px) {
-    .ucp:has(.collapsed) {
+    .ucp {
         .ucp__content {
             margin-left: 60px;
         }

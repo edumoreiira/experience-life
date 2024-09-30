@@ -1,7 +1,8 @@
-import { Component, HostBinding, input, OnInit } from '@angular/core';
+import { Component, HostBinding, input, OnDestroy, OnInit } from '@angular/core';
 import { slideUpDown } from '../../animations/transition-animations';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,23 +12,42 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidebar.component.scss',
   animations: [slideUpDown]
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit, OnDestroy {
   version = input.required<string>();
   isExpanded = false; // handle expanded state for mobile view
+  private routerSubscription: Subscription | undefined;
 
-  constructor(private route: Router) { }
-  
-  
-  @HostBinding('class') get applyExpandedClass(): string { //apply expanded on host
-    return this.isExpanded ? 'expanded' : 'collapsed';
-  }
 
+  constructor(private router: Router) { }
+  
+  ngOnInit(): void {
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.onRouteChange(); // when route changes, collapse the sidebar
+      });
+    }
+
+    ngOnDestroy(): void {
+      if(this.routerSubscription) {
+        this.routerSubscription.unsubscribe();
+      }
+    }
+    
+    @HostBinding('class') get applyExpandedClass(): string { //apply expanded on host
+      return this.isExpanded ? 'expanded' : 'collapsed';
+    }
+
+    onRouteChange() {
+      this.collapseNav();
+    }
+    
   toggleExpand() {
     this.isExpanded = !this.isExpanded;
   }
 
   checkRoute(route: string) {
-    return this.route.url.includes(route);
+    return this.router.url.includes(route);
   }
 
 
