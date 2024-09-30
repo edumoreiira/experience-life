@@ -1,5 +1,5 @@
 :host {
-    width: clamp(250px, 15.6em, 400px);
+    // width: clamp(250px, 15.6em, 400px);
     z-index: 1000;
     flex-shrink: 0;
     font-size: clamp(.9rem, 1.05vw, 1.4rem);
@@ -7,7 +7,9 @@
     position: relative;
 
     @media (max-width: 740px) { //mobile collapsed
-        width: 60px;
+        .sidebar {
+            width: 60px;
+        }
         font-size: .9rem;
         .sidebar__header__handle {
             display: block;
@@ -31,7 +33,9 @@
             }
         }
         &.expanded { //mobile expanded
-            width: clamp(250px, 15.6em, 400px);
+            .sidebar {
+                width: 250px;
+            }
         }
     }
 }
@@ -44,12 +48,13 @@ $option-padding: .7em;
 }
 
 .sidebar {
+    position: fixed;
+    width: 250px;
     overflow: auto;
-    position: sticky;
     padding: 1em; //global padding
-    top: calc(var(--grid-page-padding));
+    // top: calc(var(--grid-page-padding));
     height: calc(100svh - calc(2 * var(--grid-page-padding)));
-    width: 100%;
+    // width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;

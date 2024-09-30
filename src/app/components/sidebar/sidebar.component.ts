@@ -18,8 +18,8 @@ export class SidebarComponent {
   constructor(private route: Router) { }
   
   
-  @HostBinding('class.expanded') get applyExpandedClass() { //apply expanded on host
-    return this.isExpanded;
+  @HostBinding('class') get applyExpandedClass(): string { //apply expanded on host
+    return this.isExpanded ? 'expanded' : 'collapsed';
   }
 
   toggleExpand() {

@@ -16,6 +16,16 @@
     &__content {
         display: inline-block;
         width: 100%;
+        margin-left: 250px; //sidebar width
+        transition: all 150ms ease-in-out;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .ucp:has(.collapsed) {
+        .ucp__content {
+            margin-left: 60px;
+        }
     }
 
-} 
+}
