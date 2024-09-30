@@ -1,5 +1,4 @@
 :root {
-    --grid-page-padding: 2rem;
     --background: 182 100% 5%;
     --background-dark: 182 100% 3%;
     --background-light: 182 75.92% 7.87%;
@@ -11,4 +10,11 @@
     --border: 183 100% 35%;
     --highlight: 43 100% 47%;
     --radius: 1em;
+
+    --grid-page-padding: 1.8rem;
+
+    @media screen and (max-width: 800px) {
+        --grid-page-padding: 1rem;
+        
+    }
 }

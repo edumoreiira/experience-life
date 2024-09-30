@@ -4,7 +4,7 @@
         align-items: stretch;
         padding: var(--grid-page-padding);
         font-size: clamp(.7em, .95vw, 1.8em);
-        gap: 2em;
+        gap: var(--grid-page-padding);
     
     
     

@@ -5,7 +5,7 @@
     // grid-auto-rows: auto; 
     // grid-template-rows: minmax(27.48em, 1em);
     // grid-auto-rows: min-content;
-    gap: 2em;
+    gap: var(--grid-page-padding);
 }
   
     .player {
