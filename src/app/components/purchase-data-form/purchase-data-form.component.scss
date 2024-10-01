@@ -1,0 +1,15 @@
+.purchase {
+    background-color: hsl(var(--background));
+    padding: 2em;
+    border-radius: var(--radius);
+    &__form {
+        &__section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            &__input {
+                font-size: 1.4em;
+            }
+        }
+    }
+}

@@ -258,6 +258,7 @@ main{
         display: flex;
         overflow: hidden;
         position: relative;
+        padding-block: .2em;
 
         &:hover .rank__slider--animate{
             animation-play-state: paused;

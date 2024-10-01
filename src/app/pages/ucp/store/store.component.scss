@@ -1,0 +1,25 @@
+:host {
+    min-height: calc(100svh - calc(2 * var(--grid-page-padding)));
+
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: hsl(var(--foreground-light));
+}
+
+.store {
+    max-width: 42em;
+    &__header {
+        margin-bottom: 1.5em;
+        h1 {
+            color: hsl(var(--foreground-light))
+        }
+        p {
+            color: hsl(var(--foreground-dark));
+        }
+    }
+
+}
