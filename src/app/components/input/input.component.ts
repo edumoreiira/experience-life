@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, forwardRef, input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CheckInput } from '../../models/check-input.interface';
 import { fadeInOut } from '../../animations/transition-animations';
+import { CurrencyFormatPipe } from "../../pipes/currency-format.pipe";
 
-type InputTypes = "text" | "email" | "password" | "date" | "search";
+type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "number";
 
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, CurrencyFormatPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,6 +37,16 @@ export class InputComponent implements ControlValueAccessor{
   showPassword: boolean = false;
   value: string = "";
 
+  onValueChange(event: any) {
+    this.value = event.replace(/\D/g, ''); //remove all non-digit characters
+  }
+
+
+
+  
+
+  //NGVALUEACCESSOR
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -58,5 +69,8 @@ export class InputComponent implements ControlValueAccessor{
   }
 
   setDisabledState?(isDisabled: boolean): void {}
+
+//NGVALUEACCESSOR end
+
   
 }

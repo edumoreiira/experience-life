@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ButtonComponent } from "../../components/button/button.component";
 import { CardComponent } from "../../components/card/card.component";
 import {  ClipboardModule } from '@angular/cdk/clipboard';
 import { FooterComponent } from "../../components/footer/footer.component";
@@ -11,6 +10,7 @@ import { SampServer } from '../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
 import { LoginModalComponent } from "../../components/login-modal/login-modal.component";
 import { Router } from '@angular/router';
+import { RoundedButtonComponent } from '../../components/button/rounded-button/rounded-button.component';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
   host: {
     '[class.home_c]': 'true'
   },
-  imports: [ButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule, LoginModalComponent],
+  imports: [RoundedButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule, LoginModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   animations: [slide, parentAnimations]

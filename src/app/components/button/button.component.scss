@@ -1,5 +1,22 @@
-:host{
-    border: 0;
-    border-radius: 100em;
-    padding: .9em 1.8em;
+:host {
+    background-color: transparent;
+    width: min(200px, 100%);
+    color: hsl(var(--foreground));
+    border-radius: 1em;
+    font-size: 1em;
+    font-weight: 600;
+    padding: .75em 1.25em;
+    border: 1px solid hsl(var(--primary));
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+    background: linear-gradient(to left, hsl(var(--background-dark)), hsl(var(--primary)/.2) 100%);
+    &:hover:not(:disabled) {
+        backdrop-filter: saturate(500%);
+    }
+    &:disabled {
+        background: transparent;
+        border-color: hsl(var(--primary-dark) / .5);
+        color: hsl(var(--foreground) / .25);
+        cursor: default;
+    }
 }

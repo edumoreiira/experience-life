@@ -9,6 +9,59 @@
             gap: 1.5em;
             &__input {
                 font-size: 1.4em;
+                &--large {
+                    flex-grow: 1;
+                }
+            }
+
+            &__custom-input {
+                flex-grow: 1;
+                background-color: hsl(var(--background-dark));
+                border-radius: var(--radius);
+                color: inherit;
+                outline: 1px solid hsl(var(--primary-dark));
+                font-size: 1.1em;
+                font-weight: 500;
+                padding: .75em 1.25em;
+                border: 0;
+                transition: 150ms ease-in-out;
+                &:hover {
+                    outline-color: hsl(var(--primary-light) / .45);
+                }
+                &:focus {
+                    outline-offset: 1px;
+                    outline-width: 2px;
+                    outline-color: hsl(var(--primary-light));
+                }
+                &::placeholder {
+                    color: hsl(var(--primary-light) / .45);
+                    font-weight: 400;
+                }
+            }
+
+            &__button {
+                align-self: end;
+            }
+            &__price {
+                display: flex;
+                gap: 1em;
+            }
+            &__coins {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid hsl(var(--border));
+                background: linear-gradient(to right, hsl(var(--primary-light)/.3) 30%, hsl(var(--background)) 100%);
+                border-radius: var(--radius);
+                padding: 1em;
+                gap: .5em;
+                h4 {
+                    line-height: 1 !important;
+                    font-weight: 900;
+                }
+                span {
+                    font-weight: 500;
+                }
             }
         }
     }

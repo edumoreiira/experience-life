@@ -9,7 +9,11 @@
     })"
     [type]="showPassword ? 'text' : type"
     [ngClass]="{'error': isInvalid}"
+    [(ngModel)]="value" (ngModelChange)="onValueChange($event)"
      />
+     @if(type === "number"){
+         <p>{{ value | currencyFormat }}</p>
+     }
      <span [ngClass]="{'filled':input.value.length > 0}"
       class="placeholder-title"
       >

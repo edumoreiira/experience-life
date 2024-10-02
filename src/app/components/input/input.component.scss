@@ -87,15 +87,7 @@
         }
     }
 
-    //remove default hide password button
-    input[type="password"]::-webkit-credentials-auto-fill-button {
-        visibility: hidden;
-        display: none !important;
-    }
-      input[type="password"]::-ms-reveal {
-        display: none;
-    }
-
+    
     .invalid{
         width: 100%;
         font-size: .8em;
@@ -106,5 +98,41 @@
     }
     .fi {
         display: flex;
+    }
+}
+
+
+//remove default hide password button
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+}
+  input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove o estilo padrão */
+    margin: 0; /* Remove margens */
+}
+input[type="number"] {
+    -moz-appearance: textfield; /* Remove a aparência do campo de número */
+}
+
+p {
+    position: absolute;
+    // display: none;
+    left: 1.25em;
+    // user-select: none;
+}
+
+input[type="number"] {
+    padding-left: 3em !important;
+    caret-color: white;  
+    color: transparent !important;
+    user-select: none;
+    &::selection {
+        background-color: transparent;
     }
 }
