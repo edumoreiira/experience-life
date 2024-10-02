@@ -19,4 +19,9 @@
         color: hsl(var(--foreground) / .25);
         cursor: default;
     }
+
+    &.secondary {
+        border-color: hsl(var(--foreground-dark));
+        background: linear-gradient(to left, hsl(var(--background-dark)), hsl(var(--foreground-dark)/.2) 100%);
+    }
 }

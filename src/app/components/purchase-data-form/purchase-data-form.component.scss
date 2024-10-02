@@ -39,8 +39,16 @@
                 }
             }
 
+            &__control {
+                display: flex;
+                justify-content: space-between;
+            }
+
             &__button {
                 align-self: end;
+                &--back {
+                    width: min(9em, 100%);
+                }
             }
             &__price {
                 display: flex;
@@ -55,6 +63,8 @@
                 border-radius: var(--radius);
                 padding: 1em;
                 gap: .5em;
+                min-width: 8em;
+                transition: all 150ms ease-in-out;
                 h4 {
                     line-height: 1 !important;
                     font-weight: 900;

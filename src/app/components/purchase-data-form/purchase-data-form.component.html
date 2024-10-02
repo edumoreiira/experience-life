@@ -1,6 +1,6 @@
 <div class="purchase">
     <form class="purchase__form">
-        @if(true) {
+        @if(false) {
             <div class="purchase__form__section">
                 <h2>Insira o nome da sua conta no nosso servidor.</h2>
                 <app-input class="purchase__form__section__input"
@@ -20,7 +20,11 @@
                     <span>MV</span>
                 </div>
             </div>
-            <button gradient-button class="purchase__form__section__button" type="button">Continuar</button>
+            <div class="purchase__form__section__control">
+                <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
+                type="button" group="secondary">Voltar</button>
+                <button gradient-button class="purchase__form__section__button" type="button">Continuar</button>
+            </div>
         </div>
 
 
