@@ -7,41 +7,33 @@
             display: flex;
             flex-direction: column;
             gap: 1.5em;
-            &__input {
-                font-size: 1.4em;
-                &--large {
-                    flex-grow: 1;
+            &--personal {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+            }
+
+            &__header {
+                grid-column: span 2;
+                h2 {
+                    margin-bottom: .3em;
+                }
+                p {
+                    color: hsl(var(--foreground-dark));
                 }
             }
 
-            &__custom-input {
+            &__input {
+                font-size: 1.4em;
                 flex-grow: 1;
-                background-color: hsl(var(--background-dark));
-                border-radius: var(--radius);
-                color: inherit;
-                outline: 1px solid hsl(var(--primary-dark));
-                font-size: 1.1em;
-                font-weight: 500;
-                padding: .75em 1.25em;
-                border: 0;
-                transition: 150ms ease-in-out;
-                &:hover {
-                    outline-color: hsl(var(--primary-light) / .45);
-                }
-                &:focus {
-                    outline-offset: 1px;
-                    outline-width: 2px;
-                    outline-color: hsl(var(--primary-light));
-                }
-                &::placeholder {
-                    color: hsl(var(--primary-light) / .45);
-                    font-weight: 400;
+                &--expanded {
+                    grid-column: span 2;
                 }
             }
 
             &__control {
                 display: flex;
                 justify-content: space-between;
+                grid-column: span 2;
             }
 
             &__button {

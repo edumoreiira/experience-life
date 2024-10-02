@@ -9,17 +9,46 @@
                 <button gradient-button class="purchase__form__section__button" type="button">Continuar</button>
             </div>
         }
+        @if(false) {
 
-        <div class="purchase__form__section">
-            <h2>Insira o valor da compra de moedas verdes.</h2>
-            <div class="purchase__form__section__price">
-                <input #valueToPay class="purchase__form__section__custom-input" placeholder="Valor a pagar" type="text"
-                mask="separator.2" prefix="R$ " suffix=",00" [dropSpecialCharacters]="true"/>
-                <div class="purchase__form__section__coins">
-                    <h4>{{calculateCoins(valueToPay.value)}}</h4>
-                    <span>MV</span>
+            <div class="purchase__form__section">
+                <h2>Insira o valor da compra de moedas verdes.</h2>
+                <div class="purchase__form__section__price">
+                    <app-input  class="purchase__form__section__input"
+                    placeholder="Valor da compra" prefix="R$ " suffix=",00" type="tel" mask="separator.2"
+                    name="valueToPay" [(ngModel)]="valueToPay"
+                    />
+                    <div class="purchase__form__section__coins">
+                        <h4>{{calculateCoins(valueToPay)}}</h4>
+                        <span>MV</span>
+                    </div>
+                </div>
+                <div class="purchase__form__section__control">
+                    <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
+                    type="button" group="secondary">Voltar</button>
+                    <button gradient-button class="purchase__form__section__button" type="button">Continuar</button>
                 </div>
             </div>
+        }
+
+        <div class="purchase__form__section purchase__form__section--personal">
+            <div class="purchase__form__section__header">
+                <h2>Preencha os campos com suas informações.</h2>
+                <p>Por favor, utilize informações verdadeiras ao preencher seus dados. Isso é essencial para garantir a
+                     segurança e a entrega correta do seu pedido.</p>
+            </div>
+                <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
+                placeholder="Nome Completo" type="text"
+                />
+                <app-input  class="purchase__form__section__input"
+                placeholder="CPF" type="tel" mask="000.000.000-00"
+                />
+                <app-input  class="purchase__form__section__input"
+                placeholder="Telefone" type="tel" mask="(00) 00000-0000"
+                />
+                <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
+                placeholder="Email" type="email"
+                />
             <div class="purchase__form__section__control">
                 <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
                 type="button" group="secondary">Voltar</button>

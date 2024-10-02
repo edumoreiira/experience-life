@@ -9,7 +9,7 @@
     })"
     [type]="showPassword ? 'text' : type"
     [ngClass]="{'error': isInvalid}"
-    [(ngModel)]="value" (ngModelChange)="onValueChange($event)"
+    [mask]="mask" [prefix]="prefix" [suffix]="suffix"
      />
      @if(type === "number"){
          <p>{{ value | currencyFormat }}</p>

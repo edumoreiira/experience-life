@@ -4,6 +4,7 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
 import { CheckInput } from '../../models/check-input.interface';
 import { fadeInOut } from '../../animations/transition-animations';
 import { CurrencyFormatPipe } from "../../pipes/currency-format.pipe";
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "number";
 
@@ -11,7 +12,7 @@ type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "n
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, CurrencyFormatPipe],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, CurrencyFormatPipe, NgxMaskDirective, NgxMaskPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -30,6 +31,9 @@ export class InputComponent implements ControlValueAccessor{
   @Input() placeholder: string = "";
   @Input() formControlName: string = '';
   @Input() isInvalid: boolean = false;
+  @Input() mask: string = '';
+  @Input() prefix: string = '';
+  @Input() suffix: string = '';
   @Output() inputElement = new EventEmitter<CheckInput>;
 
 
