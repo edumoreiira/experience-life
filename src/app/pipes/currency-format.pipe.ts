@@ -1,33 +1,26 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'currencyFormat',
+  name: 'thousandSeparator',
   standalone: true
 })
-export class CurrencyFormatPipe implements PipeTransform {
+export class ThousandSeparator implements PipeTransform {
 
-  transform(value: any): string {
-    if (!value) {
-      return 'R$ 0,00';
+  transform(value: number | string): string {
+    if (!value && value !== 0) {
+      return '';
     }
-  
-    // Remove caracteres que não sejam números
-    let newValue = value.toString().replace(/\D/g, '');
-  
-    // Caso o valor tenha menos de dois dígitos, adiciona zeros no final
-    if (newValue.length === 1) {
-      newValue = `00${newValue}`; // Se for apenas um dígito, adicionar dois zeros
-    } else if (newValue.length === 2) {
-      newValue = `0${newValue}`; // Se for dois dígitos, adicionar um zero
+
+    const parsedValue = typeof value === 'number' ? value : parseFloat(value);
+
+    if (isNaN(parsedValue)) {
+      return value.toString(); // Retorna o valor como string se não for um número válido
     }
-  
-    // Divide os centavos
-    const integerPart = newValue.slice(0, -2) || '0';
-    const decimalPart = newValue.slice(-2);
-  
-    // Formata no padrão R$ 00,00, garantindo que sempre terá dois decimais
-    const formattedValue = `R$ ${parseInt(integerPart, 10).toLocaleString('pt-BR')},${decimalPart.padEnd(2, '0')}`;
-    
-    return formattedValue;
+
+    // Formata o número com separador de milhar, sem casas decimais
+    return parsedValue.toLocaleString('pt-BR', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
   }
 }

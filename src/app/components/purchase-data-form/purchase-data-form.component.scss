@@ -3,6 +3,7 @@
     padding: 2em;
     border-radius: var(--radius);
     &__form {
+        overflow: hidden;
         &__section {
             display: flex;
             flex-direction: column;

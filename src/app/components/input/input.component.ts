@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, Output, forwardRef, input } from '@angu
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CheckInput } from '../../models/check-input.interface';
 import { fadeInOut } from '../../animations/transition-animations';
-import { CurrencyFormatPipe } from "../../pipes/currency-format.pipe";
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "number";
@@ -12,7 +11,7 @@ type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "n
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, CurrencyFormatPipe, NgxMaskDirective, NgxMaskPipe],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, NgxMaskDirective, NgxMaskPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
