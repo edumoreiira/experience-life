@@ -2,8 +2,8 @@
     background-color: hsl(var(--background));
     padding: 2em;
     border-radius: var(--radius);
+    overflow: hidden;
     &__form {
-        overflow: hidden;
         &__section {
             display: flex;
             flex-direction: column;

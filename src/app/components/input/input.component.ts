@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef, input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, forwardRef, input, viewChild } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CheckInput } from '../../models/check-input.interface';
 import { fadeInOut } from '../../animations/transition-animations';
@@ -40,9 +40,6 @@ export class InputComponent implements ControlValueAccessor{
   showPassword: boolean = false;
   value: string = "";
 
-  onValueChange(event: any) {
-    this.value = event.replace(/\D/g, ''); //remove all non-digit characters
-  }
 
 
 
@@ -60,7 +57,9 @@ export class InputComponent implements ControlValueAccessor{
   }
 
   writeValue(value: any): void {
-    this.value = value;
+    setTimeout(() => { // settTimetout to avoid ngxmask override the value
+      this.value = value;
+    });
   }
   
   registerOnChange(fn: any): void {

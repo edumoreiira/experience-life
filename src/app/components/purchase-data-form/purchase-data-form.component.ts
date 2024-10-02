@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '../button/button.component';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
@@ -15,13 +15,16 @@ import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
   styleUrl: './purchase-data-form.component.scss',
   animations: [slideUpDown]
 })
-export class PurchaseDataFormComponent {
+export class PurchaseDataFormComponent implements OnInit {
   valueToPay: string = '';
   step = 1;
 
   purchaseForm!: FormGroup<PurchaseForm>;
 
   constructor() {
+  }
+
+  ngOnInit(): void {
     this.purchaseForm = new FormGroup<PurchaseForm>({
       accountName: new FormControl('', [Validators.required]),
       purchaseAmount: new FormControl('', [Validators.required]),
@@ -33,6 +36,7 @@ export class PurchaseDataFormComponent {
     });
   }
 
+
   
   goToNextStep() {
     this.step++;
@@ -41,6 +45,21 @@ export class PurchaseDataFormComponent {
   goToPreviousStep() {
     this.step--;
   }
+  checkFirstStep() {
+    const valid = this.purchaseForm.get('accountName')?.valid;
+    console.log(this.purchaseForm.get('accountName'));
+    if(valid) {
+      this.goToNextStep();
+    }
+  }
+
+  checkSecondStep() {
+    const valid = this.purchaseForm.get('purchaseAmount')?.valid
+    console.log(valid);
+    if(valid) {
+      this.goToNextStep();
+    }
+  }
 
   finishPurchase() {
     if(this.purchaseForm.valid) {
@@ -48,10 +67,13 @@ export class PurchaseDataFormComponent {
     }
   }
 
+  getForm(formControlName: string) {
+    return this.purchaseForm.get(formControlName);
+  }
 
 
   calculateCoins() {
-    const value = this.purchaseForm.get('purchaseAmount')?.value;
+    const value = this.getForm('purchaseAmount')?.value;
     // Remove 'R$', espaços, pontos e vírgulas
     let cleanedValue = value.replace(/R\$|\s|,|\./g, '')
     // Verifica se o cleanedValue não está vazio

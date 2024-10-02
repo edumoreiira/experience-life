@@ -6,9 +6,11 @@
                 <app-input class="purchase__form__section__input"
                 placeholder="Nome da conta"
                 formControlName="accountName"
+                
                 />
-                <button gradient-button class="purchase__form__section__button" type="button"
-                (click)="goToNextStep()">Continuar</button>
+                <!-- <input type="text" formControlName="accountName"> -->
+                <button gradient-button class="purchase__form__section__button" type="submit"
+                (click)="checkFirstStep()" [disabled]="!getForm('accountName')?.valid">Continuar</button>
             </div>
 
         } @else if (step === 2) {
@@ -28,7 +30,7 @@
                 <div class="purchase__form__section__control">
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
                     type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>
-                    <button gradient-button class="purchase__form__section__button" type="button"
+                    <button gradient-button class="purchase__form__section__button" type="submit"
                     (click)="goToNextStep()">Continuar</button>
                 </div>
             </div>
@@ -59,8 +61,8 @@
                 <div class="purchase__form__section__control">
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
                     type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>
-                    <button gradient-button class="purchase__form__section__button" type="button"
-                    (click)="finishPurchase()">Finalizar</button>
+                    <button gradient-button class="purchase__form__section__button" type="submit"
+                    (click)="finishPurchase()" [disabled]="!purchaseForm.valid">Finalizar</button>
                 </div>
             </div>
 
