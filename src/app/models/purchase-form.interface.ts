@@ -6,6 +6,6 @@ export interface PurchaseForm {
     coupon?: FormControl;
     customerName: FormControl;
     customerCpf: FormControl;
-    customerEmail: FormControl;
     customerPhone: FormControl;
+    customerEmail: FormControl;
 }

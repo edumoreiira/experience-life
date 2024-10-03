@@ -67,21 +67,52 @@
                          segurança e a entrega correta do seu pedido.</p>
                 </div>
                     <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
-                    placeholder="Nome Completo" type="text"
+                    placeholder="Nome Completo" type="text" (input)="avoidWhitespace($event)"
                     formControlName="customerName"
-                    />
+                    >
+                    @if(getForm('customerName')?.errors?.['required']) {
+                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                    }@else if(getForm('customerName')?.errors?.['noSpecialCharacters']) {
+                        <small class="purchase__form__section__error">Caracteres especiais não são permitidos</small>
+                    }@else if(getForm('customerName')?.errors?.['completeNameRequired']) {
+                        <small class="purchase__form__section__error">Preencha nome e sobrenome</small>
+                    }@else if(getForm('customerName')?.errors?.['minlength']) {
+                        <small class="purchase__form__section__error">Nome muito pequeno</small>
+                    }
+                    </app-input>
+
                     <app-input  class="purchase__form__section__input"
                     placeholder="CPF" type="tel" mask="000.000.000-00"
                     formControlName="customerCpf"
-                    />
+                    >
+
+                    @if(getForm('customerCpf')?.errors?.['required']) {
+                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                    }@else if(getForm('customerCpf')?.errors?.['invalidCpf']) {
+                        <small class="purchase__form__section__error">Insira um CPF válido</small>
+
+                    }
+                    </app-input>
+
                     <app-input  class="purchase__form__section__input"
                     placeholder="Telefone" type="tel" mask="(00) 00000-0000"
                     formControlName="customerPhone"
-                    />
+                    >
+                    @if(getForm('customerPhone')?.errors?.['required']) {
+                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                    }
+                    </app-input>
+
                     <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
                     placeholder="Email" type="email"
                     formControlName="customerEmail"
-                    />
+                    >
+                    @if(getForm('customerEmail')?.errors?.['required']) {
+                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                    }@else if(getForm('customerEmail')?.errors?.['email']) {
+                        <small class="purchase__form__section__error">Insira um email válido</small>
+                    }
+                    </app-input>
                 <div class="purchase__form__section__control">
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
                     type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>

@@ -6,7 +6,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { slideUpDown } from '../../animations/transition-animations';
 import { PurchaseForm } from '../../models/purchase-form.interface';
 import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
-import { currencyValidator } from '../../validators/purchase-form.validators';
+import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters, spaceRequired } from '../../validators/purchase-form.validators';
 
 @Component({
   selector: 'app-purchase-data-form',
@@ -18,7 +18,7 @@ import { currencyValidator } from '../../validators/purchase-form.validators';
 })
 export class PurchaseDataFormComponent implements OnInit {
   valueToPay: string = '';
-  step = 2;
+  step = 3;
 
   purchaseForm!: FormGroup<PurchaseForm>;
 
@@ -33,10 +33,10 @@ export class PurchaseDataFormComponent implements OnInit {
       accountName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       purchaseAmount: new FormControl('', [Validators.required, currencyValidator()]),
       coupon: new FormControl(''),
-      customerName: new FormControl('', [Validators.required]),
-      customerCpf: new FormControl('', [Validators.required]),
-      customerEmail: new FormControl('', [Validators.required]),
-      customerPhone: new FormControl('', [Validators.required])
+      customerName: new FormControl('', [Validators.required, noSpecialCharacters, completeNameRequired(), Validators.minLength(7)]),
+      customerCpf: new FormControl('', [Validators.required, cpfValidator()]),
+      customerPhone: new FormControl('', [Validators.required]),
+      customerEmail: new FormControl('', [Validators.required, Validators.email])
     });
   }
 
@@ -98,4 +98,9 @@ export class PurchaseDataFormComponent implements OnInit {
     return parseFloat(cleanedValue) * 1000 || 0; 
   }
   
+  avoidWhitespace(event: Event) {
+    const element = event.target as HTMLInputElement;
+    // Remover múltiplos espaços consecutivos
+    element.value = element.value.replace(/\s+/g, ' ');
+  }
 }
