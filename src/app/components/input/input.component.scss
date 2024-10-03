@@ -1,3 +1,20 @@
+:host {
+    &.ng-invalid.ng-dirty .input-wrapper {
+        input {
+            outline: hsl(var(--destructive)) solid 2px;
+            border-color: transparent;
+            &:focus {
+                border-color: transparent;
+                outline-offset: 0;
+            }
+        }
+        .placeholder-title {
+            color: hsl(var(--destructive));
+        }
+    }
+}
+
+
 .input-wrapper{
     position: relative;
     display: flex;

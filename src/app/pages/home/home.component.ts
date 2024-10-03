@@ -66,10 +66,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // show/hide copied alert
   handleCopyIp() {
-    this.copied = true;
-    setTimeout(() => {
-      this.copied = false;
-    }, 2000);
+    if(this.copied === false) { // avoid multiple alerts
+      this.copied = true;
+
+      setTimeout(() => {
+        this.copied = false;
+      }, 2000);
+    }
   }
 
   // handle login modal

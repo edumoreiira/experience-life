@@ -6,6 +6,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { slideUpDown } from '../../animations/transition-animations';
 import { PurchaseForm } from '../../models/purchase-form.interface';
 import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
+import { currencyValidator } from '../../validators/purchase-form.validators';
 
 @Component({
   selector: 'app-purchase-data-form',
@@ -17,18 +18,21 @@ import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
 })
 export class PurchaseDataFormComponent implements OnInit {
   valueToPay: string = '';
-  step = 1;
+  step = 2;
 
   purchaseForm!: FormGroup<PurchaseForm>;
 
   constructor() {
   }
+  test(form: string) {
+    console.log(this.getForm(form));
+  }
 
   ngOnInit(): void {
     this.purchaseForm = new FormGroup<PurchaseForm>({
-      accountName: new FormControl('', [Validators.required]),
-      purchaseAmount: new FormControl('', [Validators.required]),
-      coupom: new FormControl(''),
+      accountName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      purchaseAmount: new FormControl('', [Validators.required, currencyValidator()]),
+      coupon: new FormControl(''),
       customerName: new FormControl('', [Validators.required]),
       customerCpf: new FormControl('', [Validators.required]),
       customerEmail: new FormControl('', [Validators.required]),
@@ -45,22 +49,28 @@ export class PurchaseDataFormComponent implements OnInit {
   goToPreviousStep() {
     this.step--;
   }
+  
+  firstStepValid() {
+    return this.purchaseForm.get('accountName')?.valid;
+  }
+
+  secondStepValid() {
+    return this.purchaseForm.get('purchaseAmount')?.valid;
+  }
+
   checkFirstStep() {
-    const valid = this.purchaseForm.get('accountName')?.valid;
-    console.log(this.purchaseForm.get('accountName'));
-    if(valid) {
+    if(this.firstStepValid()) {
       this.goToNextStep();
     }
   }
 
   checkSecondStep() {
-    const valid = this.purchaseForm.get('purchaseAmount')?.valid
-    console.log(valid);
-    if(valid) {
+    if(this.firstStepValid() && this.secondStepValid()) {
       this.goToNextStep();
     }
   }
 
+  
   finishPurchase() {
     if(this.purchaseForm.valid) {
       console.log(this.purchaseForm.value);

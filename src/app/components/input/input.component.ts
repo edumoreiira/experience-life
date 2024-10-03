@@ -40,8 +40,11 @@ export class InputComponent implements ControlValueAccessor{
   showPassword: boolean = false;
   value: string = "";
 
+  constructor(private element: ElementRef) { }
 
-
+  hasInvalidClass() {
+    return this.element.nativeElement.classList.contains('ng-invalid') && this.element.nativeElement.classList.contains('ng-dirty');
+  }
 
   
 
@@ -54,6 +57,7 @@ export class InputComponent implements ControlValueAccessor{
   onInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.onChange(value);
+    this.onTouched();
   }
 
   writeValue(value: any): void {

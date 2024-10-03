@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/",
+    "/ucp",
+    "/ucp/profile",
+    "/ucp/store"
+  ]
+}

@@ -15,7 +15,8 @@
     &__header {
         margin-bottom: 1.5em;
         h1 {
-            color: hsl(var(--foreground-light))
+            color: hsl(var(--foreground-light));
+            margin-bottom: .3em;
         }
         p {
             color: hsl(var(--foreground-dark));

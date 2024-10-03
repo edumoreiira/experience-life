@@ -35,6 +35,10 @@
                 display: flex;
                 justify-content: space-between;
                 grid-column: span 2;
+                margin-top: 1em;
+                &--left {
+                    justify-content: end;
+                }
             }
 
             &__button {
@@ -43,12 +47,15 @@
                     width: min(9em, 100%);
                 }
             }
+
             &__price {
                 display: flex;
                 gap: 1em;
             }
+
             &__coins {
                 display: flex;
+                overflow: hidden;
                 align-items: center;
                 justify-content: center;
                 border: 1px solid hsl(var(--border));
@@ -56,15 +63,40 @@
                 border-radius: var(--radius);
                 padding: 1em;
                 gap: .5em;
-                min-width: 8em;
+                min-width: 9em;
+                max-width: 12em;
                 transition: all 150ms ease-in-out;
                 h4 {
                     line-height: 1 !important;
                     font-weight: 900;
+                    text-overflow: ellipsis;
                 }
                 span {
                     font-weight: 500;
                 }
+            }
+
+            &__coupon {
+                display: flex;
+                gap: 1em;
+                
+                &__button {
+                    font-size: .9em;
+                    width: min(10em, 100%);
+                    text-wrap: nowrap;
+                }
+
+                .purchase__form__section__input {
+                    font-size: 1.2em;
+                }
+            }
+            &__error {
+                position: absolute;
+                font-size: .9em;
+                right: 0;
+                bottom: 0;
+                transform: translateY(calc(100% + .4em));
+                z-index: 1;
             }
         }
     }

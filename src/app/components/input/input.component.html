@@ -28,7 +28,7 @@
             </button>
          }
          <!-- text description on error  -->
-         @if(input.classList.contains("error")){
+         @if(hasInvalidClass()){
              <div @fadeInOut class="invalid">
                 <ng-content></ng-content>
              </div>
