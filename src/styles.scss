@@ -19,11 +19,11 @@ body {
 
 }
 
-.home_c {
+.home_c, .ucp_c {
     &::after{
         background-image: url('./assets/images/palms.jpg');
         content: '';
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -33,6 +33,11 @@ body {
         filter: saturate(.75);
         opacity: .05;
         z-index: -1;
+    }
+    &.ucp_c::after {
+        background-image: url('./assets/images/buildings.jpg');
+        opacity: .02;
+        filter: saturate(0);
     }
 }
 

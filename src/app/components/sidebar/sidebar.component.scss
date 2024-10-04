@@ -2,7 +2,7 @@
     // width: clamp(250px, 15.6em, 400px);
     z-index: 1000;
     flex-shrink: 0;
-    font-size: clamp(.9rem, 1.05vw, 1.4rem);
+    font-size: clamp(.9rem, 1.05vw, 1.5rem);
     transition: width 150ms ease-in-out;
     position: relative;
 
@@ -55,6 +55,7 @@ $option-padding: .7em;
 .sidebar {
     position: fixed;
     width: 250px;
+    width: clamp(250px, 15.6em, 400px);
     overflow: auto;
     padding: 1em; //global padding
     // top: calc(var(--grid-page-padding));

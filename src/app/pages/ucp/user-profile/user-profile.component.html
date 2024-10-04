@@ -29,35 +29,38 @@
         <div class="player__stats">
             <div class="player__stats__item player__stats__item__money">
                 <div class="player__stats__item__icon player__stats__item__money__icon">
-                    <label style="mask-image: url('./assets/icons/stats-icons/piggy-bank.png');
-                -webkit-mask-image: url('./assets/icons/stats-icons/piggy-bank.png');"></label>
+                    <label style="mask-image: url('./assets/icons/stats-icons/money-bag.png');
+                -webkit-mask-image: url('./assets/icons/stats-icons/money-bag.png');"></label>
                     <span class="player__stats__item__icon__bkg"
-                        style="background-image: url('./assets/icons/stats-icons/piggy-bank.png');"></span>
+                        style="background-image: url('./assets/icons/stats-icons/money-bag.png');"></span>
                 </div>
                 <div class="player__stats__item__value player__stats__item__money__value">
-                    <span>$1257367</span>
+                    <span>${{1257367 | thousandSeparator }}</span>
                 </div>
             </div>
             <div class="player__stats__item player__stats__item__kills">
                 <div class="player__stats__item__icon player__stats__item__kills__icon">
-                    <label style="mask-image: url('./assets/icons/stats-icons/crosshair.png');
-                -webkit-mask-image: url('./assets/icons/stats-icons/crosshair.png');"></label>
+                    <label style="mask-image: url('./assets/icons/stats-icons/skulls.png');
+                -webkit-mask-image: url('./assets/icons/stats-icons/skulls.png');"></label>
                     <span class="player__stats__item__icon__bkg"
-                        style="background-image: url('./assets/icons/stats-icons/crosshair.png');"></span>
+                        style="background-image: url('./assets/icons/stats-icons/skulls.png');"></span>
                 </div>
                 <div class="player__stats__item__value player__stats__item__kills__value">
-                    <span>1241056</span>
+                    <span>{{kills | thousandSeparator}}</span>
                 </div>
+            </div>
+            <div class="player__stats__item player__stats__item__kd">
+                <span>{{(kills / deaths).toFixed(2)}}</span>
             </div>
             <div class="player__stats__item player__stats__item__deaths">
                 <div class="player__stats__item__icon player__stats__item__deaths__icon">
-                    <label style="mask-image: url('./assets/icons/stats-icons/skull.png');
-                -webkit-mask-image: url('./assets/icons/stats-icons/skull.png');"></label>
+                    <label style="mask-image: url('./assets/icons/stats-icons/gravestone.png');
+                -webkit-mask-image: url('./assets/icons/stats-icons/gravestone.png');"></label>
                     <span class="player__stats__item__icon__bkg"
-                        style="background-image: url('./assets/icons/stats-icons/skull.png');"></span>
+                        style="background-image: url('./assets/icons/stats-icons/gravestone.png');"></span>
                 </div>
                 <div class="player__stats__item__value player__stats__item__deaths__value">
-                    <span>541</span>
+                    <span>{{deaths | thousandSeparator}}</span>
                 </div>
             </div>
         </div>
@@ -75,12 +78,12 @@
             <div class="player__stats__item player__stats__item--reduced 
             player__stats__item__golden-bars">
                 <h2 class="player__stats__item__golden-bars__title">Golden Bars</h2>
-                <p class="player__stats__item__golden-bars__description">24</p>
+                <p class="player__stats__item__golden-bars__description">{{24 | thousandSeparator}}</p>
             </div>
             <div class="player__stats__item player__stats__item--reduced 
             player__stats__item__moedas-verdes">
                 <h2 class="player__stats__item__moedas-verdes__title">Moedas Verde</h2>
-                <p class="player__stats__item__moedas-verdes__description">105600</p>
+                <p class="player__stats__item__moedas-verdes__description">{{105600 | thousandSeparator}}</p>
             </div>
         </div>
     </article>
@@ -91,7 +94,7 @@
             @for(item of test; track item) {
                 <div class="player__stats__item player__stats__item--extra-reduced">
                     <h2>Horas Jogando</h2>
-                    <p>1254</p>
+                    <p>{{1254 | thousandSeparator}}</p>
                 </div>               
             }
         </div>

@@ -123,6 +123,7 @@
 
         &__stats {
             display: grid;
+            position: relative;
             grid-column: span 2;
             grid-template-columns: repeat(2, 1fr);
             gap: 1em;
@@ -134,11 +135,14 @@
                 gap: .2em;
                 align-items: center;
                 justify-content: space-between;
-                padding: .8em 2em;
                 height: 7em;
                 // background-color: hsl(var(--primary-dark));
                 background: linear-gradient(to right, hsl(var(--primary)/.5) 30%, hsl(var(--primary-dark)/.5) 100%);
                 transition: all 150ms ease-out;
+                padding: .8em 2em;
+                @media screen and (max-width: 560px) {
+                    padding: .8em 1.5em;
+                }
                 &:hover {
                     filter: saturate(2.5);
                 }
@@ -171,8 +175,7 @@
                 }
 
                 &__value {
-                    font-size: 1.3em;
-                    font-size: 1.6em;
+                    font-size: clamp(1.4em, 2.5vw, 1.6em);
                     font-weight: 900;
                 }
 
@@ -228,6 +231,26 @@
                 &__deaths {
                     border: 1px solid hsl(var(--primary-light)/.5);
                     background: linear-gradient(to right, hsl(var(--primary)/.3) 30%, hsl(var(--primary-dark)/.2) 100%);
+                }
+
+
+                &__kd {
+                    position: absolute;
+                    bottom: calc(7em / 2);
+                    left: 50%;
+                    transform: translate(-50%, 50%);
+                    padding: .5em;
+                    border: 1px solid hsl(var(--primary-light)/.5);
+                    background: hsl(var(--primary-dark));
+                    z-index: 1;
+                    height: auto;
+                    border-radius: calc(var(--radius) / 2);
+                    span {
+                        font-weight: 700;
+                        display: flex;
+                        line-height: 1;
+                        font-size: .7em;
+                    }
                 }
                 
                 &__account-status {

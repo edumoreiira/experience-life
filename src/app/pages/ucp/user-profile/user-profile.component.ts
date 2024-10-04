@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { CircleProgressBarComponent } from '../../../components/circle-progress-bar/circle-progress-bar.component';
+import { ThousandSeparator } from '../../../pipes/currency-format.pipe';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CircleProgressBarComponent],
+  imports: [CircleProgressBarComponent, ThousandSeparator],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent {
+
+  kills = 1225312;
+  deaths = 523018;
 
   test2 = [1, 2, 3, 4, 5, 6];
   test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];

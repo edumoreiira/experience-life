@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
@@ -11,5 +11,9 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 })
 export class UcpLayoutComponent {
   version= '1.0.0';
+
+  @HostBinding('class.ucp_c') get ucpContainer() {
+    return true;
+  }
 
 }

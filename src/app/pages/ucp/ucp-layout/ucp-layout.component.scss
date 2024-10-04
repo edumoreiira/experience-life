@@ -1,3 +1,4 @@
+
 .ucp {
     &__container{
         display: flex;
@@ -16,7 +17,8 @@
     &__content {
         display: inline-block;
         width: 100%;
-        margin-left: 250px; //sidebar width
+        margin-left: clamp(250px, 17.6em, 370px); //sidebar width
+        
         transition: all 150ms ease-in-out;
     }
 }
