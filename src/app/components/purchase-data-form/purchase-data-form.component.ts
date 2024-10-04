@@ -18,7 +18,7 @@ import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharact
 })
 export class PurchaseDataFormComponent implements OnInit {
   valueToPay: string = '';
-  step = 3;
+  step = 1;
 
   purchaseForm!: FormGroup<PurchaseForm>;
 

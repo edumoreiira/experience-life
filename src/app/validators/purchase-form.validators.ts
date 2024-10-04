@@ -21,7 +21,7 @@ export function currencyValidator(): ValidatorFn {
     const numericValue = parseInt(integerValue, 10);
 
     // Verifica se é um número válido e se é maior ou igual a 1000
-    if (isNaN(numericValue) || numericValue >= 1000) {
+    if (isNaN(numericValue) || numericValue > 1000) {
       return { maxLimitExceeded: true }; // Retorna erro se for maior ou igual a 1000
     }
 

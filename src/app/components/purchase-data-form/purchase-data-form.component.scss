@@ -98,6 +98,24 @@
                 transform: translateY(calc(100% + .4em));
                 z-index: 1;
             }
+
+            &__player {
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                &__info {
+                    background-color: hsl(var(--background-light));
+                    padding: 1em;
+                    border-radius: var(--radius);
+                    &__item {
+                        span:first-child {
+                            font-weight: 700;
+                            margin-right: .5em;
+                            font-size: 1.1em;
+                        }
+                    }
+                }
+            }
         }
     }
 }
