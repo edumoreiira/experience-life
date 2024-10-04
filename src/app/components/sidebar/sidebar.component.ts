@@ -4,6 +4,17 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter, Subscription } from 'rxjs';
 
+export interface SidebarItem {
+  title: string;
+  icon: string;
+  route?: string; // if route is empty, it will set the item as invalid. if dropdown is not empty, it will set the item as dropdown
+  options?: SidebarSubItem[];
+}
+export interface SidebarSubItem {
+  title: string;
+  route: string;
+}
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -16,6 +27,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   version = input.required<string>();
   isExpanded = false; // handle expanded state for mobile view
   private routerSubscription: Subscription | undefined;
+  items = input<SidebarItem[]>();
+  bottomItems = input<SidebarItem[]>();
 
 
   constructor(private router: Router) { }
@@ -47,6 +60,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   checkRoute(route: string) {
+    if(route === '' || route === 'dropdown') {
+      return false
+    }
     return this.router.url.includes(route);
   }
 

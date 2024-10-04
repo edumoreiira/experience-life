@@ -1,5 +1,8 @@
 <div class="ucp ucp__container">
-    <app-sidebar [version]="version" class="sb" />
+    <app-sidebar [version]="version" class="sb" 
+    [items]="navbarItems"
+    [bottomItems]="bottomItems"
+    />
     <div class="ucp__content">
         <router-outlet/>
     </div>

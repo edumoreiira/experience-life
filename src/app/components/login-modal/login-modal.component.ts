@@ -31,7 +31,7 @@ export class LoginModalComponent {
     if(this.loginForm.valid) {
       console.log(this.loginForm.value);
       setTimeout(() => {
-        this.route.navigate(['ucp']);
+        this.route.navigate(['ucp/profile']);
       }, 1000);
     }
   }
