@@ -35,7 +35,7 @@
                     </div>
                 }
 
-                <div class="purchase__form__section__control purchase__form__section__control--left">
+                <div class="purchase__form__section__control purchase__form__section__control--right">
                     <button gradient-button class="purchase__form__section__button" type="submit"
                     (click)="checkFirstStep()" [disabled]="!firstStepValid()">Continuar</button>
                 </div>
@@ -58,7 +58,7 @@
                     <small class="purchase__form__section__error">O valor da compra deve ser menor ou igual a R$ 1.000,00</small>
                 }
                 </app-input>
-                    <div (click)="test('purchaseAmount')" class="purchase__form__section__coins">
+                    <div class="purchase__form__section__coins">
                         <h4>{{calculateCoins() | thousandSeparator}}</h4>
                         <span>MV</span>
                     </div>
@@ -70,9 +70,11 @@
                     <button gradient-button class="purchase__form__section__coupon__button"
                     type="button">Ativar cupom</button>
                 </div>
-                <div class="purchase__form__section__control">
+                <div class="purchase__form__section__control" [ngClass]="{'purchase__form__section__control--right': skipFirstStep()}">
+                    @if(!skipFirstStep()) {
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
                     type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>
+                    }
                     <button gradient-button class="purchase__form__section__button" type="submit"
                     (click)="checkSecondStep()" [disabled]="!secondStepValid()">Continuar</button>
                 </div>

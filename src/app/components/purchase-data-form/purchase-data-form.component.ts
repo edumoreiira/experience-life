@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, input, OnInit } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '../button/button.component';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
@@ -7,11 +7,12 @@ import { slideUpDown } from '../../animations/transition-animations';
 import { PurchaseForm } from '../../models/purchase-form.interface';
 import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
 import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters, spaceRequired } from '../../validators/purchase-form.validators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-data-form',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, NgxMaskDirective, NgxMaskPipe, FormsModule, ReactiveFormsModule, ThousandSeparator],
+  imports: [InputComponent, ButtonComponent, NgxMaskDirective, NgxMaskPipe, FormsModule, ReactiveFormsModule, ThousandSeparator, CommonModule],
   templateUrl: './purchase-data-form.component.html',
   styleUrl: './purchase-data-form.component.scss',
   animations: [slideUpDown]
@@ -19,16 +20,12 @@ import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharact
 export class PurchaseDataFormComponent implements OnInit {
   valueToPay: string = '';
   step = 1;
+  skipFirstStep = input<boolean>(false);
+  
 
   purchaseForm!: FormGroup<PurchaseForm>;
 
   constructor() {
-  }
-  test(form: string) {
-    console.log(this.getForm(form));
-  }
-
-  ngOnInit(): void {
     this.purchaseForm = new FormGroup<PurchaseForm>({
       accountName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       purchaseAmount: new FormControl('', [Validators.required, currencyValidator()]),
@@ -38,6 +35,14 @@ export class PurchaseDataFormComponent implements OnInit {
       customerPhone: new FormControl('', [Validators.required]),
       customerEmail: new FormControl('', [Validators.required, Validators.email])
     });
+  }
+
+
+  ngOnInit(): void {
+    if(this.skipFirstStep()) {
+      this.step = 2;
+      this.getForm('accountName')?.setValue('accountName');
+    }
   }
 
 

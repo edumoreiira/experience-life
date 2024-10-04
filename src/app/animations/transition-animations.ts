@@ -26,6 +26,8 @@ export const popUp = trigger('popUp', [
 
 export const slideUpDown = trigger('slideUpDown', [
     state('void', style({
+        padding: 0,
+        margin: 0,
         height: 0,
         minHeight: 0,
         opacity: 0
