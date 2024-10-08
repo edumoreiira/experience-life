@@ -18,38 +18,6 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1em;
 
-        @media (max-width: 1264px) {  // break line on 1264px
-            &__main {
-                order: 1;
-            }
-    
-            &__premium {
-                order: 2;
-            }
-    
-            &__others {
-                order: 3;
-            }
-        }
-
-        &__main {
-            grid-row: span 2;
-        }
-
-        &__premium {
-            order: 2;
-            // align-self: start; /* Garante que o item se alinhe ao topo da célula */
-            min-height: 12.5em;
-        }
-
-        &__others {
-            // display: none;
-            grid-row: span 4;
-            &__stats {
-                grid-template-columns: 1fr !important;
-            }
-        }
-
         &__header {
             display: flex;
             flex-wrap: wrap;
@@ -148,6 +116,10 @@
                 }
                 
                 border-radius: var(--radius);
+
+                &--span-2 {
+                    grid-column: span 2;
+                }
 
                 &--reduced { //reduced modifier
                     height: 3.5em;
@@ -282,6 +254,45 @@
                         font-size: 1em !important;
                     }
                 }
+            }
+        }
+        &__main {
+            grid-row: span 2;
+            order: 1;
+        }
+
+        &__premium {
+            order: 3;
+            // align-self: start; /* Garante que o item se alinhe ao topo da célula */
+            min-height: 12.5em;
+        }
+
+        &__performance {
+            order: 2;
+            grid-row: span 3;
+            &__stats {
+            }
+        }
+
+        &__personal {
+            order: 4;
+        }
+
+        @media (max-width: 1150px) {  // break line on 1264px
+            &__main {
+                order: 1 ;
+            }
+    
+            &__premium {
+                order: 2 ;
+            }
+    
+            &__performance {
+                order: 3 ;
+            }
+
+            &__personal {
+                order: 4 ;
             }
         }
     }
