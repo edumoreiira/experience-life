@@ -1,4 +1,27 @@
 <div class="rank">
+    <div class="rank__header">
+        <h1 data-title="Ranking Top Killers">Ranking Dos <span>Top Killers</span> Experience Life</h1>
+    </div>
+    <div class="rank__options">
+        <div class="rank__period">
+            <button class="rank__period__item rank__period__item--active">
+                <span>Ranking Geral</span>
+            </button>
+            <button class="rank__period__item">
+                <span>Ranking Semanal</span>
+            </button>
+            <button class="rank__period__item">
+                <span>Ranking Mensal</span>
+            </button>
+        </div>
+        <div class="rank__selector">
+            <app-dropdown-selection
+            name="Selecionar ranking"
+            [items]="ranks"
+            (clickedItem)="onRankSelected($event)"
+            />
+        </div>
+    </div>
     <div class="rank__top-tier">
         <div class="rank__top-tier__item">
             <div class="rank__top-tier__item__tier">

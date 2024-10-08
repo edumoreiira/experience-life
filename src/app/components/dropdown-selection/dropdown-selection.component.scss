@@ -1,0 +1,81 @@
+.dropdown {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &__button {
+        cursor: pointer;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid hsl(var(--primary));
+        background-color: transparent;
+        padding: 1.05em 1.25em;
+        border-radius: var(--radius);
+        color: hsl(var(--foreground));
+        font-size: 1em;
+        height: 100%;
+        width: 100%;
+        transition: background-color 150ms ease-in-out;
+        &:hover, &[aria-expanded="true"]{ 
+            background-color: hsl(var(--primary) / .1);
+        }
+    }
+
+    &__arrow-down {
+        border: solid hsl(var(--foreground));
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 3px;
+        margin-bottom: 3px;
+        box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        margin-left: .5em;
+        transition: transform 250ms ease-in-out;
+    }
+
+    &__list{
+        position: absolute;
+        right: 0;
+        top: calc(100% + 5px);
+        min-width: 100%;
+        min-height: 100%;
+        padding: .4em;
+        list-style: none;
+        border-radius: var(--radius);
+        background-color: hsl(var(--background));
+        z-index: 10;
+        box-shadow: 0 5px 6px -2px rgba(0, 0, 0, 0.208);
+        overflow: hidden;
+    }
+
+    &__item{
+        cursor: pointer;
+        font-size: .92em;
+        border-radius: calc(var(--radius) / 1.2);
+        padding-block: .5em;
+        padding-left: 2em;
+        position: relative;
+        transition: background-color 150ms ease-in-out;
+        &:hover{
+            background-color: hsl(var(--background-light));
+        }
+
+        &::before{
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            left: .5em;
+            width: 5px;
+            height: 8px;
+            border-width: 0 1px 1px 0;
+            border-style: solid;
+            transform-origin: bottom left;
+            transform: scale(0) rotate(90deg);
+            transition: transform 150ms ease-in-out;
+        }
+        &--active::before{
+            transform: scale(1) rotate(45deg);
+        }
+    }
+}
