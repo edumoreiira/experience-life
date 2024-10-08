@@ -24,6 +24,11 @@ export class UcpLayoutComponent {
       route: 'store'
     }, 
     {
+      title: 'Ranking',
+      icon: 'fi fi-rr-ranking-podium',
+      route: 'ranking'
+    }, 
+    {
       title: 'Administração',
       icon: 'fi fi-rr-document-gear',
       route: 'dropdown',

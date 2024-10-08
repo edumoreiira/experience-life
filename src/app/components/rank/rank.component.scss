@@ -1,0 +1,44 @@
+.rank {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    color: hsl(var(--foreground));
+
+    &__top-tier {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr;
+        gap: 1.5em;
+        &__item {
+            text-align: center;
+            grid-row: 1;
+            padding: 1.5em;
+            border-radius: var(--radius);
+            text-transform: uppercase;
+
+            &__tier{
+                font-size: 1.5em;
+                font-weight: 800;
+                margin-bottom: .5em;
+            }
+
+            &__score {
+                font-size: 1.2em;
+                font-weight: 600;
+            }
+
+            &:nth-child(1) {
+                grid-column: 2;
+                background: linear-gradient(to left, hsl(var(--highlight)), hsl(36.69deg 95.28% 50.2%));
+            }
+            &:nth-child(2) {
+                grid-column: 1;
+                background-color: hsl(12deg 2.42% 59.41%);
+            }
+            &:nth-child(3) {
+                grid-column: 3;
+                background-color: hsl(19.32deg 61.86% 53.73%);
+            }
+        }
+    }
+}
+
