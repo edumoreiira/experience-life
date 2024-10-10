@@ -57,4 +57,22 @@
             </div>
         </div>
     </div>
+    <table class="rank__tier">
+        <thead class="rank__tier__head">
+            <tr>
+                <th>Posição</th>
+                <th>Jogador</th>
+                <th>Pontos</th>
+            </tr>
+        </thead>
+        <tbody class="rank__tier__body">
+            @for (item of rankPlayers; track $index) {
+                <tr>
+                    <td>{{item}}</td>
+                    <td>Jeckwilke_Moreira</td>
+                    <td>1500</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
