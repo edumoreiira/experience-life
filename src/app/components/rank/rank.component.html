@@ -5,13 +5,13 @@
     <div class="rank__options">
         <div class="rank__period">
             <button class="rank__period__item rank__period__item--active">
-                <span>Ranking Geral</span>
+                Ranking Geral
             </button>
             <button class="rank__period__item">
-                <span>Ranking Semanal</span>
+                Ranking Semanal
             </button>
             <button class="rank__period__item">
-                <span>Ranking Mensal</span>
+                Ranking Mensal
             </button>
         </div>
         <div class="rank__selector">
@@ -25,6 +25,7 @@
     <div class="rank__top-tier">
         <div class="rank__top-tier__item">
             <div class="rank__top-tier__item__tier">
+                <i class="fi fi-ss-trophy-star"></i>
                 <span>1</span>
             </div>
             <div class="rank__top-tier__item__player">
@@ -74,5 +75,23 @@
                 </tr>
             }
         </tbody>
+        <!-- load-more footer -->
+         @if (false) {
+             <tfoot class="rank__tier__footer">
+                 <tr>
+                     <td>
+                         <span>##</span>
+                     </td>
+                     <td>
+                         <button class="rank__tier__footer__load-more">
+                             Carregar Mais
+                         </button>
+                     </td>
+                     <td>
+                         <span>####</span>
+                     </td>
+                 </tr>
+             </tfoot>
+         }
     </table>
 </div>
