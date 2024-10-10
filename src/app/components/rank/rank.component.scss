@@ -205,5 +205,68 @@
 
         }
     }
+    &__controls {
+        display: flex;
+        justify-content: end;
+        &__paginator {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            &__item,
+            &__prev,
+            &__next {
+                padding: .4em .9em;
+                background-color: transparent;
+                border: 1px solid hsl(var(--primary));
+                transition: all 150ms ease-in-out;
+                .fi {
+                    display: flex;
+                }
+                
+                &:hover:not(&--active) {
+                    background-color: hsl(var(--primary) / .1);
+                    border-color: hsl(var(--primary-light));
+                }
+                &:active:not(&--active) {
+                    background-color: hsl(var(--primary) / .3);
+                    transition: background-color ease-out 100ms;
+                }
+            }
+
+            &__item {
+                border-left: 0;
+                &:nth-last-of-type(2) {
+                    border-right: 0;
+                }
+                &--active {
+                    background-color: hsl(var(--primary) / .6);
+                }
+            }
+            &__prev {
+                border-radius: calc(var(--radius) / 1.5) 0 0 calc(var(--radius) / 1.5);
+            }
+            &__next {
+                border-radius: 0 calc(var(--radius) / 1.5) calc(var(--radius) / 1.5) 0;
+            }
+
+            &__prev,
+            &__next {
+                padding-inline: 1.3em;
+            }
+
+        }
+        @media screen and (max-width: 740px) {
+            justify-content: center;
+            &__paginator {
+                &__item {
+                    padding: .8em 1.8em;
+                }
+                &__prev,
+                &__next {
+                    padding-inline: 2em;
+                }
+            }
+        }
+    }
 }
 
