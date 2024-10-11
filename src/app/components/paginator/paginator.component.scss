@@ -1,0 +1,150 @@
+.paginator {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    
+    &__item,
+    &__prev,
+    &__next {
+        font-weight: 300;
+        padding: .4em .9em;
+        background-color: transparent;
+        border: 1px solid hsl(var(--primary));
+        transition: all 150ms ease-in-out;
+
+        .fi {
+            display: flex;
+        }
+
+        &:hover:not(&--active) {
+            background-color: hsl(var(--primary) / .1);
+            border-color: hsl(var(--primary-light));
+        }
+        // bug fix to right side border color
+        &:has(+ &:hover:not(&--active)) {
+            border-right-color: hsl(var(--primary-light));
+        }
+
+        &:active:not(&--active) {
+            background-color: hsl(var(--primary) / .3);
+            transition: background-color ease-out 100ms;
+        }
+    }
+
+    &__item {
+        border-left: 0;
+
+        &--active {
+            background-color: hsl(var(--primary) / .4);
+        }
+    }
+
+    &__prev {
+        border-radius: calc(var(--radius) / 1.5) 0 0 calc(var(--radius) / 1.5);
+    }
+
+    &__next {
+        border-radius: 0 calc(var(--radius) / 1.5) calc(var(--radius) / 1.5) 0;
+        border-left: 0;
+    }
+
+    &__prev,
+    &__next {
+        padding-inline: 1.3em;
+    }
+
+    @media screen and (max-width: 768px) {
+        &__item {
+            padding: .8em 1.8em;
+        }
+
+        &__prev,
+        &__next {
+            padding-inline: 2em;
+        }
+    }
+
+}
+
+.select-page {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(var(--backdrop));
+        backdrop-filter: blur(3px);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: calc(100% - 2em);
+        gap: 1em;
+        padding: 2em;
+        background-color: hsl(var(--background-dark));
+        border-radius: var(--radius);
+        z-index: 1;
+
+        h2 {
+            font-size: 1.1em;
+        }
+        
+        input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px solid hsl(var(--primary));
+            text-align: center;
+            width: min(3em, 100%);
+            transition: all 150ms ease-in-out;
+            &:hover:not(:focus) {
+                filter: brightness(1.2);
+            }
+            &:focus {
+                outline: none;
+                border-color: hsl(var(--primary-light));
+            }
+        }
+
+        button {
+            padding: .7em 2em;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: hsl(var(--primary));
+            color: hsl(var(--background-dark));
+            border: 0;
+            border-radius: calc(var(--radius)/1.5);
+            font-weight: 600;
+            transition: background-color 150ms ease-in-out;
+            
+
+            &:hover {
+                background-color: hsl(var(--primary-light));
+            }
+
+            &:active {
+                background-color: hsl(var(--primary-dark));
+                transition: background-color ease-out 100ms;
+            }
+        }
+
+        &__error {
+            font-size: 1em;
+            color: hsl(var(--destructive));
+        }
+    }
+}

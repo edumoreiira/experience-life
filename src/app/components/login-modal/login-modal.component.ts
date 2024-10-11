@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginForm } from '../../models/login-form.interface';
-import { fadeInOut, popUp } from '../../animations/transition-animations';
+import { fadeInOut, popUp, slideUpDown } from '../../animations/transition-animations';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   imports: [InputComponent, ReactiveFormsModule],
   templateUrl: './login-modal.component.html',
   styleUrl: './login-modal.component.scss',
-  animations: [popUp, fadeInOut]
+  animations: [popUp, fadeInOut, slideUpDown]
 })
 export class LoginModalComponent {
 

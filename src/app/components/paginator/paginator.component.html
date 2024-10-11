@@ -1,0 +1,51 @@
+<div class="paginator">
+    <button class="paginator__prev" (click)="onPreviousPage()">
+        <i class="fi fi-rr-angle-small-left"></i>
+    </button>
+    <button class="paginator__item"
+    [ngClass]="{'paginator__item--active': firstButtonValue === currentPage}"
+    (click)="onPageSelected(firstButtonValue)">
+        {{ firstButtonValue }}
+    </button>
+    <button class="paginator__item"
+    [ngClass]="{'paginator__item--active': secondButtonValue === currentPage}"
+    (click)="onPageSelected(secondButtonValue)">
+        {{ secondButtonValue }}
+    </button>
+    <button class="paginator__item"
+    [ngClass]="{'paginator__item--active': thirdButtonValue === currentPage}"
+    (click)="onPageSelected(thirdButtonValue)">
+        {{ thirdButtonValue }}
+    </button>
+    <button class="paginator__item" (click)="onOpenPageSelector()">
+        ...
+    </button>
+    <button class="paginator__item"
+    [ngClass]="{'paginator__item--active': lastPage === currentPage}"
+    (click)="onPageSelected(lastPage)">
+        {{ lastPage }}
+    </button>
+    <button class="paginator__next" (click)="onNextPage()">
+        <i class="fi fi-rr-angle-small-right"></i>
+    </button>
+</div>
+
+@if (showPageSelector) {
+    <div class="select-page" @parentAnimation>
+        <div class="select-page__content" @popUp>
+            <h2>Para qual página deseja ir?</h2>
+            <input #pageSelector type="tel" [placeholder]="1 + '-' + lastPage" mask="0000"
+            [(ngModel)]="pageSelectorInputValue"
+            (input)="onPageSelectorInputChange(pageSelector.value, pageSelector)">
+            <button (click)="onSelectSpecificPage(pageSelector.value)">
+                <i class="fi fi-br-angle-small-right"></i>
+            </button>
+            @if (pageSelectorError) {
+                <span class="select-page__content__error" @slideUpDown>
+                    Insira um valor para a página
+                </span>
+            }
+        </div>
+        <div class="select-page__backdrop" @fadeInOut (click)="onClosePageSelector()"></div>
+    </div>
+}

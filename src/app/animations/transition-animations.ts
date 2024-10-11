@@ -16,6 +16,7 @@ export const popUp = trigger('popUp', [
         opacity: 0,
         transform: 'scale(0)',
         height: 0,
+        minHeight: 0,
         marginBottom: 0
     })),
 

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { DropdownListOptions, DropdownSelectionComponent } from "../dropdown-selection/dropdown-selection.component";
+import PaginatorComponent from "../paginator/paginator.component";
 
 @Component({
   selector: 'app-rank',
   standalone: true,
-  imports: [DropdownSelectionComponent],
+  imports: [DropdownSelectionComponent, PaginatorComponent],
   templateUrl: './rank.component.html',
   styleUrl: './rank.component.scss'
 })

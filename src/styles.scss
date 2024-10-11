@@ -23,6 +23,10 @@ body {
 
 }
 
+.fi {
+    display: flex;;
+}
+
 
 .home_c, .ucp_c {
     &::after{
