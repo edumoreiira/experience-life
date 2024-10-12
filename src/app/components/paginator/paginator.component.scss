@@ -6,8 +6,8 @@
     &__item,
     &__prev,
     &__next {
-        font-weight: 300;
-        padding: .4em .9em;
+        padding-inline: .8em;
+        padding-block: .4em;
         background-color: transparent;
         border: 1px solid hsl(var(--primary));
         transition: all 150ms ease-in-out;
@@ -37,7 +37,9 @@
     }
 
     &__item {
-        
+        font-weight: 300;
+        min-width: 2.9em;
+        font-size: .9em;
         border-left: 0;
         &--active {
             background-color: hsl(var(--primary) / .4);
@@ -60,17 +62,30 @@
 
     &__prev,
     &__next {
-        padding-inline: 1.3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 3.2em;
     }
 
     @media screen and (max-width: 768px) {
         &__item {
-            padding: .8em 1.8em;
+            padding-block: .8em;
+            min-width: 4em;
         }
 
         &__prev,
         &__next {
-            padding-inline: 2em;
+            min-width: 4.5em;
+        }
+
+        &__prev {
+            border-radius: calc(var(--radius)) 0 0 calc(var(--radius));
+        }
+    
+        &__next {
+            border-radius: 0 calc(var(--radius)) calc(var(--radius)) 0;
+            border-left: 0;
         }
     }
 
@@ -118,7 +133,7 @@
             border: 0;
             border-bottom: 2px solid hsl(var(--primary));
             text-align: center;
-            width: min(3em, 100%);
+            width: min(3.5em, 100%);
             transition: all 150ms ease-in-out;
             &:hover:not(:focus) {
                 filter: brightness(1.2);

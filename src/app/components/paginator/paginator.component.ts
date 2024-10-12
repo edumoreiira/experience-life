@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, input } from '@angular/core';
+import { Component, HostListener, input, output } from '@angular/core';
 import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../animations/transition-animations';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
@@ -13,43 +13,54 @@ import { FormsModule } from '@angular/forms';
   animations: [popUp, fadeInOut, parentAnimations, slideUpDown]
 })
 export default class PaginatorComponent {
-  lastPage = input(1);
-  currentPage = 1;
-  secondToLastPage = this.lastPage() - 1;
+  limit = input<number>(1);
+  startsAt = input<number>(1);
+  getCurrentPage = output<number>();
+
+
+  
+  currentPage = this.startsAt();
+  secondToLastPage = this.limit() - 1;
   showPageSelector = false;
   pageSelectorError = false;
   pageSelectorInputValue = '';
 
+  selectPage(page: number) {
+    this.currentPage = page;
+    this.getCurrentPage.emit(this.currentPage);
+  }
+
   onPageSelected(page: number){
-    if(page < 1 || page > this.lastPage()){
+    if(page < 1 || page > this.limit()){
       return
     }
-    this.currentPage = page
+    this.selectPage(page);
   }
 
   onPreviousPage(){
     if(this.currentPage > 1){
-      this.currentPage--
+      this.selectPage(this.currentPage - 1);
     }
   }
 
   onNextPage(){
-    if(this.currentPage < this.lastPage()){
-      this.currentPage++
+    if(this.currentPage < this.limit()){
+      this.selectPage(this.currentPage + 1);
     }
   }
+  
 
   getButtonValue(offset: number): number {
     if(this.currentPage <= 2) {
       return 2 + offset;
     }
 
-    if(this.lastPage() === 3 && this.currentPage === 3) { // fix for when there are only 3 pages
+    if(this.limit() === 3 && this.currentPage === 3) { // fix for when there are only 3 pages
      return  2 + offset;
     }
 
-    if(this.currentPage >= this.lastPage() - 1) { // if current page is the second to last page or last page
-      return (this.lastPage() - 2) + offset;
+    if(this.currentPage >= this.limit() - 1) { // if current page is the second to last page or last page
+      return (this.limit() - 2) + offset;
     }
 
     return this.currentPage + offset;
@@ -83,7 +94,7 @@ export default class PaginatorComponent {
   }
 
   onOpenPageSelector() {
-    if(this.currentPage >= 3) {
+    if(this.limit() >= 3) {
       this.showPageSelector = true;
     }
   }
@@ -108,15 +119,15 @@ export default class PaginatorComponent {
 
   onSelectSpecificPage(page: string) {
     const pageNumber = parseInt(page, 10);
-    if(pageNumber > this.lastPage() || pageNumber < 1 || isNaN(pageNumber)) {
+    if(pageNumber > this.limit() || pageNumber < 1 || isNaN(pageNumber)) {
       this.showPageSelectorError();
       return 
     }
-    this.currentPage = pageNumber;
+    this.selectPage(pageNumber);
     this.onClosePageSelector();
   }
   
-  // prevent user from entering numbers greater than the last page
+  // prevent user from entering numbers greater than the last page in the input
   onPageSelectorInputChange(value: string, inputElement: HTMLInputElement) {
     const inputValue = parseInt(value, 10);
 
@@ -125,9 +136,9 @@ export default class PaginatorComponent {
       return;
     }
 
-    if(inputValue > this.lastPage()) {
-      this.pageSelectorInputValue = this.lastPage().toString();
-      inputElement.value = this.lastPage().toString(); // update input value to last page number
+    if(inputValue > this.limit()) {
+      this.pageSelectorInputValue = this.limit().toString();
+      inputElement.value = this.limit().toString(); // update input value to last page number
     } else {
       this.pageSelectorInputValue = value; // update to allowed value
 

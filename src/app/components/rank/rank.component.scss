@@ -1,8 +1,11 @@
 .rank {
     display: flex;
     flex-direction: column;
-    gap: 2em;
     color: hsl(var(--foreground));
+
+    > *:not(:last-child) {
+        margin-bottom: 2em;
+    }
 
     &__header {
         text-transform: uppercase;
@@ -138,11 +141,6 @@
                 &:last-child {
                     margin-bottom: 1em;
                 }
-                &:nth-child(-n+2) { // highlight first two rows (top 4 and 5)
-                    td{
-                        background-color: hsl(var(--background-light));
-                    }
-                }
                 td {
                     background-color: hsl(var(--background));
                     padding: .7em;
@@ -154,6 +152,11 @@
                     &:last-child { //add border-radius to corners
                         border-top-right-radius: var(--radius);
                         border-bottom-right-radius: var(--radius);
+                    }
+                }
+                &.highlight { 
+                    td{
+                        background-color: hsl(var(--background-light));
                     }
                 }
             }

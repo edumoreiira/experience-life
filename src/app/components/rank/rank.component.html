@@ -22,43 +22,36 @@
             />
         </div>
     </div>
-    @if(true) {
-        
-        <div class="rank__top-tier">
-            <div class="rank__top-tier__item">
-                <div class="rank__top-tier__item__tier">
-                    <i class="fi fi-ss-trophy-star"></i>
-                    <span>1</span>
-                </div>
-                <div class="rank__top-tier__item__player">
-                    <span>Jeckwilke_Moreira</span>
-                </div>
-                <div class="rank__top-tier__item__score">
-                    <span>1500</span>
-                </div>
-            </div>
-            <div class="rank__top-tier__item">
-                <div class="rank__top-tier__item__tier">
-                    <span>2</span>
-                </div>
-                <div class="rank__top-tier__item__player">
-                    <span>Jeckwilke_Moreira</span>
-                </div>
-                <div class="rank__top-tier__item__score">
-                    <span>1500</span>
-                </div>
-            </div>
-            <div class="rank__top-tier__item">
-                <div class="rank__top-tier__item__tier">
-                    <span>3</span>
-                </div>
-                <div class="rank__top-tier__item__player">
-                    <span>Jeckwilke_Moreira</span>
-                </div>
-                <div class="rank__top-tier__item__score">
-                    <span>1500</span>
-                </div>
-            </div>
+    @if(currentPage === 1) {
+        <div class="rank__top-tier" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
+        @for(player of (players$ | async); track $index) {
+                @if($index === 0) {
+                    <div class="rank__top-tier__item">
+                        <div class="rank__top-tier__item__tier">
+                            <i class="fi fi-ss-trophy-star"></i>
+                            <span>{{player.position}}</span>
+                        </div>
+                        <div class="rank__top-tier__item__player">
+                            <span>{{player.nickname}}</span>
+                        </div>
+                        <div class="rank__top-tier__item__score">
+                            <span>{{player.score}}</span>
+                        </div>
+                    </div>
+                } @else if ($index < 3) {
+                    <div class="rank__top-tier__item">
+                        <div class="rank__top-tier__item__tier">
+                            <span>{{player.position}}</span>
+                        </div>
+                        <div class="rank__top-tier__item__player">
+                            <span>{{player.nickname}}</span>
+                        </div>
+                        <div class="rank__top-tier__item__score">
+                            <span>{{player.score}}</span>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     }
     <table class="rank__tier">
@@ -70,14 +63,25 @@
             </tr>
         </thead>
         <tbody class="rank__tier__body">
-            @for (item of rankPlayers; track $index) {
-                <tr>
-                    <td>{{item}}</td>
-                    <td>Jeckwilke_Moreira</td>
-                    <td>1500</td>
-                </tr>
+            @for (player of (players$ | async); track $index) {
+                @if(currentPage === 1) {
+                    @if(player.position > 3) {
+                        <tr [ngClass]="{'highlight': (player.position <= 5)}">
+                            <td>{{player.position}}</td>
+                            <td>{{player.nickname}}</td>
+                            <td>{{player.score}}</td>
+                        </tr>
+                    }
+                } @else {
+                    <tr>
+                        <td>{{player.position}}</td>
+                        <td>{{player.nickname}}</td>
+                        <td>{{player.score}}</td>
+                    </tr>
+                }
             }
         </tbody>
+
         <!-- load-more footer -->
          @if (false) {
              <tfoot class="rank__tier__footer">
@@ -98,6 +102,10 @@
          }
     </table>
     <div class="rank__controls">
-        <app-paginator></app-paginator>
+        <app-paginator
+        [startsAt]="1"
+        [limit]="limit"
+        (getCurrentPage)="loadPlayers($event)"
+        />
     </div>
 </div>
