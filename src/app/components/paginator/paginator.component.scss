@@ -16,26 +16,36 @@
             display: flex;
         }
 
-        &:hover:not(&--active) {
+        &:hover:not(&--active, :disabled) {
             background-color: hsl(var(--primary) / .1);
             border-color: hsl(var(--primary-light));
         }
         // bug fix to right side border color
-        &:has(+ &:hover:not(&--active)) {
+        &:has(+ &:hover:not(&--active, :disabled)) {
             border-right-color: hsl(var(--primary-light));
         }
 
-        &:active:not(&--active) {
+        &:active:not(&--active, :disabled) {
             background-color: hsl(var(--primary) / .3);
             transition: background-color ease-out 100ms;
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: .5;
         }
     }
 
     &__item {
+        
         border-left: 0;
-
         &--active {
             background-color: hsl(var(--primary) / .4);
+        }
+        &--selector:disabled { // fix border color to right side when disabled
+            opacity: 1;
+            border-color: hsl(var(--primary) / .5);
+            border-right-color: hsl(var(--primary));
         }
     }
 

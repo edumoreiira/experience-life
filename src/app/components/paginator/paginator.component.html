@@ -7,23 +7,24 @@
     (click)="onPageSelected(firstButtonValue)">
         {{ firstButtonValue }}
     </button>
-    <button class="paginator__item"
+    <button class="paginator__item" [disabled]="secondButtonValue > lastPage()"
     [ngClass]="{'paginator__item--active': secondButtonValue === currentPage}"
     (click)="onPageSelected(secondButtonValue)">
         {{ secondButtonValue }}
     </button>
-    <button class="paginator__item"
+    <button class="paginator__item" [disabled]="thirdButtonValue > lastPage()"
     [ngClass]="{'paginator__item--active': thirdButtonValue === currentPage}"
     (click)="onPageSelected(thirdButtonValue)">
         {{ thirdButtonValue }}
     </button>
-    <button class="paginator__item" (click)="onOpenPageSelector()">
+    <button class="paginator__item paginator__item--selector" (click)="onOpenPageSelector()"
+    [disabled]="lastPage() <= 3">
         ...
     </button>
     <button class="paginator__item"
-    [ngClass]="{'paginator__item--active': lastPage === currentPage}"
-    (click)="onPageSelected(lastPage)">
-        {{ lastPage }}
+    [ngClass]="{'paginator__item--active': lastPage() === currentPage}"
+    (click)="onPageSelected(lastPage())">
+        {{ lastPage() }}
     </button>
     <button class="paginator__next" (click)="onNextPage()">
         <i class="fi fi-rr-angle-small-right"></i>
@@ -34,7 +35,7 @@
     <div class="select-page" @parentAnimation>
         <div class="select-page__content" @popUp>
             <h2>Para qual página deseja ir?</h2>
-            <input #pageSelector type="tel" [placeholder]="1 + '-' + lastPage" mask="0000"
+            <input #pageSelector type="tel" [placeholder]="1 + '-' + lastPage()" mask="0000"
             [(ngModel)]="pageSelectorInputValue"
             (input)="onPageSelectorInputChange(pageSelector.value, pageSelector)">
             <button (click)="onSelectSpecificPage(pageSelector.value)">

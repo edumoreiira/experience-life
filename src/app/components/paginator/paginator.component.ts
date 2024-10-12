@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, input } from '@angular/core';
 import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../animations/transition-animations';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
@@ -13,14 +13,17 @@ import { FormsModule } from '@angular/forms';
   animations: [popUp, fadeInOut, parentAnimations, slideUpDown]
 })
 export default class PaginatorComponent {
-  lastPage = 10
-  currentPage = 1
-  secondToLastPage = this.lastPage - 1;
-  showPageSelector = true;
+  lastPage = input(1);
+  currentPage = 1;
+  secondToLastPage = this.lastPage() - 1;
+  showPageSelector = false;
   pageSelectorError = false;
   pageSelectorInputValue = '';
 
   onPageSelected(page: number){
+    if(page < 1 || page > this.lastPage()){
+      return
+    }
     this.currentPage = page
   }
 
@@ -31,49 +34,58 @@ export default class PaginatorComponent {
   }
 
   onNextPage(){
-    if(this.currentPage < this.lastPage){
+    if(this.currentPage < this.lastPage()){
       this.currentPage++
     }
   }
 
-
-  get firstButtonValue() {
-    if(this.currentPage === this.lastPage) { // last page
-      return this.currentPage - 3;
-    } else if (this.currentPage === this.secondToLastPage) { // second to last page
-      return this.currentPage - 2;
+  getButtonValue(offset: number): number {
+    if(this.currentPage <= 2) {
+      return 2 + offset;
     }
-    return this.currentPage !== 1 ? this.currentPage - 1 : this.currentPage;
-  }
 
-  get secondButtonValue() {
-    if(this.currentPage === this.lastPage) { 
-      return this.currentPage - 2;
-    } else if (this.currentPage === this.secondToLastPage) {
-      return this.currentPage - 1;
+    if(this.lastPage() === 3 && this.currentPage === 3) { // fix for when there are only 3 pages
+     return  2 + offset;
     }
-    return this.currentPage !== 1 ? this.currentPage : this.currentPage + 1;
-  }
 
-  get thirdButtonValue() {
-    if(this.currentPage === this.lastPage) { 
-      return this.currentPage - 1;
-    } else if (this.currentPage === this.secondToLastPage) {
-      return this.currentPage;
+    if(this.currentPage >= this.lastPage() - 1) { // if current page is the second to last page or last page
+      return (this.lastPage() - 2) + offset;
     }
-    return this.currentPage !== 1 ? this.currentPage + 1 : this.currentPage + 2;
+
+    return this.currentPage + offset;
   }
+  
+  get firstButtonValue(): number {
+    return this.getButtonValue(-1)
+  }
+  
+  get secondButtonValue(): number {
+    return this.getButtonValue(0);
+  }
+  
+  get thirdButtonValue(): number {
+    return this.getButtonValue(1);
+  }
+  
 
 
 
 
   // Page Selector modal methods
-  onClosePageSelector() {
+  closePageSelector() {
     this.showPageSelector = false;
   }
 
+  onClosePageSelector() {
+    this.pageSelectorError = false;
+    this.pageSelectorInputValue = '';
+    this.closePageSelector();
+  }
+
   onOpenPageSelector() {
-    this.showPageSelector = true;
+    if(this.currentPage >= 3) {
+      this.showPageSelector = true;
+    }
   }
 
   showPageSelectorError() {
@@ -96,13 +108,12 @@ export default class PaginatorComponent {
 
   onSelectSpecificPage(page: string) {
     const pageNumber = parseInt(page, 10);
-    if(pageNumber > this.lastPage || pageNumber < 1 || isNaN(pageNumber)) {
+    if(pageNumber > this.lastPage() || pageNumber < 1 || isNaN(pageNumber)) {
       this.showPageSelectorError();
       return 
     }
-    this.showPageSelector = false; // close page selector
     this.currentPage = pageNumber;
-    this.pageSelectorInputValue = ''; // clear input value
+    this.onClosePageSelector();
   }
   
   // prevent user from entering numbers greater than the last page
@@ -114,9 +125,9 @@ export default class PaginatorComponent {
       return;
     }
 
-    if(inputValue > this.lastPage) {
-      this.pageSelectorInputValue = this.lastPage.toString();
-      inputElement.value = this.lastPage.toString(); // update input value to last page number
+    if(inputValue > this.lastPage()) {
+      this.pageSelectorInputValue = this.lastPage().toString();
+      inputElement.value = this.lastPage().toString(); // update input value to last page number
     } else {
       this.pageSelectorInputValue = value; // update to allowed value
 
