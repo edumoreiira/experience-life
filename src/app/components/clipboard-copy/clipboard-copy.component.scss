@@ -1,0 +1,44 @@
+.copy-to-clipboard{
+    height: max-content;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__wrapper {
+        display: flex;
+        gap: .5em;
+        align-items: center;
+        position: relative;
+        max-width: 100%;
+    }
+
+    span{
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        letter-spacing: .05em;
+    }
+
+    &__copy-btn {
+        cursor: pointer;
+        display: flex;
+        transition: color 150ms ease-in-out;
+        &:hover {
+            color: hsl(var(--primary-light))
+        }
+    }
+
+    &__copied-card {
+        position: absolute;
+        left: calc(100% + 1em);
+        font-size: .7em;
+        text-wrap: nowrap;
+        overflow: hidden;
+        cursor: default;
+        font-weight: 400;
+        padding: .47em .7em;
+        border-radius: var(--radius);
+        background: linear-gradient(to right, hsl(var(--primary-light) / .4) 10%, transparent);
+    }
+}
