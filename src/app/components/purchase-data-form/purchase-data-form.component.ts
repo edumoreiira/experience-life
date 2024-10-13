@@ -1,13 +1,16 @@
-import { AfterViewInit, Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '../button/button.component';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { slideUpDown } from '../../animations/transition-animations';
 import { PurchaseForm } from '../../models/purchase-form.interface';
-import {  ThousandSeparator } from '../../pipes/currency-format.pipe';
-import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters, spaceRequired } from '../../validators/purchase-form.validators';
+import { ThousandSeparator } from '../../pipes/currency-format.pipe';
+import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters} from '../../validators/purchase-form.validators';
 import { CommonModule } from '@angular/common';
+import { PaymentData, PaymentResponse } from '../../models/payment-data.interface';
+import { PaymentService } from '../../services/Payment/payment.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-purchase-data-form',
@@ -23,8 +26,9 @@ export class PurchaseDataFormComponent implements OnInit {
   step = 1;
   purchaseForm!: FormGroup<PurchaseForm>;
   pageHasLoaded = false;
+  paymentResponse$ = new Observable<PaymentResponse>();
 
-  constructor() {
+  constructor(private paymentService: PaymentService) {
     this.purchaseForm = new FormGroup<PurchaseForm>({
       accountName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       purchaseAmount: new FormControl('', [Validators.required, currencyValidator()]),
@@ -80,7 +84,32 @@ export class PurchaseDataFormComponent implements OnInit {
   
   finishPurchase() {
     if(this.purchaseForm.valid) {
-      console.log(this.purchaseForm.value);
+      const form = this.purchaseForm.value;
+      const fullName = form.customerName.trim();
+      const nameParts = fullName.split(' ');
+      const cleanedPhone = form.customerPhone.replace(/\D/g, '');
+      
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ');
+      const cpf = form.customerCpf.replace(/\D/g, '');
+      const areaCode = cleanedPhone.slice(0, 2);
+      const phoneNumber = cleanedPhone.slice(2);
+      const email = form.customerEmail;
+      const purchaseAmount = parseInt(form.purchaseAmount.replace(/\D/g, '').slice(0, -2), 10);
+      
+      const data: PaymentData = {
+        firstName,
+        lastName,
+        areaCode,
+        phoneNumber,
+        email,
+        cpf,
+        transactionAmount: purchaseAmount
+      }
+
+      this.paymentResponse$ = this.paymentService.createPixPayment(data) // call the payment service to asign data to paymentResponse$
+      
+      
     }
   }
 
