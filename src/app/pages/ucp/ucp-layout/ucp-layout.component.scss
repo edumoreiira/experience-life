@@ -8,7 +8,6 @@
         gap: var(--grid-page-padding);
     
     
-    
         @media (max-width: 580px) {
             font-size: clamp(.4em, 2.1vw, 1em);
         }
@@ -17,8 +16,7 @@
     &__content {
         display: inline-block;
         width: 100%;
-        margin-left: clamp(250px, 17.6em, 370px); //sidebar width
-        
+        padding-left: clamp(250px, 17.6em, 370px); //sidebar width
         transition: all 150ms ease-in-out;
     }
 }
@@ -26,7 +24,7 @@
 @media screen and (max-width: 740px) {
     .ucp {
         .ucp__content {
-            margin-left: 60px;
+            padding-left: 60px;
         }
     }
 

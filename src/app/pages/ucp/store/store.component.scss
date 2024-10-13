@@ -11,7 +11,8 @@
 }
 
 .store {
-    max-width: 42em;
+    max-width: min(42em, 100%);
+    margin-right: var(--grid-page-padding);
     &__header {
         margin-bottom: 1.5em;
         h1 {

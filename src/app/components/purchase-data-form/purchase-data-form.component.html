@@ -37,7 +37,7 @@
 
                 <div class="purchase__form__section__control purchase__form__section__control--right">
                     <button gradient-button class="purchase__form__section__button" type="submit"
-                    (click)="checkFirstStep()" [disabled]="!firstStepValid()">Continuar</button>
+                    (click)="validateFirstStep()" [disabled]="!firstStepValid()">Continuar</button>
                 </div>
             </div>
 
@@ -73,10 +73,10 @@
                 <div class="purchase__form__section__control" [ngClass]="{'purchase__form__section__control--right': skipFirstStep()}">
                     @if(!skipFirstStep()) {
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
-                    type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>
+                    type="button" group="secondary" (click)="onPreviousStep()">Voltar</button>
                     }
                     <button gradient-button class="purchase__form__section__button" type="submit"
-                    (click)="checkSecondStep()" [disabled]="!secondStepValid()">Continuar</button>
+                    (click)="validateSecondStep()" [disabled]="!secondStepValid()">Continuar</button>
                 </div>
             </div>
         } @else if(step === 3) {
@@ -136,13 +136,55 @@
                     </app-input>
                 <div class="purchase__form__section__control">
                     <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
-                    type="button" group="secondary" (click)="goToPreviousStep()">Voltar</button>
+                    type="button" group="secondary" (click)="onPreviousStep()">Voltar</button>
                     <button gradient-button class="purchase__form__section__button" type="submit"
                     (click)="finishPurchase()" [disabled]="!purchaseForm.valid">Finalizar</button>
                 </div>
             </div>
 
         }
-
     </form>
+    @if(step === 4 && (paymentResponse$ | async); as payment) {
+        <div class="purchase__success" @slideUpDown>
+            <div class="purchase__success__header">
+                <h2>Pedido registrado com sucesso!</h2>
+                <p>Seu pedido foi registrado com êxito! Para resgatar suas moedas verdes
+                     e aproveitar os benefícios no nosso servidor, finalize o pagamento.
+                     Após a confirmação, receba suas moedas clicando no botão "Receber Moedas".
+                </p>
+            </div>
+            <div class="purchase__success__purchase">
+                <h3>Pague R$ {{payment.transaction_amount}},00 via Pix</h3>
+                <span>Vencimento: {{payment.date_of_expiration | date: "d 'de' MMMM 'às' HH:mm 'h'"}}.</span>
+            </div>
+            <div class="purchase__success__qrcode">
+                <img [src]="'data:image/png;base64,' + payment.point_of_interaction.transaction_data.qr_code_base64" 
+                alt="QR Code">
+            </div>
+            <div class="purchase__success__copy-link">
+                <app-clipboard-copy
+                [direction]="'top-right'"
+                [value]="payment.point_of_interaction.transaction_data.qr_code"
+                />
+            </div>
+            <div class="purchase__success__info">
+                <div class="purchase__success__info__item">
+                    <span>Nome da conta:</span>
+                    <span>{{getForm('accountName')?.value}}</span>
+                </div>
+                <div class="purchase__success__info__item">
+                    <span>Valor da compra:</span>
+                    <span>{{getForm('purchaseAmount')?.value}}</span>
+                </div>
+                <div class="purchase__success__info__item">
+                    <span>Cupom de desconto:</span>
+                    <span>{{getForm('coupon')?.value || 'Não'}}</span>
+                </div>
+                <div class="purchase__success__info__item">
+                    <span>Moedas verdes:</span>
+                    <span>{{calculateCoins() | thousandSeparator}}</span>
+                </div>
+            </div>
+        </div>
+    }
 </div>

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PaymentService {
   private readonly apiUrl = '/api/v1/payments';
-  private readonly accessToken = 'TEST-3822325863128027-101216-3d26c333f4e67f7c4a4a75c4d0730e82-289181285'
+  private readonly accessToken = 'APP_USR-3822325863128027-101216-ad0c133ae188c54b2645a93706ea663e-289181285'
 
   constructor(private http: HttpClient) { }
 

@@ -9,5 +9,6 @@ import { PurchaseDataFormComponent } from '../../../components/purchase-data-for
   styleUrl: './store.component.scss'
 })
 export class StoreComponent {
+  currentStep = 1;
 
 }
