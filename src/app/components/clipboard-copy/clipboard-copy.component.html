@@ -2,10 +2,11 @@
     <div class="copy-to-clipboard__wrapper">
         <span>{{value()}}</span>
         <i class="fi fi-rr-copy copy-to-clipboard__copy-btn"
-        [cdkCopyToClipboard]="value()" (click)="handleCopyIp()">
+        [cdkCopyToClipboard]="value()" (click)="handleCopyToClipboard()">
         </i>
         @if (copied) {
-            <div class="copy-to-clipboard__copied-card" @slide>
+            <div class="copy-to-clipboard__copied-card" 
+            [attr.data-direction]="direction()" @slide>
                 <span>Copiado!</span>
             </div>
         }

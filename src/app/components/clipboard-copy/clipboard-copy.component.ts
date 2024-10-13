@@ -2,6 +2,9 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { Component, input } from '@angular/core';
 import { slide } from '../../animations/transition-animations';
 
+
+
+type Direction = 'right' | 'top-right';
 @Component({
   selector: 'app-clipboard-copy',
   standalone: true,
@@ -13,8 +16,9 @@ import { slide } from '../../animations/transition-animations';
 export class ClipboardCopyComponent {
   copied = false;
   value = input<string>('text to be copied');
+  direction = input<Direction>('right');
     // show/hide copied alert
-    handleCopyIp() {
+    handleCopyToClipboard() {
       if(this.copied === false) { // avoid multiple alerts
         this.copied = true;
   

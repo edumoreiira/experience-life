@@ -1,3 +1,4 @@
+
 .copy-to-clipboard{
     height: max-content;
     display: flex;
@@ -15,6 +16,8 @@
 
     span{
         max-width: 100%;
+        display: inline-block;
+        white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
         letter-spacing: .05em;
@@ -30,6 +33,8 @@
     }
 
     &__copied-card {
+        display: flex;
+        justify-content: center;
         position: absolute;
         left: calc(100% + 1em);
         font-size: .7em;
@@ -40,5 +45,10 @@
         padding: .47em .7em;
         border-radius: var(--radius);
         background: linear-gradient(to right, hsl(var(--primary-light) / .4) 10%, transparent);
+    }
+    &__copied-card[data-direction="top-right"] {
+        bottom: calc(100% + 1.25em);
+        left: unset;
+        right: 0;
     }
 }
