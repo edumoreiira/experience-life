@@ -1,7 +1,7 @@
 <div class="purchase">
     <form class="purchase__form" [formGroup]="purchaseForm">
         @if(step === 1) {
-            <div class="purchase__form__section" @slideUpDown>
+            <div class="purchase__form__section" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
                 <h2>Insira o nome da sua conta no nosso servidor.</h2>
                 <app-input class="purchase__form__section__input"
                 placeholder="Nome da conta"

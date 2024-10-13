@@ -18,12 +18,11 @@ import { CommonModule } from '@angular/common';
   animations: [slideUpDown]
 })
 export class PurchaseDataFormComponent implements OnInit {
+  skipFirstStep = input<boolean>(false);
   valueToPay: string = '';
   step = 1;
-  skipFirstStep = input<boolean>(false);
-  
-
   purchaseForm!: FormGroup<PurchaseForm>;
+  pageHasLoaded = false;
 
   constructor() {
     this.purchaseForm = new FormGroup<PurchaseForm>({
@@ -43,6 +42,9 @@ export class PurchaseDataFormComponent implements OnInit {
       this.step = 2;
       this.getForm('accountName')?.setValue('accountName');
     }
+    setTimeout(() => {
+      this.pageHasLoaded = true;
+    });
   }
 
 

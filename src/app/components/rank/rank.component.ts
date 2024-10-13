@@ -19,15 +19,10 @@ export class RankComponent implements OnInit {
   itemsPerPage = 10;
   playersSubject = new BehaviorSubject<RankPlayers[]>([])
   players$: Observable<RankPlayers[]> = this.playersSubject.asObservable();
+  pageHasLoaded = false;
 
-  loadPlayers(currentPage: number){
-    this.currentPage = currentPage;
-    const start = (currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.playersSubject.next(this.rankPlayers.slice(start, end));
-  } 
-
-
+  
+  
   ranks: DropdownListOptions[] = [
     {name: "Kills", isActive: false},
     {name: "Deaths", isActive: false},
@@ -37,7 +32,6 @@ export class RankComponent implements OnInit {
     {name: "Crimes Cometidos", isActive: false},
     {name: "Vezes Presos", isActive: false},
   ]
-  pageHasLoaded = false;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -45,6 +39,13 @@ export class RankComponent implements OnInit {
     });
     this.loadPlayers(this.currentPage);
   }
+
+  loadPlayers(currentPage: number){
+    this.currentPage = currentPage;
+    const start = (currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.playersSubject.next(this.rankPlayers.slice(start, end));
+  } 
 
   onRankSelected(rank: DropdownListOptions){
     this.ranks.forEach(r => {
@@ -75,28 +76,28 @@ export class RankComponent implements OnInit {
     {nickname: 'iqktbt', score: 99, position: 19},
     {nickname: 'anqrxg', score: 73, position: 20},
     {nickname: 'dfqxdb', score: 44, position: 21},
-    {nickname: 'nnhtip', score: 57, position: 22},
-    {nickname: 'wsjmsj', score: 54, position: 23},
-    {nickname: 'egmnaz', score: 22, position: 24},
-    {nickname: 'ooahzi', score: 46, position: 25},
-    {nickname: 'imrlrp', score: 98, position: 26},
-    {nickname: 'rraevf', score: 47, position: 27},
-    {nickname: 'lovrse', score: 70, position: 28},
-    {nickname: 'mtkaie', score: 39, position: 29},
-    {nickname: 'kvnsao', score: 3, position: 30},
-    {nickname: 'oqqehw', score: 24, position: 31},
-    {nickname: 'oufhlq', score: 80, position: 32},
-    {nickname: 'adkfko', score: 19, position: 33},
-    {nickname: 'tsvrcd', score: 55, position: 34},
-    {nickname: 'vqsppb', score: 27, position: 35},
-    {nickname: 'tskipm', score: 74, position: 36},
-    {nickname: 'rzeaxs', score: 75, position: 37},
-    {nickname: 'ouvfmp', score: 16, position: 38},
-    {nickname: 'hhcajp', score: 5, position: 39},
-    {nickname: 'phkebr', score: 54, position: 40}
+    // {nickname: 'nnhtip', score: 57, position: 22},
+    // {nickname: 'wsjmsj', score: 54, position: 23},
+    // {nickname: 'egmnaz', score: 22, position: 24},
+    // {nickname: 'ooahzi', score: 46, position: 25},
+    // {nickname: 'imrlrp', score: 98, position: 26},
+    // {nickname: 'rraevf', score: 47, position: 27},
+    // {nickname: 'lovrse', score: 70, position: 28},
+    // {nickname: 'mtkaie', score: 39, position: 29},
+    // {nickname: 'kvnsao', score: 3, position: 30},
+    // {nickname: 'oqqehw', score: 24, position: 31},
+    // {nickname: 'oufhlq', score: 80, position: 32},
+    // {nickname: 'adkfko', score: 19, position: 33},
+    // {nickname: 'tsvrcd', score: 55, position: 34},
+    // {nickname: 'vqsppb', score: 27, position: 35},
+    // {nickname: 'tskipm', score: 74, position: 36},
+    // {nickname: 'rzeaxs', score: 75, position: 37},
+    // {nickname: 'ouvfmp', score: 16, position: 38},
+    // {nickname: 'hhcajp', score: 5, position: 39},
+    // {nickname: 'phkebr', score: 54, position: 40}
   ]
 
-  limit = this.rankPlayers.length / this.itemsPerPage;
+  limit = Math.ceil(this.rankPlayers.length / this.itemsPerPage);
   
 
 }
