@@ -1,190 +1,191 @@
 <div class="purchase">
     <form class="purchase__form" [formGroup]="purchaseForm">
         @if(step === 1) {
-            <div class="purchase__form__section" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
-                <h2>Insira o nome da sua conta no nosso servidor.</h2>
-                <app-input class="purchase__form__section__input"
-                placeholder="Nome da conta"
-                formControlName="accountName"
-                >
+        <div class="purchase__form__section" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
+            <h2>Insira o nome da sua conta no nosso servidor.</h2>
+            <app-input class="purchase__form__section__input" placeholder="Nome da conta" formControlName="accountName"
+            (input)="avoidWhitespace($event, false)">
                 @if(getForm('accountName')?.errors?.['required']) {
-                    <small class="purchase__form__section__error">O nome da conta é obrigatório</small>
+                <small class="purchase__form__section__error">O nome da conta é obrigatório</small>
                 } @else if(getForm('accountName')?.errors?.['minlength']) {
-                    <small class="purchase__form__section__error">O nome da conta deve ter no mínimo 3 caracteres</small>
+                <small class="purchase__form__section__error">O nome da conta deve ter no mínimo 3 caracteres</small>
                 } @else if(getForm('accountName')?.errors?.['maxlength']) {
-                    <small class="purchase__form__section__error">O nome da conta deve ter no máximo 20 caracteres</small>
+                <small class="purchase__form__section__error">O nome da conta deve ter no máximo 20 caracteres</small>
                 }
-                </app-input>
-                @if(getForm('accountName')?.valid) {
-                    <div class="purchase__form__section__player" @slideUpDown>
-                        <h3>Confirme se esta é a conta que deseja depositar as moedas.</h3>
-                        <div class="purchase__form__section__player__info">
-                            <div class="purchase__form__section__player__info__item">
-                                <span>Nome da conta:</span>
-                                <span>{{getForm('accountName')?.value}}</span>
-                            </div>
-                            <div class="purchase__form__section__player__info__item">
-                                <span>Nível:</span>
-                                <span>37</span>
-                            </div>
-                            <div class="purchase__form__section__player__info__item">
-                                <span>Organização:</span>
-                                <span>Civil</span>
-                            </div>
-                        </div>
+            </app-input>
+            @if(getForm('accountName')?.valid) {
+            <div class="purchase__form__section__player" @slideUpDown>
+                <h3>Confirme se esta é a conta que deseja depositar as moedas.</h3>
+                <div class="purchase__form__section__player__info">
+                    <div class="purchase__form__section__player__info__item">
+                        <span>Nome da conta:</span>
+                        <span>{{getForm('accountName')?.value}}</span>
                     </div>
-                }
-
-                <div class="purchase__form__section__control purchase__form__section__control--right">
-                    <button gradient-button class="purchase__form__section__button" type="submit"
-                    (click)="validateFirstStep()" [disabled]="!firstStepValid()">Continuar</button>
+                    <div class="purchase__form__section__player__info__item">
+                        <span>Nível:</span>
+                        <span>37</span>
+                    </div>
+                    <div class="purchase__form__section__player__info__item">
+                        <span>Organização:</span>
+                        <span>Civil</span>
+                    </div>
                 </div>
             </div>
+            }
+
+            <div class="purchase__form__section__control purchase__form__section__control--right">
+                <button gradient-button class="purchase__form__section__button" type="submit"
+                    (click)="validateFirstStep()" [disabled]="!firstStepValid()">Continuar</button>
+            </div>
+        </div>
 
         } @else if (step === 2) {
-            <div class="purchase__form__section" @slideUpDown>
-                <h2>Insira o valor da compra de moedas verdes.</h2>
+        <div class="purchase__form__section" @slideUpDown>
+            <h2>Insira o valor da compra de moedas verdes.</h2>
+            <div class="purchase__form__section__price-wrapper">
                 <div class="purchase__form__section__price">
-                    <app-input  class="purchase__form__section__input"
-                    placeholder="Valor da compra" prefix="R$ " suffix=",00" type="tel" mask="separator.4 max=4"
-                    name="valueToPay" type="tel"
-                    formControlName="purchaseAmount"
-                >
-                @if(getForm('purchaseAmount')?.errors?.['required']) {
-                    <small class="purchase__form__section__error">O valor da compra é obrigatório</small>
-                } @else if(getForm('purchaseAmount')?.errors?.['minLimitExceeded']) {
-                    <small class="purchase__form__section__error">O valor da compra deve ser maior ou igual a R$ 10,00</small>
-                } @else if(getForm('purchaseAmount')?.errors?.['maxLimitExceeded']) {
-                    <small class="purchase__form__section__error">O valor da compra deve ser menor ou igual a R$ 1.000,00</small>
-                }
-                </app-input>
+                    <app-input class="purchase__form__section__input" placeholder="Valor da compra" prefix="R$ "
+                        suffix=",00" type="tel" mask="separator.4 max=4" name="valueToPay" type="tel"
+                        formControlName="purchaseAmount">
+                        @if(getForm('purchaseAmount')?.errors?.['required']) {
+                        <small class="purchase__form__section__error">O valor da compra é obrigatório</small>
+                        } @else if(getForm('purchaseAmount')?.errors?.['minLimitExceeded']) {
+                        <small class="purchase__form__section__error">O valor da compra deve ser maior ou igual a R$
+                            10,00</small>
+                        } @else if(getForm('purchaseAmount')?.errors?.['maxLimitExceeded']) {
+                        <small class="purchase__form__section__error">O valor da compra deve ser menor ou igual a R$
+                            1.000,00</small>
+                        }
+                    </app-input>
                     <div class="purchase__form__section__coins">
                         <h4>{{calculateCoins() | thousandSeparator}}</h4>
                         <span>MV</span>
                     </div>
                 </div>
-                <div class="purchase__form__section__coupon">
-                    <app-input  class="purchase__form__section__input"placeholder="Cupom" type="text" 
-                    formControlName="coupon"
-                    />
-                    <button gradient-button class="purchase__form__section__coupon__button"
-                    type="button">Ativar cupom</button>
-                </div>
-                <div class="purchase__form__section__control" [ngClass]="{'purchase__form__section__control--right': skipFirstStep()}">
-                    @if(!skipFirstStep()) {
-                    <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
+                <button class="purchase__form__section__coupon-btn" type="button"
+                (click)="isCouponModalVisible = true">Usar cupom</button>
+                @if (isCouponModalVisible) {
+                    <app-modal 
+                    (closeModal)="isCouponModalVisible = $event"
+                    minWidth="500px"
+                    >
+                        <div class="purchase__form__section__coupon">
+                                <app-input  class="purchase__form__section__input"placeholder="Cupom" type="text" 
+                                formControlName="coupon"
+                                />
+                                <button gradient-button class="purchase__form__section__coupon__button"
+                                type="button">Ativar</button>
+                        </div>
+                    </app-modal>
+                }
+            </div>
+            <div class="purchase__form__section__control"
+                [ngClass]="{'purchase__form__section__control--right': skipFirstStep()}">
+                @if(!skipFirstStep()) {
+                <button gradient-button class="purchase__form__section__button purchase__form__section__button--back"
                     type="button" group="secondary" (click)="onPreviousStep()">Voltar</button>
-                    }
-                    <button gradient-button class="purchase__form__section__button" type="submit"
+                }
+                <button gradient-button class="purchase__form__section__button" type="submit"
                     (click)="validateSecondStep()" [disabled]="!secondStepValid()">Continuar</button>
-                </div>
             </div>
+        </div>
         } @else if(step === 3) {
-            
-            <div class="purchase__form__section purchase__form__section--personal" @slideUpDown>
-                <div class="purchase__form__section__header">
-                    <h2>Preencha os campos com suas informações.</h2>
-                    <p>Por favor, utilize informações verdadeiras ao preencher seus dados. Isso é essencial para garantir a
-                         segurança e a entrega correta do seu pedido.</p>
-                </div>
-                    <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
-                    placeholder="Nome Completo" type="text" (input)="avoidWhitespace($event)"
-                    formControlName="customerName"
-                    >
-                    @if(getForm('customerName')?.errors?.['required']) {
-                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
-                    }@else if(getForm('customerName')?.errors?.['noSpecialCharacters']) {
-                        <small class="purchase__form__section__error">Caracteres especiais não são permitidos</small>
-                    }@else if(getForm('customerName')?.errors?.['completeNameRequired']) {
-                        <small class="purchase__form__section__error">Preencha nome e sobrenome</small>
-                    }@else if(getForm('customerName')?.errors?.['minlength']) {
-                        <small class="purchase__form__section__error">Nome muito pequeno</small>
-                    }
-                    </app-input>
 
-                    <app-input  class="purchase__form__section__input"
-                    placeholder="CPF" type="tel" mask="000.000.000-00"
-                    formControlName="customerCpf"
-                    >
-
-                    @if(getForm('customerCpf')?.errors?.['required']) {
-                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
-                    }@else if(getForm('customerCpf')?.errors?.['invalidCpf']) {
-                        <small class="purchase__form__section__error">Insira um CPF válido</small>
-
-                    }
-                    </app-input>
-
-                    <app-input  class="purchase__form__section__input"
-                    placeholder="Telefone" type="tel" mask="(00) 00000-0000"
-                    formControlName="customerPhone"
-                    >
-                    @if(getForm('customerPhone')?.errors?.['required']) {
-                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
-                    }
-                    </app-input>
-
-                    <app-input  class="purchase__form__section__input purchase__form__section__input--expanded"
-                    placeholder="Email" type="email"
-                    formControlName="customerEmail"
-                    >
-                    @if(getForm('customerEmail')?.errors?.['required']) {
-                        <small class="purchase__form__section__error">Este campo é obrigatório</small>
-                    }@else if(getForm('customerEmail')?.errors?.['email']) {
-                        <small class="purchase__form__section__error">Insira um email válido</small>
-                    }
-                    </app-input>
-                <div class="purchase__form__section__control">
-                    <button gradient-button class="purchase__form__section__button purchase__form__section__button--back" 
-                    type="button" group="secondary" (click)="onPreviousStep()">Voltar</button>
-                    <button gradient-button class="purchase__form__section__button" type="submit"
-                    (click)="finishPurchase()" [disabled]="!purchaseForm.valid">Finalizar</button>
-                </div>
+        <div class="purchase__form__section purchase__form__section--personal" @slideUpDown>
+            <div class="purchase__form__section__header">
+                <h2>Preencha os campos com suas informações.</h2>
+                <p>Por favor, utilize informações verdadeiras ao preencher seus dados. Isso é essencial para garantir a
+                    segurança e a entrega correta do seu pedido.</p>
             </div>
+            <app-input class="purchase__form__section__input purchase__form__section__input--expanded"
+                placeholder="Nome Completo" type="text" (input)="avoidWhitespace($event)"
+                formControlName="customerName">
+                @if(getForm('customerName')?.errors?.['required']) {
+                <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                }@else if(getForm('customerName')?.errors?.['noSpecialCharacters']) {
+                <small class="purchase__form__section__error">Caracteres especiais não são permitidos</small>
+                }@else if(getForm('customerName')?.errors?.['completeNameRequired']) {
+                <small class="purchase__form__section__error">Preencha nome e sobrenome</small>
+                }@else if(getForm('customerName')?.errors?.['minlength']) {
+                <small class="purchase__form__section__error">Nome muito pequeno</small>
+                }
+            </app-input>
+
+            <app-input class="purchase__form__section__input" placeholder="CPF" type="tel" mask="000.000.000-00"
+                formControlName="customerCpf">
+
+                @if(getForm('customerCpf')?.errors?.['required']) {
+                <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                }@else if(getForm('customerCpf')?.errors?.['invalidCpf']) {
+                <small class="purchase__form__section__error">Insira um CPF válido</small>
+
+                }
+            </app-input>
+
+            <app-input class="purchase__form__section__input" placeholder="Telefone" type="tel" mask="(00) 00000-0000"
+                formControlName="customerPhone">
+                @if(getForm('customerPhone')?.errors?.['required']) {
+                <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                }
+            </app-input>
+
+            <app-input class="purchase__form__section__input purchase__form__section__input--expanded"
+                placeholder="Email" type="email" formControlName="customerEmail">
+                @if(getForm('customerEmail')?.errors?.['required']) {
+                <small class="purchase__form__section__error">Este campo é obrigatório</small>
+                }@else if(getForm('customerEmail')?.errors?.['email']) {
+                <small class="purchase__form__section__error">Insira um email válido</small>
+                }
+            </app-input>
+            <div class="purchase__form__section__control">
+                <button gradient-button class="purchase__form__section__button purchase__form__section__button--back"
+                    type="button" group="secondary" (click)="onPreviousStep()">Voltar</button>
+                <button gradient-button class="purchase__form__section__button" type="submit" (click)="finishPurchase()"
+                    [disabled]="purchaseForm.valid">Finalizar</button>
+            </div>
+        </div>
 
         }
     </form>
     @if(step === 4 && (paymentResponse$ | async); as payment) {
-        <div class="purchase__success" @slideUpDown>
-            <div class="purchase__success__header">
-                <h2>Pedido registrado com sucesso!</h2>
-                <p>Seu pedido foi registrado com êxito! Para resgatar suas moedas verdes
-                     e aproveitar os benefícios no nosso servidor, finalize o pagamento.
-                     Após a confirmação, receba suas moedas clicando no botão "Receber Moedas".
-                </p>
+    <div class="purchase__success" @slideUpDown>
+        <div class="purchase__success__header">
+            <h2>Pedido registrado com sucesso!</h2>
+            <p>Seu pedido foi registrado com êxito! Para resgatar suas moedas verdes
+                e aproveitar os benefícios no nosso servidor, finalize o pagamento.
+                Após a confirmação, receba suas moedas clicando no botão "Receber Moedas".
+            </p>
+        </div>
+        <div class="purchase__success__purchase">
+            <h3>Pague R$ {{payment.transaction_amount}},00 via Pix</h3>
+            <span>Vencimento: {{payment.date_of_expiration | date: "d 'de' MMMM 'às' HH:mm 'h'"}}.</span>
+        </div>
+        <div class="purchase__success__qrcode">
+            <img [src]="'data:image/png;base64,' + payment.point_of_interaction.transaction_data.qr_code_base64"
+                alt="QR Code" @slideUpDown>
+        </div>
+        <div class="purchase__success__copy-link">
+            <app-clipboard-copy [direction]="'top-right'"
+                [value]="payment.point_of_interaction.transaction_data.qr_code" />
+        </div>
+        <div class="purchase__success__info">
+            <div class="purchase__success__info__item">
+                <span>Nome da conta:</span>
+                <span>{{getForm('accountName')?.value}}</span>
             </div>
-            <div class="purchase__success__purchase">
-                <h3>Pague R$ {{payment.transaction_amount}},00 via Pix</h3>
-                <span>Vencimento: {{payment.date_of_expiration | date: "d 'de' MMMM 'às' HH:mm 'h'"}}.</span>
+            <div class="purchase__success__info__item">
+                <span>Valor da compra:</span>
+                <span>{{getForm('purchaseAmount')?.value}}</span>
             </div>
-            <div class="purchase__success__qrcode">
-                <img [src]="'data:image/png;base64,' + payment.point_of_interaction.transaction_data.qr_code_base64" 
-                alt="QR Code">
+            <div class="purchase__success__info__item">
+                <span>Cupom de desconto:</span>
+                <span>{{getForm('coupon')?.value || 'Nenhum'}}</span>
             </div>
-            <div class="purchase__success__copy-link">
-                <app-clipboard-copy
-                [direction]="'top-right'"
-                [value]="payment.point_of_interaction.transaction_data.qr_code"
-                />
-            </div>
-            <div class="purchase__success__info">
-                <div class="purchase__success__info__item">
-                    <span>Nome da conta:</span>
-                    <span>{{getForm('accountName')?.value}}</span>
-                </div>
-                <div class="purchase__success__info__item">
-                    <span>Valor da compra:</span>
-                    <span>{{getForm('purchaseAmount')?.value}}</span>
-                </div>
-                <div class="purchase__success__info__item">
-                    <span>Cupom de desconto:</span>
-                    <span>{{getForm('coupon')?.value || 'Não'}}</span>
-                </div>
-                <div class="purchase__success__info__item">
-                    <span>Moedas verdes:</span>
-                    <span>{{calculateCoins() | thousandSeparator}}</span>
-                </div>
+            <div class="purchase__success__info__item">
+                <span>Moedas verdes:</span>
+                <span>{{calculateCoins() | thousandSeparator}}</span>
             </div>
         </div>
+    </div>
     }
 </div>

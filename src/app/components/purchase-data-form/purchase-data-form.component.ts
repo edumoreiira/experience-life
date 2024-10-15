@@ -12,11 +12,13 @@ import { PaymentData, PaymentResponse } from '../../models/payment-data.interfac
 import { PaymentService } from '../../services/Payment/payment.service';
 import { Observable, of } from 'rxjs';
 import { ClipboardCopyComponent } from "../clipboard-copy/clipboard-copy.component";
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-purchase-data-form',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, NgxMaskDirective, NgxMaskPipe, FormsModule, ReactiveFormsModule, ThousandSeparator, CommonModule, ClipboardCopyComponent],
+  imports: [InputComponent, ButtonComponent, NgxMaskDirective, NgxMaskPipe, FormsModule, ReactiveFormsModule,
+     ThousandSeparator, CommonModule, ClipboardCopyComponent, ModalComponent],
   templateUrl: './purchase-data-form.component.html',
   styleUrl: './purchase-data-form.component.scss',
   animations: [slideUpDown]
@@ -25,7 +27,8 @@ export class PurchaseDataFormComponent implements OnInit {
   skipFirstStep = input<boolean>(false);
   currentStep = output<number>()
   valueToPay: string = '';
-  step = 1;
+  step = 3;
+  isCouponModalVisible = false;
   purchaseForm!: FormGroup<PurchaseForm>;
   pageHasLoaded = false;
   paymentResponse$ = new Observable<PaymentResponse>();
@@ -104,6 +107,7 @@ export class PurchaseDataFormComponent implements OnInit {
 
   
   finishPurchase() {
+
     if(this.purchaseForm.valid) {
       const form = this.purchaseForm.value;
       const fullName = form.customerName.trim();
@@ -160,9 +164,9 @@ export class PurchaseDataFormComponent implements OnInit {
     return parseFloat(cleanedValue) * 1000 || 0; 
   }
   
-  avoidWhitespace(event: Event) {
+  avoidWhitespace(event: Event, avoidOnlyMultipleSpaces: boolean = true) {
     const element = event.target as HTMLInputElement;
     // Remover múltiplos espaços consecutivos
-    element.value = element.value.replace(/\s+/g, ' ');
+    avoidOnlyMultipleSpaces ? element.value = element.value.replace(/\s+/g, ' ') : element.value = element.value.trim();
   }
 }

@@ -35,7 +35,7 @@
                 display: flex;
                 justify-content: space-between;
                 grid-column: span 2;
-                margin-top: 1em;
+                // margin-top: 1em;
                 &--right {
                     justify-content: end;
                 }
@@ -75,11 +75,22 @@
                     font-weight: 500;
                 }
             }
+            &__coupon-btn {
+                font-size: .9em;
+                background-color: transparent;
+                border: none;
+                margin-left: .5em;
+                color: hsl(var(--primary-light));
+                transition: all 150ms ease-in-out;
+                &:hover {
+                    text-decoration: underline;
+                    color: hsl(var(--primary-light-hover));
+                }
+            }
 
             &__coupon {
                 display: flex;
                 gap: 1em;
-                
                 &__button {
                     font-size: .9em;
                     width: min(10em, 100%);
@@ -143,6 +154,7 @@
         }
         &__qrcode {
             margin: 0 auto;
+            aspect-ratio: 1/1;
             width: min(14em, 100%);
             border: 5px solid hsl(var(--primary-light));
             border-radius: var(--radius);
