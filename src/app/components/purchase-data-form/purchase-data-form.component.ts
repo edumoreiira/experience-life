@@ -27,7 +27,7 @@ export class PurchaseDataFormComponent implements OnInit {
   skipFirstStep = input<boolean>(false);
   currentStep = output<number>()
   valueToPay: string = '';
-  step = 2;
+  step = 3;
   isCouponModalVisible = false;
   purchaseForm!: FormGroup<PurchaseForm>;
   pageHasLoaded = false;
@@ -40,7 +40,7 @@ export class PurchaseDataFormComponent implements OnInit {
       coupon: new FormControl(''),
       customerName: new FormControl('', [Validators.required, noSpecialCharacters, completeNameRequired(), Validators.minLength(7)]),
       customerCpf: new FormControl('', [Validators.required, cpfValidator()]),
-      customerPhone: new FormControl('', [Validators.required]),
+      customerPhone: new FormControl('', [Validators.required, Validators.minLength(15)]),
       customerEmail: new FormControl('', [Validators.required, Validators.email])
     });
   }

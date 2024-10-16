@@ -32,10 +32,14 @@ export class InputComponent implements ControlValueAccessor{
   @Input() isInvalid: boolean = false;
   @Input() rightInfo: boolean = false;
   @Output() inputElement = new EventEmitter<CheckInput>;
+
   //ngxmask inputs
+  @Input() dropSpecialCharacters: boolean = false;
   @Input() mask: string = '';
   @Input() prefix: string = '';
   @Input() suffix: string = '';
+  //input control
+  @Input() maxLength: number = 0;
 
 
   hideShowPassword = input<boolean>(false);

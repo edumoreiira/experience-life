@@ -10,6 +10,8 @@
         [type]="showPassword ? 'text' : type"
         [ngClass]="{'error': isInvalid}"
         [mask]="mask" [prefix]="prefix" [suffix]="suffix"
+        [dropSpecialCharacters]="dropSpecialCharacters"
+        [attr.maxLength]="maxLength ? maxLength : null"
          />
          <!-- placeholder-title -->
          <span [ngClass]="{'filled':input.value.length > 0}"
