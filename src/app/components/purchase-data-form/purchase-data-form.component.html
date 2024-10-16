@@ -46,21 +46,22 @@
                 <div class="purchase__form__section__price">
                     <app-input class="purchase__form__section__input" placeholder="Valor da compra" prefix="R$ "
                         suffix=",00" type="tel" mask="separator.4 max=4" name="valueToPay" type="tel"
-                        formControlName="purchaseAmount">
+                        formControlName="purchaseAmount" [rightInfo]="true">
+                        <span right-info class="purchase__form__section__price__coins">
+                            {{calculateCoins() | thousandSeparator}} <b>MV</b>
+                        </span>
+
                         @if(getForm('purchaseAmount')?.errors?.['required']) {
-                        <small class="purchase__form__section__error">O valor da compra é obrigatório</small>
+                        <small invalid class="purchase__form__section__error">O valor da compra é obrigatório</small>
                         } @else if(getForm('purchaseAmount')?.errors?.['minLimitExceeded']) {
-                        <small class="purchase__form__section__error">O valor da compra deve ser maior ou igual a R$
+                        <small invalid class="purchase__form__section__error">O valor da compra deve ser maior ou igual a R$
                             10,00</small>
                         } @else if(getForm('purchaseAmount')?.errors?.['maxLimitExceeded']) {
-                        <small class="purchase__form__section__error">O valor da compra deve ser menor ou igual a R$
+                        <small invalid class="purchase__form__section__error">O valor da compra deve ser menor ou igual a R$
                             1.000,00</small>
                         }
+
                     </app-input>
-                    <div class="purchase__form__section__coins">
-                        <h4>{{calculateCoins() | thousandSeparator}}</h4>
-                        <span>MV</span>
-                    </div>
                 </div>
                 <button class="purchase__form__section__coupon-btn" type="button"
                 (click)="isCouponModalVisible = true">Usar cupom</button>

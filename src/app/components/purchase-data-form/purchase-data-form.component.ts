@@ -27,7 +27,7 @@ export class PurchaseDataFormComponent implements OnInit {
   skipFirstStep = input<boolean>(false);
   currentStep = output<number>()
   valueToPay: string = '';
-  step = 3;
+  step = 2;
   isCouponModalVisible = false;
   purchaseForm!: FormGroup<PurchaseForm>;
   pageHasLoaded = false;

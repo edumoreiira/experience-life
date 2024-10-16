@@ -11,11 +11,19 @@
         [ngClass]="{'error': isInvalid}"
         [mask]="mask" [prefix]="prefix" [suffix]="suffix"
          />
+         <!-- placeholder-title -->
          <span [ngClass]="{'filled':input.value.length > 0}"
           class="placeholder-title"
           >
          {{placeholder}}
          </span>
+
+         <!-- right info -->
+          @if (rightInfo) {
+                <div class="right-info">
+                    <ng-content select="[right-info]"></ng-content>
+                </div>
+          }
     
          <!-- show password icon -->
          @if(!hideShowPassword() && type === "password"){
@@ -30,6 +38,6 @@
          <!-- text description on error  -->
          @if(hasInvalidClass()){
              <div @fadeInOut class="invalid">
-                <ng-content></ng-content>
+                <ng-content select="[invalid]"></ng-content>
              </div>
          }

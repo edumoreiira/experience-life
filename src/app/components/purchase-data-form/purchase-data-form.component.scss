@@ -51,30 +51,17 @@
             &__price {
                 display: flex;
                 gap: 1em;
+                &__coins {
+                   font-size: .8em;
+                   max-width: 7em;
+                   gap: .2em;
+                   overflow: hidden;
+                   font-style: italic;
+                   display: flex;
+                   justify-content: center;
+                }
             }
 
-            &__coins {
-                display: flex;
-                overflow: hidden;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid hsl(var(--border));
-                background: linear-gradient(to right, hsl(var(--primary-light)/.3) 30%, hsl(var(--background)) 100%);
-                border-radius: var(--radius);
-                padding: 1em;
-                gap: .5em;
-                min-width: 9em;
-                max-width: 12em;
-                transition: all 150ms ease-in-out;
-                h4 {
-                    line-height: 1 !important;
-                    font-weight: 900;
-                    text-overflow: ellipsis;
-                }
-                span {
-                    font-weight: 500;
-                }
-            }
             &__coupon-btn {
                 font-size: .9em;
                 background-color: transparent;

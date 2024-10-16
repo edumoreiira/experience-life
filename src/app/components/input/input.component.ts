@@ -30,6 +30,7 @@ export class InputComponent implements ControlValueAccessor{
   @Input() placeholder: string = "";
   @Input() formControlName: string = '';
   @Input() isInvalid: boolean = false;
+  @Input() rightInfo: boolean = false;
   @Output() inputElement = new EventEmitter<CheckInput>;
   //ngxmask inputs
   @Input() mask: string = '';
