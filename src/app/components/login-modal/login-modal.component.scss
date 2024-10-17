@@ -101,6 +101,9 @@
         &:hover {
             color: hsl(var(--primary-light));
         }
+        &::after {
+            background-color: hsl(var(--primary-light));
+        }
     }
 
 }

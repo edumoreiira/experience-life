@@ -70,8 +70,10 @@
                 color: hsl(var(--primary-light));
                 transition: all 150ms ease-in-out;
                 &:hover {
-                    text-decoration: underline;
                     color: hsl(var(--primary-light-hover));
+                }
+                &::after {
+                    background-color: hsl(var(--primary-light-hover));
                 }
             }
 
