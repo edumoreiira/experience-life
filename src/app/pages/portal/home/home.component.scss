@@ -39,6 +39,7 @@ main{
         font-size: 2.5em;
     }
 
+
     &__description{
         font-size: 1.4em;
         font-weight: 200;
@@ -147,6 +148,19 @@ main{
         font-weight: 700;
         margin-bottom: .7em;
     }
+    
+    &__view-more {
+        display: block;
+        float: right;
+        color: hsl(var(--primary));
+        transition: color 150ms ease-in-out;
+        line-height: 1.1;
+        &:hover {
+            cursor: pointer;
+            color: hsl(var(--primary-light));
+        }
+    }
+
     @keyframes slide {
         from {
             transform: translateX(0);

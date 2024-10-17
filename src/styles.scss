@@ -108,13 +108,11 @@ ul {
 }
 
 
-.underline-animation {
+.underline-animation, .underline-animation--right {
     display: inline-block;
     position: relative;
     text-decoration: none !important;
-  }
-  
-  .underline-animation::after {
+    &::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -125,11 +123,18 @@ ul {
     background-color: hsl(var(--primary-light));
     transform-origin: bottom right;
     transition: transform 0.25s ease-out, background-color 150ms ease-in-out;
+    }
   }
+  
   
   .underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+  .underline-animation--right:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom right;
   }
 
   .underline-animation--active::after {

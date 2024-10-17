@@ -1,6 +1,8 @@
 <div class="copy-to-clipboard">
     <div class="copy-to-clipboard__wrapper">
-        <span>{{value()}}</span>
+        <span [ngStyle]="{'text-transform': transformToUppercase() ? 'uppercase' : 'none'}">
+            {{value()}}
+        </span>
         <i class="fi fi-rr-copy copy-to-clipboard__copy-btn"
         [cdkCopyToClipboard]="value()" (click)="handleCopyToClipboard()">
         </i>

@@ -16,17 +16,7 @@
                     <div class="server-card__info__players-counter">
                         <span>{{server.playersOnline}}/{{server.maxPlayers}}</span>
                     </div>
-                    <div class="server-card__info__ip-address">
-                        <span>ip.brasilexperiencelife.com</span>
-                        <i class="fi fi-rr-copy server-card__info__ip-address__copy"
-                        [cdkCopyToClipboard]="'ip.brasilexperiencelife.com'" (click)="handleCopyIp()">
-                        </i>
-                        @if (copied) {
-                            <div class="server-card__info__ip-address__copied-card" @slide>
-                                <span>Copiado!</span>
-                            </div>
-                        }
-                    </div>
+                    <app-clipboard-copy value="ip.brasilexperiencelife.com" [transformToUppercase]="true"/>
                 </div>
             </section>
         } 
@@ -83,6 +73,7 @@
                     </app-card>
                 </div>
             </div>
+            <a class="rank__view-more underline-animation--right" routerLink="/rank">Ver mais...</a>
         </div>
     </section>
 </div>
