@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit, output } from '@angular/core';
 import { DropdownListOptions, DropdownSelectionComponent } from "../dropdown-selection/dropdown-selection.component";
 import PaginatorComponent from "../paginator/paginator.component";
 import { popUp, slide, slideUpDown } from '../../animations/transition-animations';
@@ -20,6 +20,8 @@ export class RankComponent implements OnInit {
   playersSubject = new BehaviorSubject<RankPlayers[]>([])
   players$: Observable<RankPlayers[]> = this.playersSubject.asObservable();
   pageHasLoaded = false;
+  limited = input<boolean>(false);
+  onLoadMore = output();
 
   
   

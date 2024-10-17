@@ -1,3 +1,9 @@
+:root {
+    --table-data-background: var(--background);
+    --table-data-highlight: var(--background-light);
+    --table-footer-loadmore-fade-color: var(--background-dark);
+}
+
 .rank {
     display: flex;
     flex-direction: column;
@@ -142,7 +148,7 @@
                     margin-bottom: 1em;
                 }
                 td {
-                    background-color: hsl(var(--background));
+                    background-color: hsl(var(--table-data-background));
                     padding: .7em;
                     border: 0;
                     &:first-child { //add border-radius to corners
@@ -156,7 +162,7 @@
                 }
                 &.highlight { 
                     td{
-                        background-color: hsl(var(--background-light));
+                        background-color: hsl(var(--table-data-highlight));
                     }
                 }
             }
@@ -174,12 +180,12 @@
                     width: 100%;
                     height: 12em;
                     border-radius: var(--radius);
-                    background: linear-gradient(to top, hsl(var(--background-dark)), transparent 100%);
+                    background: linear-gradient(to top, hsl(var(--table-footer-loadmore-fade-color)), transparent 100%);
                     pointer-events: none;
                 }
             }
             td {
-                background-color: hsl(var(--background));
+                background-color: hsl(var(--table-data-background));
                 border-radius: var(--radius);
                 padding: .7em;
                 text-align: center;
@@ -199,10 +205,10 @@
                 z-index: 1;
                 transition: color 150ms ease-in-out;
                 &:hover {
-                    color: hsl(var(--primary));
+                    color: hsl(var(--primary-light-hover));
                 }
                 &:active {
-                    color: hsl(var(--primary-dark));
+                    color: hsl(var(--primary));
                     transition: color ease-out 100ms;
                 }
             }

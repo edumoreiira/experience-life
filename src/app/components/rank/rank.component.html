@@ -83,15 +83,15 @@
         </tbody>
 
         <!-- load-more footer -->
-         @if (false) {
+         @if (limited()) {
              <tfoot class="rank__tier__footer">
                  <tr>
                      <td>
                          <span>##</span>
                      </td>
                      <td>
-                         <button class="rank__tier__footer__load-more">
-                             Carregar Mais
+                         <button class="rank__tier__footer__load-more" (click)="onLoadMore.emit()">
+                             Carregar mais...
                          </button>
                      </td>
                      <td>
@@ -101,11 +101,13 @@
              </tfoot>
          }
     </table>
-    <div class="rank__controls">
-        <app-paginator
-        [startsAt]="1"
-        [limit]="limit"
-        (getCurrentPage)="loadPlayers($event)"
-        />
-    </div>
+    @if(limited() === false) {
+        <div class="rank__controls">
+            <app-paginator
+            [startsAt]="1"
+            [limit]="limit"
+            (getCurrentPage)="loadPlayers($event)"
+            />
+        </div>
+    }
 </div>
