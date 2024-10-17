@@ -1,0 +1,12 @@
+<div class="container">
+    <article class="comprar-moedas">
+        @if (currentStep !== 4) {
+            <header class="comprar-moedas__header">
+                <h1>Comprar Moedas</h1>
+                <p>Preencha o formulário abaixo para comprar moedas verdes. Certifique-se de que todas as informações
+                 estão corretas antes de prosseguir com a compra.</p>
+            </header>
+        }
+        <app-purchase-data-form [skipFirstStep]="false" (currentStep)="currentStep = $event"/>
+    </article>
+</div>

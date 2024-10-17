@@ -1,5 +1,11 @@
+:host {
+    --purchase-bg: var(--background);
+    --purchase-highlight-bg: var(--background-light);
+}
+
+
 .purchase {
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--purchase-bg));
     padding: 2em;
     border-radius: var(--radius);
     overflow: hidden;
@@ -105,7 +111,7 @@
                 gap: 1em;
                 margin-top: 1em;
                 &__info {
-                    background-color: hsl(var(--background-light));
+                    background-color: hsl(var(--purchase-highlight-bg));
                     padding: 1em;
                     border-radius: var(--radius);
                     &__item {
@@ -161,7 +167,7 @@
             margin: 0 auto;
         }
         &__info {
-            background-color: hsl(var(--background-light));
+            background-color: hsl(var(--purchase-highlight-bg));
             border-radius: var(--radius);
             padding: 1em;
             overflow: auto;

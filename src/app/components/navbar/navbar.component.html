@@ -18,11 +18,12 @@
             <li class="nav__item">
                 <a class="nav__link underline-animation" (click)="openLoginModal()">Minha Conta</a>
             </li>
-            <li class="nav__item"><a class="nav__link" href="#">
-                <button gradient-button class="nav__button" 
-                group="highlight"
-                (click)="openLoginModal()">Comprar Moedas</button>
-            </a></li>
+            <li class="nav__item">
+                <a class="nav__link">
+                    <button gradient-button class="nav__button" 
+                    group="highlight" routerLink="/comprar-moedas">Comprar Moedas</button>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -1,0 +1,14 @@
+:host {
+    * {
+        --purchase-bg: var(--background-dark);
+        --purchase-highlight-bg: var(--background);
+    }
+}
+.comprar-moedas {
+    max-width: 36em;
+    margin: 0 auto;
+    
+    &__header {
+        margin-bottom: 1.5em;
+    }
+}
