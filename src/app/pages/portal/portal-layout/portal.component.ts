@@ -7,6 +7,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-portal',
   standalone: true,
+  host: {
+    '[class.portal_c]': 'true'
+  },
   imports: [FooterComponent, NavbarComponent, HomeComponent, RouterOutlet],
   templateUrl: './portal.component.html',
   styleUrl: './portal.component.scss'

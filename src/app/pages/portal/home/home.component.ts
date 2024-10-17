@@ -15,9 +15,6 @@ import { NavbarComponent } from "../../../components/navbar/navbar.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  host: {
-    '[class.home_c]': 'true'
-  },
   imports: [RoundedButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule,
     NavbarComponent],
   templateUrl: './home.component.html',
