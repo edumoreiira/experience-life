@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CardComponent } from "../../components/card/card.component";
+import { CardComponent } from "../../../components/card/card.component";
 import {  ClipboardModule } from '@angular/cdk/clipboard';
-import { FooterComponent } from "../../components/footer/footer.component";
+import { FooterComponent } from "../../../components/footer/footer.component";
 import { FormsModule } from '@angular/forms';
-import { parentAnimations, slide } from '../../animations/transition-animations';
-import { ServerService } from '../../services/server.service';
-import { catchError, Observable, of, take, tap } from 'rxjs';
-import { SampServer } from '../../models/samp-server.interface';
+import { slide } from '../../../animations/transition-animations';
+import { ServerService } from '../../../services/server.service';
+import { catchError, Observable, of, take } from 'rxjs';
+import { SampServer } from '../../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
-import { LoginModalComponent } from "../../components/login-modal/login-modal.component";
 import { Router } from '@angular/router';
-import { RoundedButtonComponent } from '../../components/button/rounded-button/rounded-button.component';
+import { RoundedButtonComponent } from '../../../components/button/rounded-button/rounded-button.component';
+import { NavbarComponent } from "../../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-home',
@@ -18,13 +18,13 @@ import { RoundedButtonComponent } from '../../components/button/rounded-button/r
   host: {
     '[class.home_c]': 'true'
   },
-  imports: [RoundedButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule, LoginModalComponent],
+  imports: [RoundedButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule,
+    NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  animations: [slide, parentAnimations]
+  animations: [slide]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  isLoginModalOpen: boolean = false;
   copied = false;
   serverInfo$: Observable<SampServer> = new Observable<SampServer>();
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
@@ -59,11 +59,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.getServerData();
   }
 
-  //show/hide navbar
-  handleNavBar(element: HTMLElement) {
-    element.classList.toggle('nav__items-wrapper--active');
-  }
-
   // show/hide copied alert
   handleCopyIp() {
     if(this.copied === false) { // avoid multiple alerts
@@ -75,14 +70,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // handle login modal
-  openLoginModal() {
-    this.isLoginModalOpen = true;
-  }
-
-  closeLoginModal() {
-    this.isLoginModalOpen = false;
-  }
 
   getServerData() {
     this.serverInfo$ = this.serverService.getServerData().pipe(

@@ -1,0 +1,30 @@
+:host{
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    gap: var(--portal-gap);
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    @media (max-width: 1000px){
+        font-size: .9em;
+    }
+
+    @media (max-width: 620px){
+        font-size: .8em;
+    }
+    @media (max-width: 450px){
+        font-size: .7em;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(var(--background));
+        z-index: -1;
+    }
+}

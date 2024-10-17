@@ -10,7 +10,7 @@
     transition: all 150ms ease-in-out;
     cursor: pointer;
     background: linear-gradient(to left, hsl(var(--background-dark)), hsl(var(--primary)/.2) 100%);
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled, &.highlight) {
         backdrop-filter: saturate(500%);
     }
     &:disabled {
@@ -23,5 +23,12 @@
     &.secondary {
         border-color: hsl(var(--foreground-dark));
         background: linear-gradient(to left, hsl(var(--background-dark)), hsl(var(--foreground-dark)/.2) 100%);
+    }
+    &.highlight {
+        border-color: hsl(var(--highlight-dark));
+        background: linear-gradient(to left, hsl(var(--highlight-dark) / .05), hsl(var(--highlight)/.2));
+        &:hover {
+            background: linear-gradient(to left, hsl(var(--highlight-dark) / .08), hsl(var(--highlight)/.25));
+        }
     }
 }

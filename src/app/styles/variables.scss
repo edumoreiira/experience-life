@@ -12,10 +12,13 @@
     --primary-dark: 181 100% 10%;
     --border: 183 100% 35%;
     --highlight: 43 100% 47%;
+    --highlight-dark: 43 100% 40%;
+    --highlight-light: 43 100% 57%;
     --destructive: 0 60% 40%;
     --radius: 1em;
 
     --grid-page-padding: 1.8rem;
+    --portal-gap: 2.5em;
 
     @media screen and (max-width: 800px) {
         --grid-page-padding: 1rem;
