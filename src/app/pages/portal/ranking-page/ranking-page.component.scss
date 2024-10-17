@@ -1,5 +1,7 @@
 :host {
-    --table-data-background: var(--background-dark) / .6;
-    --table-data-highlight: var(--background) / .9;
-    --table-footer-loadmore-fade-color: var(--background);
+    * {
+        --table-data-background: var(--background-dark) / .6;
+        --table-data-highlight: var(--background) / .9;
+        --table-footer-loadmore-fade-color: var(--background);
+    }
 }
