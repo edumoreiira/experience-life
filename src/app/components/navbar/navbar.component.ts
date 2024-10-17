@@ -3,7 +3,7 @@ import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { parentAnimations } from '../../animations/transition-animations';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +15,15 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
   isLoginModalOpen: boolean = false;
+
+  constructor(private router: Router) {}
+
+  validateCurrentRoute(route: string) {
+    if(route === 'home') {
+      return this.router.url === '/';
+    }
+    return this.router.url.includes(route);
+  }
   
   //show/hide navbar
   handleNavBar(element: HTMLElement) {

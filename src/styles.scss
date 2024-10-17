@@ -14,13 +14,17 @@
 }
 
 // Typography settings
+html {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: Inter, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: hsl(var(--foreground));
     background-color: hsl(var(--background-dark));
-
 }
 
 .fi {
@@ -117,12 +121,17 @@ ul {
     height: 1px;
     bottom: 0;
     left: 0;
-    background-color: #0087ca;
+    background-color: hsl(var(--primary-light));
     transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+    transition: transform 0.25s ease-out, background-color 150ms ease-in-out;
   }
   
   .underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .underline-animation--active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }

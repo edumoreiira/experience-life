@@ -1,6 +1,7 @@
 .nav{
     display: flex;
     justify-content: space-between;
+    gap: 2em;
     align-items: center;
     padding-block: 2em;
     font-size: .9em;
@@ -9,6 +10,7 @@
         font-size: 2.5em;
         font-weight: 700;
         font-style: italic;
+        cursor: pointer;
     }
 
     &__items{
@@ -30,15 +32,21 @@
         text-transform: uppercase;
         font-size: 1em;
         font-weight: 600;
-        cursor: pointer;
     }
 
     &__link{
         color: var(--foreground);
         text-decoration: none;
         transition: color 150ms ease-in-out;
+        cursor: pointer;
+        &::after {
+            background-color: hsl(var(--foreground));
+        }
         &:hover{
             color: hsl(var(--primary-light));
+            &::after {
+                background-color: hsl(var(--primary-light));
+            }
         }
     }
 
