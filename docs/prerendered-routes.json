@@ -1,0 +1,11 @@
+{
+  "routes": [
+    "/",
+    "/comprar-moedas",
+    "/rank",
+    "/ucp",
+    "/ucp/profile",
+    "/ucp/ranking",
+    "/ucp/store"
+  ]
+}

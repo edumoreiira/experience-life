@@ -22,7 +22,7 @@ import { ClipboardCopyComponent } from "../../../components/clipboard-copy/clipb
   styleUrl: './home.component.scss',
   animations: [slide]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit {
   copied = false;
   serverInfo$: Observable<SampServer> = new Observable<SampServer>();
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
@@ -34,9 +34,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     if (typeof window !== 'undefined') { // Código de manipulação do DOM só é executado no browser
       if(sliderElement && sliderWrapperElement) { 
+        this.getServerData();
         const clone = sliderElement!.cloneNode(true) as HTMLElement; //clone all cards
         sliderWrapperElement?.append(clone); //add all cloned cards to wrapper
-    
+        
         if (typeof document !== 'undefined') { // Código de manipulação do DOM só é executado no browser
           const e = document.querySelectorAll('.rank__slider');
           //add slide animation after loading all cloned slides to avoid desync.
@@ -52,10 +53,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private serverService: ServerService,
     private route: Router
   ) { }
-
-  ngOnInit(): void {
-    this.getServerData();
-  }
 
   // show/hide copied alert
   handleCopyIp() {

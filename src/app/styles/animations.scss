@@ -1,0 +1,68 @@
+@keyframes skeleton {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: -100% 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popUpRight {
+    from {
+        transform: translateX(100%) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+
+.skeleton {
+    background: linear-gradient(90deg, hsl(var(--background) / .3), hsl(var(--background) / .9), hsl(var(--background) / .3));
+    background-size: 200% 100%;
+    animation: 2s skeleton infinite;
+}
+
+.skeleton-m-text {
+    border-radius: var(--radius);
+    height: 1.5em;
+    width: 100%;
+    margin-bottom: .5em;
+    &:last-child {
+        margin-bottom: 0;
+        width: 80%;
+    }
+}

@@ -19,7 +19,12 @@
                     <app-clipboard-copy value="ip.brasilexperiencelife.com" [transformToUppercase]="true"/>
                 </div>
             </section>
-        } 
+        } @else {
+            <section class="server-card">
+                <div class="skeleton skeleton-m-text"></div>
+                <div class="skeleton skeleton-m-text"></div>
+            </section>
+        }
     </main>
     <section class="rank">
         <div class="container">

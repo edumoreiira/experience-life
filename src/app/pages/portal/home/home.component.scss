@@ -197,3 +197,28 @@ main{
         }
     }
 }
+
+
+.header {
+    animation: 500ms slideRight ease-out;
+}
+.server-card {
+    animation: 500ms fadeIn ease-in;
+}
+
+.rank {
+    &__title {
+        animation: 400ms slideUp ease-out;
+    }
+    &__slider {
+        app-card {
+            opacity: 0;
+            $length: 5;
+            @for $i from $length through 1 {
+                &:nth-child(#{$i}) {
+                    animation: 500ms slideUp ease-out #{($length - $i) * 70}ms forwards;
+                }
+            }
+        }
+    }
+}
