@@ -67,7 +67,7 @@
                 (click)="isCouponModalVisible = true">Usar cupom</button>
                 @if (isCouponModalVisible) {
                     <app-modal 
-                    (closeModal)="isCouponModalVisible = $event"
+                    (closeModal)="closeCouponModal()"
                     minWidth="500px"
                     >
                         <div class="purchase__form__section__coupon">

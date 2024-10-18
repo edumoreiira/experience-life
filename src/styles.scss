@@ -92,14 +92,10 @@ button {
 
 // Main container
 .container {
-    width: calc(100% - 80px);
+    width: calc(100% - var(--global-page-padding));
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-
-    @media (max-width: 620px) {
-        width: calc(100% - 40px);
-    }
 }
 
 

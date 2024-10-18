@@ -14,7 +14,7 @@ import { Router, RouterModule } from '@angular/router';
   animations: [parentAnimations]
 })
 export class NavbarComponent {
-  isLoginModalOpen: boolean = false;
+  showLoginModal: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -30,12 +30,12 @@ export class NavbarComponent {
     element.classList.toggle('nav__items-wrapper--active');
   }
 
-    // handle login modal
-    openLoginModal() {
-      this.isLoginModalOpen = true;
-    }
+  // handle login modal
+  openLoginModal() {
+    this.showLoginModal = true;
+  }
   
-    closeLoginModal() {
-      this.isLoginModalOpen = false;
-    }
+  closeLoginModal() {
+    this.showLoginModal = false;
+  }
 }

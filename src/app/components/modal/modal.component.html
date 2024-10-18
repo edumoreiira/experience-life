@@ -1,7 +1,7 @@
 <div class="modal" @parentAnimation>
     <div class="modal__content" @popUp
-    [ngStyle]="{'width': 'min(' + minWidth() + ', calc(100% - 80px))'}">
+    [ngStyle]="{'width': 'min(' + minWidth() + ', calc(100% - var(--global-page-padding)))'}">
         <ng-content></ng-content>
     </div>
-    <div class="modal__backdrop" @fadeInOut (click)="closeModal.emit(false)"></div>
+    <div class="modal__backdrop" @fadeInOut (click)="onCloseModal.emit()"></div>
 </div>

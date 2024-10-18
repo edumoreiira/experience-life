@@ -105,6 +105,10 @@ export class PurchaseDataFormComponent implements OnInit {
     }
   }
 
+  closeCouponModal() {
+    this.isCouponModalVisible = false;
+  }
+
   
   finishPurchase() {
 

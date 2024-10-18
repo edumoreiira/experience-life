@@ -1,4 +1,6 @@
-<app-login-modal (closeModal)="closeLoginModal()" *ngIf="isLoginModalOpen" @parentAnimation/>
+@if(showLoginModal) {
+    <app-login-modal (onCloseLoginModal)="closeLoginModal()" @parentAnimation/>
+}
 <nav class="container nav">
     <div class="nav__logo" routerLink="/">LOGO</div>
     <div #nav_items_wrapper class="nav__items-wrapper">

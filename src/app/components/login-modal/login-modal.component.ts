@@ -1,22 +1,23 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginForm } from '../../models/login-form.interface';
-import { fadeInOut, popUp, slideUpDown } from '../../animations/transition-animations';
+import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../animations/transition-animations';
 import { Router } from '@angular/router';
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: 'app-login-modal',
   standalone: true,
-  imports: [InputComponent, ReactiveFormsModule],
+  imports: [InputComponent, ReactiveFormsModule, ModalComponent],
   templateUrl: './login-modal.component.html',
   styleUrl: './login-modal.component.scss',
-  animations: [popUp, fadeInOut, slideUpDown]
+  animations: [popUp, fadeInOut, slideUpDown, parentAnimations]
 })
 export class LoginModalComponent {
-
   loginForm!: FormGroup<LoginForm>;
-  @Output() closeModal = new EventEmitter<void>();
+  onCloseLoginModal = output();
+  showLoginModal = true;
 
   constructor(
     private route: Router
@@ -34,5 +35,9 @@ export class LoginModalComponent {
         this.route.navigate(['ucp/profile']);
       }, 1000);
     }
+  }
+  closeLoginModal() {
+    this.showLoginModal = false;
+    this.onCloseLoginModal.emit()
   }
 }

@@ -15,6 +15,6 @@ type SizeUnit = `${number}${'px' | 'em' | 'rem'}`;
 
 
 export class ModalComponent {
- closeModal = output<boolean>();
+ onCloseModal = output();
  minWidth = input<SizeUnit>('350px');
 }

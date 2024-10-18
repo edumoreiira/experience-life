@@ -19,9 +19,10 @@
 
     --grid-page-padding: 1.8rem;
     --portal-gap: 2.5em;
+    --global-page-padding: 80px;
 
     @media screen and (max-width: 800px) {
         --grid-page-padding: 1rem;
-        
+        --global-page-padding: 40px;
     }
 }
