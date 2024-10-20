@@ -27,9 +27,12 @@
     }
 }
 
+:root {
+    --slideUp: 50%;
+}
 @keyframes slideUp {
     from {
-        transform: translateY(100%);
+        transform: translateY(var(--slideUp));
         opacity: 0;
     }
     to {
@@ -40,12 +43,10 @@
 
 @keyframes popUpRight {
     from {
-        transform: translateX(100%) scale(0);
-        opacity: 0;
+        transform: translateX(20%) scale(.7);
     }
     to {
         transform: translateX(0) scale(1);
-        opacity: 1;
     }
 }
 

@@ -200,7 +200,8 @@ main{
 
 
 .header {
-    animation: 500ms slideRight ease-out;
+    --slideUp: 3em;
+    animation: 500ms slideUp ease-out;
 }
 .server-card {
     animation: 500ms fadeIn ease-in;
@@ -216,7 +217,9 @@ main{
             $length: 5;
             @for $i from $length through 1 {
                 &:nth-child(#{$i}) {
-                    animation: 500ms slideUp ease-out #{($length - $i) * 70}ms forwards;
+                    animation: 
+                    500ms popUpRight ease-out #{($length - $i) * 70}ms,
+                    500ms fadeIn ease-out #{($length - $i) * 70}ms forwards;
                 }
             }
         }

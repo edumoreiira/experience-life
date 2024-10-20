@@ -40,7 +40,7 @@
         </div>
 
         } @else if (step === 2) {
-        <div class="purchase__form__section" @slideUpDown>
+        <div class="purchase__form__section" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
             <h2>Insira o valor da compra de moedas verdes.</h2>
             <div class="purchase__form__section__price-wrapper">
                 <div class="purchase__form__section__price">
@@ -67,7 +67,7 @@
                 (click)="isCouponModalVisible = true">Usar cupom</button>
                 @if (isCouponModalVisible) {
                     <app-modal 
-                    (closeModal)="closeCouponModal()"
+                    (onCloseModal)="closeCouponModal()"
                     minWidth="500px"
                     >
                         <div class="purchase__form__section__coupon">

@@ -6,6 +6,12 @@
     // grid-template-rows: minmax(27.48em, 1em);
     // grid-auto-rows: min-content;
     gap: var(--grid-page-padding);
+    @media screen and (max-width: 1320px) {
+        font-size: .85em;
+    }
+    @media screen and (max-width: 570px) {
+        grid-template-columns: minmax(28em, 1fr); 
+    }
 }
   
     .player {
@@ -293,6 +299,24 @@
 
             &__personal {
                 order: 4 ;
+            }
+        }
+
+        @media (max-width: 470px) {
+            &:not(&__main) {
+                .player__stats__item {
+                    grid-column: span 2;
+                }
+            }
+            
+            &__stats {
+                &__item {
+                    &__kills, 
+                    &__deaths {
+                        font-size: .78em;
+                        font-weight: 500;
+                    }
+                }
             }
         }
     }
