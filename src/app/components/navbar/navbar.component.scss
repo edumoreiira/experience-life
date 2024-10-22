@@ -11,6 +11,11 @@
         font-weight: 700;
         font-style: italic;
         cursor: pointer;
+        height: 40px;
+
+        img {
+            height: 100%;
+        }
     }
 
     &__items{

@@ -36,10 +36,10 @@ export class RankComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    this.loadPlayers(this.currentPage);
     setTimeout(() => {
      this.pageHasLoaded = true; 
-    });
-    this.loadPlayers(this.currentPage);
+    }, 1000);
   }
 
   loadPlayers(currentPage: number){

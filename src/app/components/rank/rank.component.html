@@ -23,10 +23,10 @@
         </div>
     </div>
     @if(currentPage === 1) {
-        <div class="rank__top-tier" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
+        <div class="rank__top-tier" @slideUpDown>
         @for(player of (players$ | async); track $index) {
                 @if($index === 0) {
-                    <div class="rank__top-tier__item">
+                    <div class="rank__top-tier__item" [ngClass]="{'loaded': pageHasLoaded}">
                         <div class="rank__top-tier__item__tier">
                             <i class="fi fi-ss-trophy-star"></i>
                             <span>{{player.position}}</span>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 } @else if ($index < 3) {
-                    <div class="rank__top-tier__item">
+                    <div class="rank__top-tier__item" [ngClass]="{'loaded': pageHasLoaded}">
                         <div class="rank__top-tier__item__tier">
                             <span>{{player.position}}</span>
                         </div>

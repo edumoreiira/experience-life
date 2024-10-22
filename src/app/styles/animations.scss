@@ -41,6 +41,20 @@
     }
 }
 
+@keyframes popUp {
+    0% {
+        transform: translateY(20%) scale(.4);
+    }
+
+    80% {
+        transform: translateY(0) scale(1.03);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
 @keyframes popUpRight {
     from {
         transform: translateX(20%) scale(.7);

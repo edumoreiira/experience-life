@@ -224,3 +224,49 @@
     }
 }
 
+//animations
+
+.rank {
+    &__header {
+        opacity: 0;
+        animation: slideUp 500ms ease-out forwards;
+    }
+
+    &__period {
+        &__item {
+            opacity: 0;
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    animation: slideUp 500ms ease-out #{$i * 50}ms forwards;
+                }
+            }
+        }
+    }
+
+    &__selector {
+        opacity: 0;
+        animation: slideUp 500ms ease-out 200ms forwards;
+    }
+
+    &__top-tier {
+        &__item:not(.loaded) {
+            opacity: 0;
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    animation: slideUp 400ms ease-out #{100 + ($i * 50)}ms forwards;
+                }
+            }
+        }
+    }
+
+    &__tier {
+        opacity: 0;
+        --slideUp: 3em;
+        animation: slideUp 500ms ease-out 200ms forwards;
+    }
+
+    &__controls {
+        opacity: 0;
+        animation: slideUp 500ms ease-out 200ms forwards;
+    }
+}

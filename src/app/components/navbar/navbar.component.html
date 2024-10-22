@@ -2,7 +2,9 @@
     <app-login-modal (onCloseLoginModal)="closeLoginModal()" @parentAnimation/>
 }
 <nav class="container nav">
-    <div class="nav__logo" routerLink="/">LOGO</div>
+    <div class="nav__logo" routerLink="/">
+        <img src="/assets/logo/exp-stroke-white.png" alt="" srcset="">
+    </div>
     <div #nav_items_wrapper class="nav__items-wrapper">
         <i class="fi fi-br-menu-burger nav__burger" (click)="handleNavBar(nav_items_wrapper)"></i>
         <ul class="nav__items">
