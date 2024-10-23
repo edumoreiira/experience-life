@@ -18,6 +18,7 @@ export class LoginModalComponent {
   loginForm!: FormGroup<LoginForm>;
   onCloseLoginModal = output();
   showLoginModal = true;
+  showPasswordRecoveryModal = false;
 
   constructor(
     private route: Router
@@ -36,8 +37,18 @@ export class LoginModalComponent {
       }, 1000);
     }
   }
+
   closeLoginModal() {
     this.showLoginModal = false;
     this.onCloseLoginModal.emit()
   }
+
+  openPasswordRecoveryModal() {
+    this.showPasswordRecoveryModal = true;
+  }
+
+  closePasswordRecoveryModal() {
+    this.showPasswordRecoveryModal = false;
+  }
+  
 }

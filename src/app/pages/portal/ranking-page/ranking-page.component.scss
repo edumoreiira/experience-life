@@ -5,3 +5,12 @@
         --table-footer-loadmore-fade-color: var(--background);
     }
 }
+
+//view-more modal
+.view-more {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}

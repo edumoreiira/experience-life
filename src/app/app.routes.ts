@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: '', component: PortalComponent,
         children: [
             { path: '', component: HomeComponent },
-            { path: 'rank', component: RankingPageComponent },
+            { path: 'ranking', component: RankingPageComponent },
             { path: 'comprar-moedas', component: PortalComprarMvPageComponent },
         ]
      },

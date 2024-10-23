@@ -103,3 +103,17 @@
     }
 
 }
+
+.password-recovery {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: .5em;
+    align-items: center;
+    a {
+        font-weight: 600;
+        &::after {
+            height: 2px;
+        }
+    }
+}

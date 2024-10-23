@@ -2,6 +2,7 @@
     <app-modal (onCloseModal)="closeLoginModal()" minWidth="22em" @parentAnimation>
         <div class="login-modal__content">
             <h1>UCP</h1>
+
             <form class="login-modal__form"  [formGroup]="loginForm">
                 <app-input class="login-modal__input"
                     [placeholder]="'Usuário'"
@@ -19,10 +20,21 @@
                     <button type="submit" class="login-modal__submit-btn"
                     [disabled]="!loginForm.valid" (click)="login()"
                     >Entrar</button>
-                    <a href="#" class="login-modal__forgot-password-btn underline-animation">Esqueci minha senha</a>
+                    <a href="#" class="login-modal__forgot-password-btn underline-animation"
+                    (click)="openPasswordRecoveryModal()">Esqueci minha senha</a>
                 </div>
     
             </form>
         </div>
+        @if (showPasswordRecoveryModal) {
+            <app-modal minWidth="25em" (onCloseModal)="closePasswordRecoveryModal()">
+                <section class="password-recovery">
+                    <h1>Em desenvolvimento!</h1> 
+                    <p>O sistema de recuperação de senhas está sendo desenvolvido, entre em contato pelo discord para alterar sua senha.</p>
+                    <a href="https://discord.gg/aw6GYKVp" class="underline-animation"
+                    target="_blank">Abrir ticket no discord</a>
+                </section>
+            </app-modal>
+        }
     </app-modal>
 }
