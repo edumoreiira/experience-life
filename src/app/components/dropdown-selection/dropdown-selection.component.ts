@@ -19,11 +19,14 @@ export interface DropdownListOptions{
 export class DropdownSelectionComponent implements AfterViewInit{
   @Input() name: string = "Dropdown";
   @Input({ required: true }) items: DropdownListOptions[] = [];
+  @Input({ required: true }) dropdownId: string = '';
   @Output() clickedItem = new EventEmitter<DropdownListOptions>;
   
   @ViewChild('DropdownButton') dropdown!: ElementRef;
+  @ViewChild('DropdownMenu') dropdownMenu!: ElementRef;
 
   dropdownElement!: HTMLElement
+  dropdownMenuId: string = `${this.dropdownId}-menu`;
   isExpanded: boolean = false;
   
   ngAfterViewInit(): void {
@@ -31,19 +34,29 @@ export class DropdownSelectionComponent implements AfterViewInit{
   }
 
   toggleDropDown(){
-    this.isExpanded = !this.isExpanded
-    const isExpanded = this.isExpanded ? 'true' : 'false'
-    this.dropdownElement.setAttribute('aria-expanded', isExpanded)
+    this.isExpanded ? this.closeDropDown() : this.openDropDown();
   }
 
   openDropDown(){
     this.isExpanded = true;
-    this.dropdownElement.setAttribute('aria-expanded', 'true')
+
+    setTimeout(() => { // focus on the first item of the dropdown list
+      const list = this.dropdownMenu.nativeElement as HTMLElement;
+      const firstChild = list.querySelector('.dropdown__item') as HTMLElement;
+      firstChild.focus();
+    }, 100);
   }
 
   closeDropDown(){
     this.isExpanded = false;
-    this.dropdownElement.setAttribute('aria-expanded', 'false')
+    this.dropdownElement.focus();
+  }
+
+  onKeyDownItem(event: KeyboardEvent, item: DropdownListOptions) {
+    if(event.key === 'Enter' || event.key === ' '){
+      event.preventDefault(); // avoid spacebar to scroll the page
+      this.onclickItem(item);
+    }
   }
 
   @HostListener('document:click', ['$event'])

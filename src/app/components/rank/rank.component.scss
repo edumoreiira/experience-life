@@ -28,6 +28,7 @@
 
     &__options {
         display: grid;
+        z-index: 1; // fix for dropdowns
         gap: 2em;
         grid-template-columns: auto;
         justify-content: center;

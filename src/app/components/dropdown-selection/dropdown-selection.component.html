@@ -1,15 +1,26 @@
 <div class="dropdown">
     <button #DropdownButton class="dropdown__button" type="button" 
     (click)="toggleDropDown()"
-    aria-expanded="false"
-    >{{name}}
+    [attr.aria-expanded]="isExpanded"
+    aria-haspopup="true"
+    [attr.aria-controls]="dropdownMenuId"
+    [id]="dropdownId"
+    >
+        {{name}}
         <span class="dropdown__arrow-down" [ngStyle]="{'transform': isExpanded ? 'rotate(225deg)' : 'rotate(45deg)'}"></span>
     </button>
-    <ul  *ngIf="isExpanded" class="dropdown__list" @slideUpDown>
+    <ul #DropdownMenu *ngIf="isExpanded" class="dropdown__list" @slideUpDown
+    [attr.aria-labelledby]="DropdownButton.id"
+    role="menu"
+    [id]="dropdownMenuId">
         
         @for(item of items; track $index){
             <li [ngClass]="{'dropdown__item--active': item.isActive}"
-             class="dropdown__item" (click)="onclickItem(item)">{{item.name}}</li>
+            class="dropdown__item" (click)="onclickItem(item)" (keydown)="onKeyDownItem($event, item)"
+            role="menuitem"
+            [tabIndex]="$index + 1">
+                {{item.name}}
+            </li>
         }
     </ul>
 </div>

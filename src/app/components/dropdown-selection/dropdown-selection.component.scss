@@ -57,7 +57,7 @@
         padding-left: 2em;
         position: relative;
         transition: background-color 150ms ease-in-out;
-        &:hover{
+        &:hover, &:focus{
             background-color: hsl(var(--background-light));
         }
 
