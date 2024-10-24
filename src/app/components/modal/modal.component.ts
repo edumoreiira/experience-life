@@ -17,4 +17,7 @@ type SizeUnit = `${number}${'px' | 'em' | 'rem'}`;
 export class ModalComponent {
  onCloseModal = output();
  minWidth = input<SizeUnit>('350px');
+ role = input.required<string>();
+ ariaLabelledBy = input.required<string>();
+ ariaDescribedBy = input<string>();
 }

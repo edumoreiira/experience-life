@@ -68,7 +68,7 @@
                 @if (isCouponModalVisible) {
                     <app-modal 
                     (onCloseModal)="closeCouponModal()"
-                    minWidth="500px"
+                    minWidth="500px" [role]="'dialog'" [ariaLabelledBy]="'Cupom de desconto'" [ariaDescribedBy]="'Insira um cupom de desconto'"
                     >
                         <div class="purchase__form__section__coupon">
                                 <app-input  class="purchase__form__section__input"placeholder="Cupom" type="text" 

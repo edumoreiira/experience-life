@@ -1,5 +1,6 @@
 @if(viewMoreModal) {
-    <app-modal (onCloseModal)="closeViewMoreModal()">
+    <app-modal (onCloseModal)="closeViewMoreModal()"
+    [role]="'dialog'" [ariaLabelledBy]="'Acese o UCP'">
         <div class="view-more">
             <h2>Acesse nosso UCP para ver o rank completo!</h2>
             <button gradient-button routerLink="/ucp/ranking">UCP</button>
