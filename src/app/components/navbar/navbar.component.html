@@ -1,7 +1,7 @@
 @if(showLoginModal) {
     <app-login-modal (onCloseLoginModal)="closeLoginModal()" @parentAnimation/>
 }
-<nav class="container nav">
+<nav class="container nav" aria-label="Navegação Principal">
     <div class="nav__logo" routerLink="/">
         <img src="/assets/logo/exp-stroke-white.png" alt="" srcset="">
     </div>
@@ -20,7 +20,8 @@
                 <a class="nav__link underline-animation" href="https://www.discord.gg/PFwAEWwpW7" target="_blank">Discord</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link underline-animation" (click)="openLoginModal()">UCP</a>
+                <button class="nav__link underline-animation" (click)="openLoginModal()"
+                aria-haspopup="true" aria-label="Acessar UCP">UCP</button>
             </li>
             <li class="nav__item">
                 <a class="nav__link">

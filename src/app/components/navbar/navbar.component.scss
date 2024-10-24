@@ -34,12 +34,17 @@
     }
 
     &__item, &__button{
-        text-transform: uppercase;
         font-size: 1em;
         font-weight: 600;
+        text-transform: uppercase;
     }
 
     &__link{
+        font-weight: 600;
+        font-size: 1em;
+        background-color: transparent;
+        border: 0;
+        font-size: 1em;
         color: var(--foreground);
         text-decoration: none;
         transition: color 150ms ease-in-out;

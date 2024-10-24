@@ -1,6 +1,6 @@
 @if (showLoginModal) {
     <app-modal (onCloseModal)="closeLoginModal()" minWidth="22em" @parentAnimation
-    [role]="'dialog'" [ariaLabelledBy]="'Logar no UCP'">
+    [role]="'dialog'" [ariaLabel]="'Fazer login no UCP'">
         <div class="login-modal__content">
             <h1>UCP</h1>
 
@@ -21,18 +21,19 @@
                     <button type="submit" class="login-modal__submit-btn"
                     [disabled]="!loginForm.valid" (click)="login()"
                     >Entrar</button>
-                    <a href="#" class="login-modal__forgot-password-btn underline-animation"
-                    (click)="openPasswordRecoveryModal()">Esqueci minha senha</a>
+                    <span role="button" tabindex="0" class="login-modal__forgot-password-btn underline-animation"
+                    (click)="openPasswordRecoveryModal()">Esqueci minha senha</span>
                 </div>
     
             </form>
         </div>
         @if (showPasswordRecoveryModal) {
             <app-modal minWidth="25em" (onCloseModal)="closePasswordRecoveryModal()"
-            [role]="'dialog'" [ariaLabelledBy]="'Recuperação de senha'">
+            [role]="'dialog'">
                 <section class="password-recovery">
                     <h1>Em desenvolvimento!</h1> 
-                    <p>O sistema de recuperação de senhas está sendo desenvolvido, entre em contato pelo discord para alterar sua senha.</p>
+                    <p> O sistema de recuperação de senhas está sendo desenvolvido, 
+                        entre em contato pelo discord para alterar sua senha.</p>
                     <a href="https://discord.gg/aw6GYKVp" class="underline-animation"
                     target="_blank">Abrir ticket no discord</a>
                 </section>

@@ -27,21 +27,41 @@
         cursor: default;
         z-index: 1;
 
-        &__close-btn {
-            position: absolute;
-            top: 1em;
-            right: 1.1em;
-            padding: .2em;
-            display: flex;
-            color: hsl(var(--foreground));
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: color 150ms ease-in-out;
-            &:hover {
-                color: hsl(var(--primary));
+    }
+    &__close-btn {
+        position: absolute;
+        top: 1em;
+        right: 1.1em;
+        padding: .2em;
+        display: flex;
+        color: hsl(var(--foreground));
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: color 150ms ease-in-out;
+        z-index: 2;
+        &:hover, &:focus {
+            color: hsl(var(--primary));
+        }
+        &:active {
+            transition: ease-out 100ms;
+            color: hsl(var(--primary-light));
+        }
+        .fi {
+            &::before {
+                pointer-events: none;
             }
         }
     }
+}
 
-
+.close-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
