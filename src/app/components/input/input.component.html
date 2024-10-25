@@ -1,23 +1,24 @@
 <div class="input-wrapper">
         <input
         #input
-        [value]="value"
+        [value]="value" [id]="id"
         (input)="onInput($event)"
-        (input)="inputElement.emit({
-            sourceElement: input,
-            formControlName: formControlName
-        })"
-        [type]="showPassword ? 'text' : type"
+        (input)="inputElement.emit({ sourceElement: input, formControlName: formControlName })"
+        [type]="passwordVisible ? 'text' : type"
         [ngClass]="{'error': isInvalid}"
+        [placeholder]="placeholder"
         [mask]="mask" [prefix]="prefix" [suffix]="suffix"
         [dropSpecialCharacters]="dropSpecialCharacters"
         [attr.maxLength]="maxLength ? maxLength : null"
+        [attr.aria-label]="ariaLabel || placeholder" [attr.aria-labelledby]="ariaLabelledby"
+        [attr.aria-describedby]="inputErrorId" [attr.aria-required]="ariaRequired"
+        [attr.aria-invalid]="hasInvalidClass"
          />
          <!-- placeholder-title -->
          <span [ngClass]="{'filled':input.value.length > 0}"
           class="placeholder-title"
           >
-         {{placeholder}}
+         {{title}}
          </span>
 
          <!-- right info -->
@@ -29,8 +30,8 @@
     
          <!-- show password icon -->
          @if(!hideShowPassword() && type === "password"){
-             <button type="button" class="show-password-btn" (click)="showPassword = !showPassword">
-                @if(showPassword){
+             <button type="button" class="show-password-btn" (click)="togglePasswordVisibility()">
+                @if(passwordVisible){
                     <i class="fi fi-br-eye-crossed"></i>
                 }@else{
                     <i class="fi fi-br-eye"></i>
@@ -38,8 +39,8 @@
             </button>
          }
          <!-- text description on error  -->
-         @if(hasInvalidClass()){
-             <div @fadeInOut class="invalid">
+         @if(hasInvalidClass){
+             <div @fadeInOut class="invalid" aria-live="assertive" [id]="inputErrorId">
                 <ng-content select="[invalid]"></ng-content>
              </div>
          }

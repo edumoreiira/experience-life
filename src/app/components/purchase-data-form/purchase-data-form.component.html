@@ -3,8 +3,8 @@
         @if(step === 1) {
         <div class="purchase__form__section" [@slideUpDown]="pageHasLoaded ? 'active' : 'inactive'">
             <h2>Insira o nome da sua conta no nosso servidor.</h2>
-            <app-input class="purchase__form__section__input" placeholder="Nome da conta" formControlName="accountName"
-            (input)="avoidWhitespace($event, false)">
+            <app-input class="purchase__form__section__input" title="Nome da conta" formControlName="accountName"
+            (input)="avoidWhitespace($event, false)" [id]="'accoutNameInput'" [ariaRequired]="true">
                 @if(getForm('accountName')?.errors?.['required']) {
                 <small invalid class="purchase__form__section__error">O nome da conta é obrigatório</small>
                 } @else if(getForm('accountName')?.errors?.['minlength']) {
@@ -44,9 +44,10 @@
             <h2>Insira o valor da compra de moedas verdes.</h2>
             <div class="purchase__form__section__price-wrapper">
                 <div class="purchase__form__section__price">
-                    <app-input class="purchase__form__section__input" placeholder="Valor da compra" prefix="R$ "
+                    <app-input class="purchase__form__section__input" title="Valor da compra" prefix="R$ "
                         suffix=",00" type="tel" mask="separator.4" name="valueToPay" type="tel" [maxLength]="12"
-                        formControlName="purchaseAmount" [rightInfo]="true">
+                        formControlName="purchaseAmount" [rightInfo]="true" [id]="'valueToPayInput'" 
+                        [ariaRequired]="true" [placeholder]="'R$ 0,00'">
                         <span right-info class="purchase__form__section__price__coins">
                             {{calculateCoins() | thousandSeparator}} <b>MV</b>
                         </span>
@@ -68,12 +69,12 @@
                 @if (isCouponModalVisible) {
                     <app-modal 
                     (onCloseModal)="closeCouponModal()"
-                    minWidth="500px" [role]="'dialog'" [ariaLabelledBy]="'Cupom de desconto'" [ariaDescribedBy]="'Insira um cupom de desconto'"
+                    minWidth="500px" [role]="'dialog'" [ariaLabel]="'Insira um cupom de desconto'"
                     >
                         <div class="purchase__form__section__coupon">
-                                <app-input  class="purchase__form__section__input"placeholder="Cupom" type="text" 
-                                formControlName="coupon"
-                                />
+                                <app-input  class="purchase__form__section__input" title="Cupom" type="text" 
+                                formControlName="coupon" [id]="'couponInput'" [ariaRequired]="true">
+                                </app-input>
                                 <button gradient-button class="purchase__form__section__coupon__button"
                                 type="button">Ativar</button>
                         </div>
@@ -99,8 +100,8 @@
                     segurança e a entrega correta do seu pedido.</p>
             </div>
             <app-input class="purchase__form__section__input purchase__form__section__input--expanded"
-                placeholder="Nome Completo" type="text" (input)="avoidWhitespace($event)"
-                formControlName="customerName">
+                title="Nome Completo" type="text" (input)="avoidWhitespace($event)"
+                formControlName="customerName" [id]="'customerNameInput'" [ariaRequired]="true">
                 @if(getForm('customerName')?.errors?.['required']) {
                 <small invalid class="purchase__form__section__error">Este campo é obrigatório</small>
                 }@else if(getForm('customerName')?.errors?.['noSpecialCharacters']) {
@@ -112,8 +113,8 @@
                 }
             </app-input>
 
-            <app-input class="purchase__form__section__input" placeholder="CPF" type="tel" mask="000.000.000-00"
-                formControlName="customerCpf">
+            <app-input class="purchase__form__section__input" title="CPF" type="tel" mask="000.000.000-00"
+                formControlName="customerCpf" [id]="'customerCpfInput'" [ariaRequired]="true">
 
                 @if(getForm('customerCpf')?.errors?.['required']) {
                 <small invalid class="purchase__form__section__error">Este campo é obrigatório</small>
@@ -122,8 +123,8 @@
                 }
             </app-input>
 
-            <app-input class="purchase__form__section__input" placeholder="Telefone" type="tel" mask="(00) 00000-0000"
-                formControlName="customerPhone">
+            <app-input class="purchase__form__section__input" title="Telefone" type="tel" mask="(00) 00000-0000"
+                formControlName="customerPhone" [id]="'customerPhoneInput'" [ariaRequired]="true">
                 @if(getForm('customerPhone')?.errors?.['required']) {
                 <small invalid class="purchase__form__section__error">Este campo é obrigatório</small>
                 }@else if (getForm('customerPhone')?.errors?.['minlength']) {
@@ -132,7 +133,8 @@
             </app-input>
 
             <app-input class="purchase__form__section__input purchase__form__section__input--expanded"
-                placeholder="Email" type="email" formControlName="customerEmail">
+                title="Email" type="email" formControlName="customerEmail" [id]="'customerEmailInput'"
+                [ariaRequired]="true">
                 @if(getForm('customerEmail')?.errors?.['required']) {
                 <small invalid class="purchase__form__section__error">Este campo é obrigatório</small>
                 }@else if(getForm('customerEmail')?.errors?.['email']) {

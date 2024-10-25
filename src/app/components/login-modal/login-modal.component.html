@@ -6,23 +6,25 @@
 
             <form class="login-modal__form"  [formGroup]="loginForm">
                 <app-input class="login-modal__input"
-                    [placeholder]="'Usuário'"
+                    [title]="'Usuário'"
                     [type]="'text'"
                     formControlName="username"
+                    [id]="'loginUsernameInput'"
                 >
                 </app-input>
                 <app-input class="login-modal__input"
-                    [placeholder]="'Senha'"
+                    [title]="'Senha'"
                     [type]="'password'"
                     formControlName="password"
+                    [id]="'loginPasswordInput'"
                 ></app-input>
     
                 <div class="login-modal__control">
                     <button type="submit" class="login-modal__submit-btn"
                     [disabled]="!loginForm.valid" (click)="login()"
                     >Entrar</button>
-                    <span role="button" tabindex="0" class="login-modal__forgot-password-btn underline-animation"
-                    (click)="openPasswordRecoveryModal()">Esqueci minha senha</span>
+                    <button aria-haspopup="dialog" class="login-modal__forgot-password-btn underline-animation text-btn"
+                    (click)="openPasswordRecoveryModal()">Esqueci minha senha</button>
                 </div>
     
             </form>

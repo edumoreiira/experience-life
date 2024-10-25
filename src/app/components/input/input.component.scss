@@ -10,6 +10,9 @@ $info-color: var(--primary);
         input {
             outline: hsl($danger-color) solid 2px;
             border-color: transparent;
+            &::placeholder {
+                color: hsl($danger-color / .45);
+            }
             &:focus {
                 border-color: transparent;
                 outline-offset: 0;
@@ -47,12 +50,19 @@ $info-color: var(--primary);
         text-overflow: ellipsis;
         outline: 2px solid transparent;
         transition: all 150ms ease-in-out;
+        &::placeholder{
+            color: transparent;
+            transition: color 150ms ease-in-out 150ms;
+        }
         &:hover:not(:focus){
             border-color: hsl($border-color-hover);
         }
         &:focus{
             outline-color: hsl($highlight-color);
             border-color: transparent;
+            &::placeholder {
+                color: hsl($highlight-color / .45);
+            }
         }
     }
 
