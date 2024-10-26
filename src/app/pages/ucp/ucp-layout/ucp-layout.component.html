@@ -1,7 +1,29 @@
+@if (changePasswordModal) {
+    <app-modal [role]="'dialog'" (onCloseModal)="closeChangePasswordModal()" minWidth="26em">
+        <div class="change-password">
+            <h1>Em desenvolvimento!</h1>
+            <p>Ainda não é possível alterar a senha pelo UCP. Procure um administrador responsável dentro do jogo,
+                 ou entre em contato pelo discord.
+            </p>
+            <a href="https://discord.gg/aw6GYKVp" class="underline-animation">Abrir ticket no discord</a>
+        </div>
+    </app-modal>
+}
+@if(logoutConfirmationDialog) {
+    <app-confirmation-dialog (confirmationDialog)="onLogoutConfirmation($event)" minWidth="30em"
+    [title]="'Deseja sair?'"
+    [message]="'Isso fará com que você volte a página principal e precise realizar login novamente para obter acesso ao 
+    UCP, deseja continuar?'"
+    [confirmText]="'Sair'"
+    [cancelText]="'Cancelar'"
+    >
+        
+    </app-confirmation-dialog>
+}
 <div class="ucp ucp__container">
     <app-sidebar [version]="version" class="sb" 
-    [items]="navbarItems"
-    [bottomItems]="bottomItems"
+        [items]="navbarItems"
+        [bottomItems]="bottomItems"
     />
     <div class="ucp__content">
         <router-outlet/>

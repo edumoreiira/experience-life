@@ -125,7 +125,10 @@ $option-padding: .7em;
                 
                 &:hover {
                     background-color: hsl(var(--background-light));
-                    color: hsl(var(--text));
+                    color: hsl(var(--foreground));
+                    &::after {
+                        border-top-color: hsl(var(--foreground));
+                    }
                 }
                 &:active {
                     background-color: hsl(var(--primary-dark));
@@ -149,6 +152,9 @@ $option-padding: .7em;
                 }
                 &--selected {
                     color: hsl(var(--foreground));
+                    &::after {
+                        border-top-color: hsl(var(--foreground));
+                    }
                 }
 
                 &--collapsed::after { // menu arrow icon

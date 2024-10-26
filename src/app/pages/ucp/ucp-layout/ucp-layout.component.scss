@@ -21,6 +21,15 @@
     }
 }
 
+.change-password {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    align-items: center;
+    gap: .5em;
+    
+}
+
 @media screen and (max-width: 740px) {
     .ucp {
         .ucp__content {
