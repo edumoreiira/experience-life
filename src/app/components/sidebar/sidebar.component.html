@@ -12,18 +12,22 @@
             </div>
         </div>
 
+        <!-- Top items -->
         <ul class="sidebar__nav">
             @for(item of items(); track $index) {
+                <!-- single option -->
                 @if(item.route !== 'dropdown') {
                     <li class="sidebar__nav__item">
                         <a class="sidebar__nav__item__option" [routerLink]="item.route ? item.route : null"
                             [ngClass]="{'sidebar__nav__item__option--selected': checkRoute(item.route!),
-                            'sidebar__nav__item__option--disabled': item.route === ''} 
-                        ">
+                            'sidebar__nav__item__option--disabled': item.route === ''}"
+                            (click)="item.onClick ? item.onClick() : null"
+                        >
                             <i [attr.class]="item.icon + ' ' + 'sidebar__nav__item__option__icon'"></i>
                             <span class="sidebar__nav__item__option__title">{{item.title}}</span>
                         </a>
                     </li>
+                    <!-- dropdown option -->
                 }@else {
                     <li class="sidebar__nav__item">
                         <a #configAnchor class="sidebar__nav__item__option sidebar__nav__item__option--collapsed"
@@ -34,7 +38,10 @@
                         @if(configAnchor.classList.contains('sidebar__nav__item__option--expanded')) {
                         <div class="sidebar__nav__content" @slideUpDown>
                             @for(subItem of item.options; track $index) {
-                                <a class="sidebar__nav__item__sub-option">
+                                <a class="sidebar__nav__item__sub-option"
+                                    [routerLink]="subItem.route ? subItem.route : null"
+                                    (click)="subItem.onClick ? subItem.onClick() : null"
+                                >
                                     <span class="sidebar__nav__item__sub-option__title">{{subItem.title}}</span>
                                 </a>
                             }
@@ -44,23 +51,25 @@
                 }
             }
         </ul>
-
     </div>
 
 
-
+<!-- Bottom items -->
     <ul class="sidebar__nav">
+        <!-- signe option -->
         @for(item of bottomItems(); track $index) {
             @if(item.route !== 'dropdown') {
                 <li class="sidebar__nav__item">
                     <a class="sidebar__nav__item__option" [routerLink]="item.route ? item.route : null"
                         [ngClass]="{'sidebar__nav__item__option--selected': checkRoute(item.route!),
-                        'sidebar__nav__item__option--disabled': item.route === ''} 
-                    ">
+                        'sidebar__nav__item__option--disabled': item.route === ''}"
+                        (click)="item.onClick ? item.onClick() : null"
+                    >
                         <i [attr.class]="item.icon + ' ' + 'sidebar__nav__item__option__icon'"></i>
                         <span class="sidebar__nav__item__option__title">{{item.title}}</span>
                     </a>
                 </li>
+                <!-- dropdown option -->
             }@else {
                 <li class="sidebar__nav__item">
                     <a #configAnchor class="sidebar__nav__item__option sidebar__nav__item__option--collapsed"
@@ -71,7 +80,9 @@
                     @if(configAnchor.classList.contains('sidebar__nav__item__option--expanded')) {
                     <div class="sidebar__nav__content" @slideUpDown>
                         @for(subItem of item.options; track $index) {
-                            <a class="sidebar__nav__item__sub-option" [routerLink]="subItem.route ? subItem.route : null">
+                            <a class="sidebar__nav__item__sub-option" [routerLink]="subItem.route ? subItem.route : null"
+                                (click)="subItem.onClick ? subItem.onClick() : null"
+                            >
                                 <span class="sidebar__nav__item__sub-option__title">{{subItem.title}}</span>
                             </a>
                         }

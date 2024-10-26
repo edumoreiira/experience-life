@@ -1,6 +1,6 @@
 :host {
     // width: clamp(250px, 15.6em, 400px);
-    z-index: 1000;
+    z-index: 900;
     flex-shrink: 0;
     font-size: clamp(.9rem, 1.05vw, 1.5rem);
     transition: width 150ms ease-in-out;

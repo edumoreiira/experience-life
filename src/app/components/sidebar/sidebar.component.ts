@@ -8,11 +8,13 @@ export interface SidebarItem {
   title: string;
   icon: string;
   route?: string; // if route is empty, it will set the item as invalid. if dropdown is not empty, it will set the item as dropdown
+  onClick?: () => void;
   options?: SidebarSubItem[];
 }
 export interface SidebarSubItem {
   title: string;
-  route: string;
+  route?: string;
+  onClick?: () => void;
 }
 
 @Component({
