@@ -3,7 +3,7 @@ import { fadeInOut, parentAnimations, popUp } from '../../animations/transition-
 import { CommonModule } from '@angular/common';
 import { FocusTrapDirective } from '../../directives/focus-trap/focus-trap.directive';
 
-type SizeUnit = `${number}${'px' | 'em' | 'rem'}`;
+export type ModalSizeUnit = `${number}${'px' | 'em' | 'rem'}`;
 
 @Component({
   selector: 'app-modal',
@@ -17,7 +17,7 @@ type SizeUnit = `${number}${'px' | 'em' | 'rem'}`;
 
 export class ModalComponent implements AfterViewInit{
  onCloseModal = output();
- minWidth = input<SizeUnit>('350px');
+ minWidth = input<ModalSizeUnit>('350px');
  role = input.required<string>();
  ariaLabelledBy = input<string>();
  ariaDescribedBy = input<string>();

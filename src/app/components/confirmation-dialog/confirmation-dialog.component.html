@@ -1,0 +1,14 @@
+<app-modal [role]="'alertdialog'" (onCloseModal)="onCancel()" [minWidth]="minWidth()" @parentAnimation>
+    <article class="confirmation-dialog">
+        <h1>{{title()}}</h1>
+        <p>{{message()}}</p>
+        <div class="confirmation-dialog__actions">
+            <button gradient-button group="secondary" class="confirmation-dialog__action" (click)="onCancel()">
+                {{cancelText()}}
+            </button>
+            <button gradient-button group="primary" class="confirmation-dialog__action" (click)="onConfirm()">
+                {{confirmText()}}
+            </button>
+        </div>
+    </article>
+</app-modal>

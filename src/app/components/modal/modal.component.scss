@@ -26,7 +26,7 @@
         position: relative;
         cursor: default;
         z-index: 1;
-
+        word-break: break-word;
     }
     &__close-btn {
         position: absolute;

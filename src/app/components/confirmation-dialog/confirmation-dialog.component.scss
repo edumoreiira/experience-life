@@ -1,0 +1,23 @@
+.confirmation-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+
+    &__actions {
+        margin-top: 1em;
+        display: flex;
+        flex-wrap: wrap;
+        align-self: stretch;
+        justify-content: space-between;
+        gap: 1em;
+
+        button {
+            padding-top: .6em;
+            width: min(150px , 100%);
+            @media screen and (max-width: 450px) {
+                width: 100%;
+            }
+        }
+    }
+}
