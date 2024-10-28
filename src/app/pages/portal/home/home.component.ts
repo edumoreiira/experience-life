@@ -4,7 +4,7 @@ import {  ClipboardModule } from '@angular/cdk/clipboard';
 import { FooterComponent } from "../../../components/layout/footer/footer.component";
 import { FormsModule } from '@angular/forms';
 import { slide } from '../../../animations/transition-animations';
-import { ServerService } from '../../../services/server.service';
+import { ServerService } from '../../../services/api/samp-server/server.service';
 import { catchError, Observable, of, take } from 'rxjs';
 import { SampServer } from '../../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';

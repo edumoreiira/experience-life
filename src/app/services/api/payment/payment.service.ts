@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaymentData, PaymentResponse } from '../../models/payment-data.interface';
+import { PaymentData, PaymentResponse } from '../../../models/payment-data.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { Observable } from 'rxjs';
 

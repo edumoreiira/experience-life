@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SampServer } from '../models/samp-server.interface';
+import { SampServer } from '../../../models/samp-server.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({

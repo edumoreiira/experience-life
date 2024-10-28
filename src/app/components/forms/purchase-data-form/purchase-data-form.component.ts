@@ -9,7 +9,7 @@ import { ThousandSeparator } from '../../../pipes/currency-format.pipe';
 import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters} from '../../../validators/purchase-form.validators';
 import { CommonModule } from '@angular/common';
 import { PaymentData, PaymentResponse } from '../../../models/payment-data.interface';
-import { PaymentService } from '../../../services/Payment/payment.service';
+import { PaymentService } from '../../../services/api/Payment/payment.service';
 import { Observable, of } from 'rxjs';
 import { ClipboardCopyComponent } from "../../shared/clipboard-copy/clipboard-copy.component";
 import { ModalComponent } from '../../dialogs/base/modal/modal.component';
