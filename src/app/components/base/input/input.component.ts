@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, forwardRef, input, viewChild } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { CheckInput } from '../../models/check-input.interface';
-import { fadeInOut } from '../../animations/transition-animations';
+import { CheckInput } from '../../../models/check-input.interface';
+import { fadeInOut } from '../../../animations/transition-animations';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 type InputTypes = "text" | "email" | "password" | "date" | "search" | "tel" | "number";

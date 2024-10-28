@@ -1,5 +1,5 @@
 import { Component, HostBinding, input, OnDestroy, OnInit } from '@angular/core';
-import { slideUpDown } from '../../animations/transition-animations';
+import { slideUpDown } from '../../../animations/transition-animations';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter, Subscription } from 'rxjs';

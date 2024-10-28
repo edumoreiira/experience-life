@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
-import { popUp, slideUpDown } from '../../animations/transition-animations';
+import { popUp, slideUpDown } from '../../../animations/transition-animations';
 
 export interface DropdownListOptions{
   name: string,

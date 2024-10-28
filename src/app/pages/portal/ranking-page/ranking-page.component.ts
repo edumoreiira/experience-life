@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RankComponent } from '../../../components/rank/rank.component';
-import { ModalComponent } from "../../../components/modal/modal.component";
-import { ButtonComponent } from '../../../components/button/button.component';
+import { RankComponent } from '../../../components/layout/rank/rank.component';
+import { ModalComponent } from "../../../components/dialogs/base/modal/modal.component";
+import { ButtonComponent } from '../../../components/base/button/button.component';
 import { RouterLink } from '@angular/router';
 
 @Component({

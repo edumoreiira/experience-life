@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, input, output, ViewChild } from '@angular/core';
-import { fadeInOut, parentAnimations, popUp } from '../../animations/transition-animations';
+import { fadeInOut, parentAnimations, popUp } from '../../../../animations/transition-animations';
 import { CommonModule } from '@angular/common';
-import { FocusTrapDirective } from '../../directives/focus-trap/focus-trap.directive';
+import { FocusTrapDirective } from '../../../../directives/focus-trap/focus-trap.directive';
 
 export type ModalSizeUnit = `${number}${'px' | 'em' | 'rem'}`;
 

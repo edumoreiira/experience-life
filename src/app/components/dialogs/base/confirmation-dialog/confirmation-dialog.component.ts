@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { ModalComponent, ModalSizeUnit } from "../modal/modal.component";
-import { ButtonComponent } from '../button/button.component';
-import { parentAnimations } from '../../animations/transition-animations';
+import { ButtonComponent } from '../../../base/button/button.component';
+import { parentAnimations } from '../../../../animations/transition-animations';
 
 @Component({
   selector: 'app-confirmation-dialog',

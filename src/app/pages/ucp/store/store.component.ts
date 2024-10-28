@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PurchaseDataFormComponent } from '../../../components/purchase-data-form/purchase-data-form.component';
+import { PurchaseDataFormComponent } from '../../../components/forms/purchase-data-form/purchase-data-form.component';
 
 @Component({
   selector: 'app-store',

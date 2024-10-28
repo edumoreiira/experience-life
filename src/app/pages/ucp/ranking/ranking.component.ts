@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RankComponent } from '../../../components/rank/rank.component';
+import { RankComponent } from '../../../components/layout/rank/rank.component';
 
 @Component({
   selector: 'app-ranking',

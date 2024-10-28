@@ -1,18 +1,18 @@
 import { Component, input, OnInit, output } from '@angular/core';
-import { InputComponent } from '../input/input.component';
-import { ButtonComponent } from '../button/button.component';
+import { InputComponent } from '../../base/input/input.component';
+import { ButtonComponent } from '../../base/button/button.component';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { slideUpDown } from '../../animations/transition-animations';
-import { PurchaseForm } from '../../models/purchase-form.interface';
-import { ThousandSeparator } from '../../pipes/currency-format.pipe';
-import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters} from '../../validators/purchase-form.validators';
+import { slideUpDown } from '../../../animations/transition-animations';
+import { PurchaseForm } from '../../../models/purchase-form.interface';
+import { ThousandSeparator } from '../../../pipes/currency-format.pipe';
+import { completeNameRequired, cpfValidator, currencyValidator, noSpecialCharacters} from '../../../validators/purchase-form.validators';
 import { CommonModule } from '@angular/common';
-import { PaymentData, PaymentResponse } from '../../models/payment-data.interface';
-import { PaymentService } from '../../services/Payment/payment.service';
+import { PaymentData, PaymentResponse } from '../../../models/payment-data.interface';
+import { PaymentService } from '../../../services/Payment/payment.service';
 import { Observable, of } from 'rxjs';
-import { ClipboardCopyComponent } from "../clipboard-copy/clipboard-copy.component";
-import { ModalComponent } from '../modal/modal.component';
+import { ClipboardCopyComponent } from "../../shared/clipboard-copy/clipboard-copy.component";
+import { ModalComponent } from '../../dialogs/base/modal/modal.component';
 
 @Component({
   selector: 'app-purchase-data-form',

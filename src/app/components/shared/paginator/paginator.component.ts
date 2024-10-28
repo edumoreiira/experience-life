@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, input, output } from '@angular/core';
-import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../animations/transition-animations';
+import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../../animations/transition-animations';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
 

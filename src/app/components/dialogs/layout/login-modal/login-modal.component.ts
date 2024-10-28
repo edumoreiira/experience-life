@@ -1,10 +1,10 @@
 import { Component, output } from '@angular/core';
-import { InputComponent } from '../input/input.component';
+import { InputComponent } from '../../../base/input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginForm } from '../../models/login-form.interface';
-import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../animations/transition-animations';
+import { LoginForm } from '../../../../models/login-form.interface';
+import { fadeInOut, parentAnimations, popUp, slideUpDown } from '../../../../animations/transition-animations';
 import { Router } from '@angular/router';
-import { ModalComponent } from "../modal/modal.component";
+import { ModalComponent } from "../../base/modal/modal.component";
 
 @Component({
   selector: 'app-login-modal',

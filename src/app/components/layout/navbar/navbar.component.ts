@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { LoginModalComponent } from '../../dialogs/layout/login-modal/login-modal.component';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
-import { parentAnimations } from '../../animations/transition-animations';
+import { ButtonComponent } from '../../base/button/button.component';
+import { parentAnimations } from '../../../animations/transition-animations';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({

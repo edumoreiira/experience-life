@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CardComponent } from "../../../components/card/card.component";
+import { CardComponent } from "../../../components/shared/card/card.component";
 import {  ClipboardModule } from '@angular/cdk/clipboard';
-import { FooterComponent } from "../../../components/footer/footer.component";
+import { FooterComponent } from "../../../components/layout/footer/footer.component";
 import { FormsModule } from '@angular/forms';
 import { slide } from '../../../animations/transition-animations';
 import { ServerService } from '../../../services/server.service';
@@ -9,14 +9,13 @@ import { catchError, Observable, of, take } from 'rxjs';
 import { SampServer } from '../../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { RoundedButtonComponent } from '../../../components/button/rounded-button/rounded-button.component';
-import { NavbarComponent } from "../../../components/navbar/navbar.component";
-import { ClipboardCopyComponent } from "../../../components/clipboard-copy/clipboard-copy.component";
+import { NavbarComponent } from "../../../components/layout/navbar/navbar.component";
+import { ClipboardCopyComponent } from "../../../components/shared/clipboard-copy/clipboard-copy.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RoundedButtonComponent, CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule,
+  imports: [CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule,
     NavbarComponent, ClipboardCopyComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CircleProgressBarComponent } from '../../../components/circle-progress-bar/circle-progress-bar.component';
 import { ThousandSeparator } from '../../../pipes/currency-format.pipe';
+import { CircleProgressBarComponent } from '../../../components/shared/circle-progress-bar/circle-progress-bar.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CircleProgressBarComponent, ThousandSeparator],
+  imports: [ThousandSeparator, CircleProgressBarComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })

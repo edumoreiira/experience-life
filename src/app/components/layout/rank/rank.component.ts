@@ -1,8 +1,8 @@
 import { Component, input, OnInit, output } from '@angular/core';
-import { DropdownListOptions, DropdownSelectionComponent } from "../dropdown-selection/dropdown-selection.component";
-import PaginatorComponent from "../paginator/paginator.component";
-import { popUp, slide, slideUpDown } from '../../animations/transition-animations';
-import { RankPlayers } from '../../models/rankPlayers.interface';
+import { DropdownListOptions, DropdownSelectionComponent } from "../../shared/dropdown-selection/dropdown-selection.component";
+import PaginatorComponent from "../../shared/paginator/paginator.component";
+import { popUp, slide, slideUpDown } from '../../../animations/transition-animations';
+import { RankPlayers } from '../../../models/rankPlayers.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 

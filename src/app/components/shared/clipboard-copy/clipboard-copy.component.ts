@@ -1,6 +1,6 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { Component, input } from '@angular/core';
-import { slide } from '../../animations/transition-animations';
+import { slide } from '../../../animations/transition-animations';
 import { CommonModule } from '@angular/common';
 
 

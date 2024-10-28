@@ -1,8 +1,8 @@
 import { Component, HostBinding } from '@angular/core';
-import { SidebarComponent, SidebarItem } from '../../../components/sidebar/sidebar.component';
+import { SidebarComponent, SidebarItem } from '../../../components/layout/sidebar/sidebar.component';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { ModalComponent } from "../../../components/modal/modal.component";
-import { ConfirmationDialogComponent } from "../../../components/confirmation-dialog/confirmation-dialog.component";
+import { ModalComponent } from "../../../components/dialogs/base/modal/modal.component";
+import { ConfirmationDialogComponent } from "../../../components/dialogs/base/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-ucp-layout',
