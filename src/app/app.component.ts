@@ -1,13 +1,11 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { CommonModule } from '@angular/common';
+import { ToastComponent } from './components/shared/toast/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ClipboardModule, SidebarComponent, CommonModule, RouterModule],
+  imports: [RouterModule, ToastComponent],
   providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

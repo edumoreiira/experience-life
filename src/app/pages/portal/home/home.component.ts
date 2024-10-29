@@ -8,7 +8,7 @@ import { ServerService } from '../../../services/api/samp-server/server.service'
 import { catchError, Observable, of, take } from 'rxjs';
 import { SampServer } from '../../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { NavbarComponent } from "../../../components/layout/navbar/navbar.component";
 import { ClipboardCopyComponent } from "../../../components/shared/clipboard-copy/clipboard-copy.component";
 
@@ -22,7 +22,6 @@ import { ClipboardCopyComponent } from "../../../components/shared/clipboard-cop
   animations: [slide]
 })
 export class HomeComponent implements AfterViewInit {
-  copied = false;
   serverInfo$: Observable<SampServer> = new Observable<SampServer>();
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
   @ViewChild('slider', { read: ElementRef }) slider!: ElementRef<HTMLElement>;
@@ -50,19 +49,7 @@ export class HomeComponent implements AfterViewInit {
 
   constructor(
     private serverService: ServerService,
-    private route: Router
   ) { }
-
-  // show/hide copied alert
-  handleCopyIp() {
-    if(this.copied === false) { // avoid multiple alerts
-      this.copied = true;
-
-      setTimeout(() => {
-        this.copied = false;
-      }, 2000);
-    }
-  }
 
 
   getServerData() {
