@@ -225,3 +225,18 @@ main{
         }
     }
 }
+
+
+.about-project {
+    h1{
+        font-size: 2em;
+        margin-bottom: .5em;
+    }
+    p:not(:last-child) {
+        padding-bottom: 1em;
+    }
+
+    .github{
+        text-align: center;
+    }
+}

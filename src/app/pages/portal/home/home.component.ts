@@ -1,30 +1,30 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CardComponent } from "../../../components/shared/card/card.component";
 import {  ClipboardModule } from '@angular/cdk/clipboard';
-import { FooterComponent } from "../../../components/layout/footer/footer.component";
 import { FormsModule } from '@angular/forms';
-import { slide } from '../../../animations/transition-animations';
+import { parentAnimations, slide } from '../../../animations/transition-animations';
 import { ServerService } from '../../../services/api/samp-server/server.service';
 import { catchError, Observable, of, take } from 'rxjs';
 import { SampServer } from '../../../models/samp-server.interface';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { NavbarComponent } from "../../../components/layout/navbar/navbar.component";
 import { ClipboardCopyComponent } from "../../../components/shared/clipboard-copy/clipboard-copy.component";
+import { ModalComponent } from "../../../components/dialogs/base/modal/modal.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, FooterComponent, ClipboardModule, FormsModule, CommonModule,
-    NavbarComponent, ClipboardCopyComponent, RouterLink],
+  imports: [CardComponent, ClipboardModule, FormsModule, CommonModule,
+  ClipboardCopyComponent, RouterLink, ModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  animations: [slide]
+  animations: [slide, parentAnimations]
 })
 export class HomeComponent implements AfterViewInit {
   serverInfo$: Observable<SampServer> = new Observable<SampServer>();
   @ViewChild('slider_wrapper', { read: ElementRef }) sliderWrapper!: ElementRef<HTMLElement>;
   @ViewChild('slider', { read: ElementRef }) slider!: ElementRef<HTMLElement>;
+  modalAboutProject = true;
 
   ngAfterViewInit(): void {
     const sliderWrapperElement: HTMLElement = this.sliderWrapper.nativeElement;

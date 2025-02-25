@@ -1,3 +1,24 @@
+@if (modalAboutProject) {
+    <app-modal minWidth="500px" [role]="'dialog'" [ariaLabel]="'Sobre o projeto'" (onCloseModal)="modalAboutProject = false" @parentAnimation>
+        <article class="about-project">
+            <h1>Projeto descontinuado</h1>
+            <p>
+                O Experience Life é um servidor de GTA San Andreas Multiplayer (SA-MP), o desenvolvimento do seu website
+                foi descontinuado. O Código fonte do projeto está incompleto, contendo apenas o Front-end. Sinta-se 
+                livre para utilizar o código fonte para estudos e projetos pessoais.
+            </p>
+            <p>
+                Navegando pelos itens da navbar, você pode conseguir acesso ao UCP inserindo qualquer usuário e senha.
+            </p>
+            <p>
+                Caso tenha interesse em discutir sobre o projeto, entre em contato pelo discord.
+            </p>
+            <p><b>Discord:</b> edumoreira</p>
+            <p class="github"><a class="underline-animation" href="https://github.com/edumoreiira/experience-life" target="_blank">Repositório no Github</a></p>
+        </article>
+    </app-modal>
+}
+
 <div class="page">
     <main class="container">
         <header class="header">
